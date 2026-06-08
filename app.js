@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initCustomCursor();
   renderProjects();
+  initProjectFilters();
   initScrollAnimations();
   initMobileNav();
   initEmailClipboard();
@@ -82,15 +83,19 @@ function initCustomCursor() {
 }
 
 /* --- Dynamic Projects Rendering & Case Studies --- */
-function renderProjects() {
+function renderProjects(filter = "all") {
   const container = document.getElementById("projectsContainer");
   if (!container || typeof projects === "undefined") return;
   
   container.innerHTML = "";
   
-  projects.forEach((proj) => {
+  const filteredProjects = filter === "all"
+    ? projects
+    : projects.filter(p => p.category === filter);
+  
+  filteredProjects.forEach((proj) => {
     const card = document.createElement("div");
-    card.className = "project-card reveal interactive-card";
+    card.className = "project-card reveal interactive-card fade-in";
     
     // Build tags
     const tagsHtml = proj.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join("");
@@ -356,3 +361,23 @@ function initHeaderHide() {
     lastScrollY = window.scrollY;
   });
 }
+
+/* --- Project Category Filters Initialization --- */
+function initProjectFilters() {
+  const filtersContainer = document.getElementById("projectFilters");
+  if (!filtersContainer) return;
+  
+  const buttons = filtersContainer.querySelectorAll(".filter-btn");
+  buttons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Avoid triggering document bubble listeners
+      
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      
+      const filterVal = btn.getAttribute("data-filter");
+      renderProjects(filterVal);
+    });
+  });
+}
+

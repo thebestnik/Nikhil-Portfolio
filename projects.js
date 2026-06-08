@@ -9,7 +9,8 @@ const projects = [
     link: "#",
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444913905-BjqQCcYi.png",
     mediumLink: "https://medium.com/@bhojwaninikhil12",
-    hasCaseStudy: true
+    hasCaseStudy: true,
+    category: "design"
   },
   {
     id: "02",
@@ -21,7 +22,8 @@ const projects = [
     link: "#",
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445060193-C2m7wRBR.png",
     mediumLink: "https://medium.com/@bhojwaninikhil12",
-    hasCaseStudy: true
+    hasCaseStudy: true,
+    category: "design"
   },
   {
     id: "03",
@@ -32,7 +34,8 @@ const projects = [
     tags: ["Figma", "Photoshop"],
     link: "",
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445063502-DwgVyMe9.png",
-    hasCaseStudy: false
+    hasCaseStudy: false,
+    category: "design"
   },
   {
     id: "04",
@@ -43,7 +46,8 @@ const projects = [
     tags: ["Figma", "Spline"],
     link: "",
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445065819-ppo9wbW9.png",
-    hasCaseStudy: false
+    hasCaseStudy: false,
+    category: "design"
   },
   {
     id: "05",
@@ -54,7 +58,8 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript", "SEO"],
     link: "https://doctor-pi-seven.vercel.app/",
     cover: "assets/doctor_sanjay.png",
-    hasCaseStudy: true
+    hasCaseStudy: true,
+    category: "website"
   },
   {
     id: "06",
@@ -65,7 +70,8 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript", "Tailwind", "Canvas"],
     link: "https://l-lixir-milk.vercel.app/",
     cover: "https://lh3.googleusercontent.com/aida-public/AB6AXuBygxu8QUQugbWATmhGQXLeVfMnffg5hH5hGKYfAMhseJzdWqj3Q0hQ7psOAHOytYe-_c4I2padgmHBbUU_WTchBnMscAWNHrdpn5FhPHq_BMcMkgVeQh-ppDc72akHWh5JeJ1BWK4oqEooeXr2jDWeLskGHMXhZc2dWa5tXp_T3cgDXpiYQp5hgg7dmoCPuj3gWFMWJCoUU-kn2Vj9SKAEjHcuQIGWmHjFgHu_q45SkOt1i0vQSzYUDB6RvZfeB8MaM0zxdlnzhTg",
-    hasCaseStudy: true
+    hasCaseStudy: true,
+    category: "website"
   }
 ];
 
