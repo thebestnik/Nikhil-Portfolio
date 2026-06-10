@@ -14,15 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initEmailClipboard();
   initHeaderHide();
-  
-  // Resize handler for scroll wheel radius
-  window.addEventListener("resize", () => {
-    const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
-    renderProjects(activeFilter);
-  });
-  
-  // Scroll handler for circular works carousel
-  window.addEventListener("scroll", updateWheelScroll);
 });
 
 /* --- Theme Management --- */
@@ -96,26 +87,18 @@ function initCustomCursor() {
 
 /* --- Dynamic Projects Rendering & Case Studies --- */
 function renderProjects(filter = "all") {
-  const wheel = document.getElementById("projectsWheel");
-  if (!wheel || typeof projects === "undefined") return;
+  const container = document.getElementById("projectsContainer");
+  if (!container || typeof projects === "undefined") return;
   
-  wheel.innerHTML = "";
+  container.innerHTML = "";
   
   const filteredProjects = filter === "all"
     ? projects
     : projects.filter(p => p.category === filter);
   
-  const count = filteredProjects.length;
-  const radius = window.innerWidth < 768 ? 380 : 600;
-  
-  filteredProjects.forEach((proj, idx) => {
+  filteredProjects.forEach((proj) => {
     const card = document.createElement("div");
-    card.className = "project-card interactive-card";
-    
-    // Angle in degrees for this card
-    const angle = (idx * (360 / Math.max(count, 1)));
-    card.style.setProperty("--card-angle", `${angle}deg`);
-    card.style.setProperty("--wheel-radius", `${radius}px`);
+    card.className = "project-card reveal interactive-card fade-in";
     
     // Build tags
     const tagsHtml = proj.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join("");
@@ -169,14 +152,11 @@ function renderProjects(filter = "all") {
       document.body.classList.remove("cursor-view");
     });
     
-    wheel.appendChild(card);
+    container.appendChild(card);
   });
   
   // Initialize 3D Card Tilt on newly rendered project cards
   init3DTilt();
-  
-  // Update wheel positions initially
-  updateWheelScroll();
 }
 
 /* --- Project Case Study Modal --- */
@@ -536,65 +516,5 @@ function initTimelineAnimation() {
   observer.observe(container);
 }
 
-/* --- 3D Circular Scroll Wheel Rotation --- */
-function updateWheelScroll() {
-  const track = document.getElementById("projectsScrollTrack");
-  const wheel = document.getElementById("projectsWheel");
-  if (!track || !wheel) return;
-  
-  const rect = track.getBoundingClientRect();
-  const trackHeight = track.offsetHeight;
-  const viewportHeight = window.innerHeight;
-  
-  // Progress is 0 when top of track is at top of viewport
-  // Progress is 1 when bottom of track is at bottom of viewport
-  const scrollStart = rect.top;
-  const scrollDistance = trackHeight - viewportHeight;
-  
-  if (scrollDistance <= 0) return;
-  
-  let progress = -scrollStart / scrollDistance;
-  progress = Math.max(0, Math.min(1, progress));
-  
-  // Calculate total rotation
-  const count = wheel.children.length;
-  const angleStep = 360 / Math.max(count, 1);
-  const maxRotation = (count - 1) * angleStep;
-  const currentRotation = -progress * maxRotation;
-  
-  wheel.style.transform = `translate3d(-50%, -50%, 0) rotate(${currentRotation}deg)`;
-  
-  // Apply 3D upright positioning, scale focus, and opacity to card children
-  Array.from(wheel.children).forEach((card) => {
-    const cardAngle = parseFloat(card.style.getPropertyValue("--card-angle")) || 0;
-    const globalAngle = (cardAngle + currentRotation) % 360;
-    
-    // Normalize globalAngle to [-180, 180]
-    let normalizedAngle = globalAngle;
-    if (normalizedAngle > 180) normalizedAngle -= 360;
-    if (normalizedAngle < -180) normalizedAngle += 360;
-    
-    const distanceFromTop = Math.abs(normalizedAngle);
-    const maxDistance = 90; // dim/hide cards beyond 90 degrees
-    
-    // Card opacity dims as it rotates away
-    let opacity = 1 - (distanceFromTop / maxDistance);
-    opacity = Math.max(0.15, Math.min(1, opacity));
-    
-    // Card scales down slightly as it rotates away
-    let scale = 1 - (distanceFromTop / 360) * 0.4;
-    scale = Math.max(0.7, Math.min(1.05, scale));
-    
-    // Apply transforms: rotate wheel space -> translate out -> counter-rotate to keep upright -> scale
-    card.style.opacity = opacity;
-    card.style.transform = `rotate(var(--card-angle)) translate3d(0, calc(-1 * var(--wheel-radius)), 0) rotate(calc(-1 * var(--card-angle))) scale(${scale})`;
-    
-    // Toggle active border class if card is closest to the focal top position
-    if (distanceFromTop < 30) {
-      card.classList.add("active-card");
-    } else {
-      card.classList.remove("active-card");
-    }
-  });
-}
+// Circular scroll tracking removed. Reverted back to high-performance bento grid.
 
