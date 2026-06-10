@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initCustomCursor();
   renderProjects();
   initProjectFilters();
+  initDynamicGlow();
+  initHeroMeshParallax();
+  initTimelineAnimation();
   initScrollAnimations();
   initMobileNav();
   initEmailClipboard();
@@ -151,6 +154,9 @@ function renderProjects(filter = "all") {
     
     container.appendChild(card);
   });
+  
+  // Initialize 3D Card Tilt on newly rendered project cards
+  init3DTilt();
 }
 
 /* --- Project Case Study Modal --- */
@@ -379,5 +385,134 @@ function initProjectFilters() {
       renderProjects(filterVal);
     });
   });
+}
+
+/* --- Mouse-Follow Ambient Glow Spotlight --- */
+function initDynamicGlow() {
+  const glow1 = document.querySelector(".ambient-glow-1");
+  const glow2 = document.querySelector(".ambient-glow-2");
+  
+  if (!glow1 && !glow2) return;
+  
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  
+  let glow1X = mouseX, glow1Y = mouseY;
+  let glow2X = mouseX, glow2Y = mouseY;
+  
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX + window.scrollX;
+    mouseY = e.clientY + window.scrollY;
+  });
+  
+  function updateGlow() {
+    // Smooth linear interpolation (lerp) toward target mouse position
+    glow1X += (mouseX - glow1X) * 0.04;
+    glow1Y += (mouseY - glow1Y) * 0.04;
+    
+    const offsetTargetX = mouseX - 250;
+    const offsetTargetY = mouseY + 150;
+    glow2X += (offsetTargetX - glow2X) * 0.03;
+    glow2Y += (offsetTargetY - glow2Y) * 0.03;
+    
+    if (glow1) {
+      glow1.style.transform = `translate3d(${glow1X - 300}px, ${glow1Y - 300}px, 0)`;
+    }
+    if (glow2) {
+      glow2.style.transform = `translate3d(${glow2X - 300}px, ${glow2Y - 300}px, 0)`;
+    }
+    
+    requestAnimationFrame(updateGlow);
+  }
+  
+  // Set glow coordinate origin
+  if (glow1) {
+    glow1.style.position = "absolute";
+    glow1.style.top = "0px";
+    glow1.style.left = "0px";
+    glow1.style.margin = "0";
+  }
+  if (glow2) {
+    glow2.style.position = "absolute";
+    glow2.style.top = "0px";
+    glow2.style.left = "0px";
+    glow2.style.margin = "0";
+  }
+  
+  updateGlow();
+}
+
+/* --- 3D Perspective Card Tilt handler --- */
+function init3DTilt() {
+  const cards = document.querySelectorAll(".project-card");
+  if (!cards.length) return;
+  
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const width = rect.width;
+      const height = rect.height;
+      
+      // Compute 3D rotation ratios (max 6deg tilt to maintain high text readability)
+      const rotateX = -((y - height / 2) / (height / 2)) * 6;
+      const rotateY = ((x - width / 2) / (width / 2)) * 6;
+      
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+    });
+    
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+    });
+  });
+}
+
+/* --- Hero Mesh Mouse Parallax Tilt --- */
+function initHeroMeshParallax() {
+  const mesh = document.getElementById("heroMesh");
+  if (!mesh) return;
+  
+  window.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth) - 0.5;
+    const y = (e.clientY / window.innerHeight) - 0.5;
+    
+    // Smoothly rotate and shift the mesh SVG elements
+    mesh.style.transform = `rotateX(${y * 12}deg) rotateY(${x * 12}deg) translate3d(${x * 20}px, ${y * 20}px, 0)`;
+  });
+}
+
+/* --- Dynamic Connector Timeline Animation --- */
+function initTimelineAnimation() {
+  const container = document.getElementById("timelineContainer");
+  const line = document.getElementById("timelineLine");
+  
+  if (!container || !line) return;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Expand timeline line to full height
+        line.style.height = "calc(100% - 20px)";
+        
+        // Stagger activation of timeline pulses
+        setTimeout(() => {
+          const items = container.querySelectorAll(".timeline-item");
+          items.forEach((item, idx) => {
+            setTimeout(() => {
+              item.classList.add("active");
+            }, idx * 300);
+          });
+        }, 1200);
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+  
+  observer.observe(container);
 }
 

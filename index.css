@@ -966,7 +966,27 @@ a {
   width: 1px;
   height: calc(100% - 20px);
   background-color: var(--border);
+  display: none !important;
 }
+
+.timeline-line {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 1.5px;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--accent) 0%, var(--border) 100%);
+  will-change: height;
+  transition: height 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.timeline-item.active .timeline-dot {
+  background-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  border-color: var(--accent);
+}
+
 
 .timeline-item {
   position: relative;
@@ -1436,4 +1456,258 @@ a {
   }
 }
 
+/* --- Staggered Reveal Elements --- */
+.title-line-wrapper {
+  display: block;
+  overflow: hidden;
+  height: auto;
+  padding-bottom: 0.05em;
+  margin-bottom: -0.05em;
+}
 
+.title-line {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: revealText 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealText {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.reveal-fade {
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: revealFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealFade {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- 3D Perspective Card Tilt --- */
+.projects-bento {
+  perspective: 1000px;
+}
+
+.project-card {
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow, border-color;
+  transition: border-color 0.4s var(--transition-bezier),
+              box-shadow 0.4s var(--transition-bezier),
+              transform 0.1s ease-out;
+}
+
+/* Push elements inside card outward in Z space for parallax */
+.project-card .project-cover-container,
+.project-card .project-card-header,
+.project-card .project-body,
+.project-card .project-footer {
+  transform: translateZ(20px);
+  transition: transform 0.4s var(--transition-bezier);
+}
+
+.project-card:hover .project-cover-img {
+  transform: scale(1.05) translateZ(10px);
+}
+
+/* Parallax SVG hero mesh */
+.dynamic-mesh {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   Creative Animations & Interactive Styling Enhancements
+   ========================================================================== */
+
+/* --- Logo Bat-Signal SVG Animation --- */
+.logo-bat-signal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 0;
+  height: 18px;
+  opacity: 0;
+  overflow: hidden;
+  color: #fdd835; /* Batman Yellow Accent */
+  transition: width var(--transition-speed) var(--transition-bezier),
+              opacity var(--transition-speed) var(--transition-bezier),
+              margin-right var(--transition-speed) var(--transition-bezier);
+}
+
+.logo-bat-signal svg {
+  width: 18px;
+  height: 18px;
+  filter: drop-shadow(0 0 6px rgba(253, 216, 53, 0.8));
+}
+
+[data-theme="dark"] .logo-bat-signal {
+  width: 22px;
+  opacity: 1;
+  margin-right: 4px;
+}
+
+/* --- Spinning Works Badge --- */
+.rotating-badge {
+  width: 90px;
+  height: 90px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotate-continuous 20s linear infinite;
+  flex-shrink: 0;
+}
+
+.rotating-badge svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.rotating-badge text {
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  font-weight: 500;
+  fill: var(--text-muted);
+  letter-spacing: 2px;
+}
+
+@keyframes rotate-continuous {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Mobile Helpers --- */
+.hidden-mobile {
+  display: inline-flex;
+}
+
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+/* --- Bento Card Floating Animations --- */
+@keyframes floatBentoOdd {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(0.1deg); }
+  50% { transform: translateY(-2px) translateX(2px) rotate(-0.1deg); }
+  75% { transform: translateY(-6px) translateX(-1px) rotate(0.1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes floatBentoEven {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-4px) translateX(-2px) rotate(-0.1deg); }
+  50% { transform: translateY(-7px) translateX(1px) rotate(0.15deg); }
+  75% { transform: translateY(-3px) rotate(-0.1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Only apply floats when idle (not hovered) to preserve 3D tilt tracking */
+.project-card:nth-child(odd):not(:hover) {
+  animation: floatBentoOdd 8s ease-in-out infinite;
+}
+
+.project-card:nth-child(even):not(:hover) {
+  animation: floatBentoEven 10s ease-in-out infinite;
+}
+
+/* --- Widescreen Horizontal Grid Layout for 7th Project Card (Visual Playground) --- */
+@media (min-width: 992px) {
+  .project-card:nth-child(7) {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+    min-height: 440px;
+    padding: 40px;
+  }
+  
+  .project-card:nth-child(7) .project-cover-container {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    height: 100%;
+    min-height: 340px;
+    margin-bottom: 0;
+  }
+  
+  .project-card:nth-child(7) .project-card-header {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+  
+  .project-card:nth-child(7) .project-body {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  .project-card:nth-child(7) .project-footer {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 0;
+  }
+}
+
+/* --- Theme-responsive Biography Overlay & Smooth Cross-fade --- */
+.about-narrative-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-areas: "narrative";
+  width: 100%;
+}
+
+.about-narrative-formal,
+.about-narrative-playful {
+  grid-area: narrative;
+  transition: opacity 0.6s var(--transition-bezier),
+              transform 0.6s var(--transition-bezier);
+  will-change: opacity, transform;
+}
+
+[data-theme="light"] .about-narrative-formal {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+[data-theme="light"] .about-narrative-playful {
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+}
+
+[data-theme="dark"] .about-narrative-formal {
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+}
+
+[data-theme="dark"] .about-narrative-playful {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
