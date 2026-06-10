@@ -1534,78 +1534,124 @@ a {
 }
 
 /* ==========================================================================
-   Creative Chibi Spider-Man & Interactive Web Enhancements
+   Creative 3D Scroll-Driven Circular Selected Works Carousel
    ========================================================================== */
 
-.work-playground {
+.projects-scroll-track {
+  height: 350vh; /* Scroll track for rotation range */
   position: relative;
   width: 100%;
 }
 
-/* --- Chibi Spider-Man Character --- */
-.chibi-spiderman {
+.projects-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-wheel {
   position: absolute;
+  top: 100%; /* Pivot point is centered horizontally, placed at the bottom edge */
+  left: 50%;
   width: 100px;
   height: 100px;
-  top: -50px;
-  left: 50%;
-  transform: translateX(-50%) translateY(0) scale(1);
-  background-image: url('assets/spiderman_black.png'); /* Venom Black Suit for Dark Theme */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 100;
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-  pointer-events: none;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  transform-origin: center center;
+  will-change: transform;
 }
 
-/* Light Theme: Classic Red & Blue Suit */
-[data-theme="light"] .chibi-spiderman {
-  background-image: url('assets/spiderman_red.png');
-}
-
-/* Falling State (when work item clicked) */
-.chibi-spiderman.falling {
-  transform: translateX(-50%) translateY(120vh) rotate(540deg) scale(0.8) !important;
-  transition: transform 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-}
-
-/* --- Spider Webs SVG Lines --- */
-.spider-webs {
+.projects-wheel .project-card {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  width: 480px;
+  height: 520px;
+  margin-top: -260px;
+  margin-left: -240px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  transition: opacity 0.3s ease, transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Upright alignment transformation is set dynamically in JavaScript */
+.projects-wheel .project-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px var(--accent-glow);
+}
+
+.projects-wheel .project-card.active-card {
+  border-color: var(--accent);
+  box-shadow: 0 15px 35px var(--accent-glow);
+}
+
+/* Cover Image Adjustment */
+.projects-wheel .project-cover-container {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  background-color: var(--bg-surface-elevated);
+}
+
+.projects-wheel .project-cover-img {
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  z-index: 90;
-  overflow: visible;
+  object-fit: cover;
+  transition: transform 0.5s var(--transition-bezier);
 }
 
-.spider-web-line {
-  stroke: rgba(255, 255, 255, 0.65);
-  stroke-width: 1.5px;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
-  stroke-dasharray: 6 3;
-  animation: web-tension 4s ease-in-out infinite alternate;
-  transition: opacity 0.2s ease, stroke-dashoffset 0.2s ease;
+.projects-wheel .project-card:hover .project-cover-img {
+  transform: scale(1.04);
 }
 
-[data-theme="light"] .spider-web-line {
-  stroke: rgba(0, 0, 0, 0.3);
-  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.1));
+/* Responsive Scaling for Tablets */
+@media (max-width: 991px) {
+  .projects-wheel .project-card {
+    width: 360px;
+    height: 420px;
+    margin-top: -210px;
+    margin-left: -180px;
+    padding: 24px;
+  }
+  .projects-wheel .project-cover-container {
+    height: 140px;
+  }
 }
 
-.spider-webs.snapped .spider-web-line {
-  opacity: 0;
-  stroke-dashoffset: 40;
-}
-
-@keyframes web-tension {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 20; }
+/* Responsive Scaling for Mobile Screens */
+@media (max-width: 576px) {
+  .projects-wheel .project-card {
+    width: 290px;
+    height: 380px;
+    margin-top: -190px;
+    margin-left: -145px;
+    padding: 20px;
+  }
+  .projects-wheel .project-cover-container {
+    height: 120px;
+    margin-bottom: 12px;
+  }
+  .projects-wheel .project-title {
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+  }
+  .projects-wheel .project-description {
+    font-size: 0.8rem;
+  }
 }
 
 /* --- Theme-responsive Biography Overlay & Smooth Cross-fade --- */

@@ -15,12 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
   initEmailClipboard();
   initHeaderHide();
   
-  // Resize handler for Spider-Man webs
+  // Resize handler for scroll wheel radius
   window.addEventListener("resize", () => {
-    if (typeof drawSpidermanWebs === "function") {
-      drawSpidermanWebs();
-    }
+    const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
+    renderProjects(activeFilter);
   });
+  
+  // Scroll handler for circular works carousel
+  window.addEventListener("scroll", updateWheelScroll);
 });
 
 /* --- Theme Management --- */
@@ -94,18 +96,26 @@ function initCustomCursor() {
 
 /* --- Dynamic Projects Rendering & Case Studies --- */
 function renderProjects(filter = "all") {
-  const container = document.getElementById("projectsContainer");
-  if (!container || typeof projects === "undefined") return;
+  const wheel = document.getElementById("projectsWheel");
+  if (!wheel || typeof projects === "undefined") return;
   
-  container.innerHTML = "";
+  wheel.innerHTML = "";
   
   const filteredProjects = filter === "all"
     ? projects
     : projects.filter(p => p.category === filter);
   
-  filteredProjects.forEach((proj) => {
+  const count = filteredProjects.length;
+  const radius = window.innerWidth < 768 ? 380 : 600;
+  
+  filteredProjects.forEach((proj, idx) => {
     const card = document.createElement("div");
-    card.className = "project-card reveal interactive-card fade-in";
+    card.className = "project-card interactive-card";
+    
+    // Angle in degrees for this card
+    const angle = (idx * (360 / Math.max(count, 1)));
+    card.style.setProperty("--card-angle", `${angle}deg`);
+    card.style.setProperty("--wheel-radius", `${radius}px`);
     
     // Build tags
     const tagsHtml = proj.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join("");
@@ -159,14 +169,14 @@ function renderProjects(filter = "all") {
       document.body.classList.remove("cursor-view");
     });
     
-    container.appendChild(card);
+    wheel.appendChild(card);
   });
   
   // Initialize 3D Card Tilt on newly rendered project cards
   init3DTilt();
   
-  // Draw Spider-Man's webs holding the works together
-  setTimeout(drawSpidermanWebs, 100);
+  // Update wheel positions initially
+  updateWheelScroll();
 }
 
 /* --- Project Case Study Modal --- */
@@ -273,9 +283,6 @@ function openProjectModal(project) {
   
   modal.querySelector(".modal-desc-content").innerHTML = contentHtml;
   
-  // Trigger Spider-Man fall and webs snapping
-  triggerSpidermanFall();
-  
   // Show modal
   modal.classList.add("active");
   document.body.style.overflow = "hidden"; // Lock background scroll
@@ -289,9 +296,6 @@ window.closeProjectModal = function() {
   if (!modal) return;
   modal.classList.remove("active");
   document.body.style.overflow = ""; // Restore background scroll
-  
-  // Recover Spider-Man and redraw webs
-  recoverSpiderman();
 };
 
 /* --- Scroll-triggered reveals --- */
@@ -532,94 +536,65 @@ function initTimelineAnimation() {
   observer.observe(container);
 }
 
-/* --- Chibi Spider-Man Dynamic Webs & Animations --- */
-let spidermanIsFalling = false;
-
-function drawSpidermanWebs() {
-  const spiderman = document.getElementById("chibiSpiderman");
-  const svg = document.getElementById("spiderWebs");
-  const container = document.getElementById("projectsContainer");
-  const playground = document.getElementById("workPlayground");
+/* --- 3D Circular Scroll Wheel Rotation --- */
+function updateWheelScroll() {
+  const track = document.getElementById("projectsScrollTrack");
+  const wheel = document.getElementById("projectsWheel");
+  if (!track || !wheel) return;
   
-  if (!spiderman || !svg || !container || !playground || spidermanIsFalling) return;
+  const rect = track.getBoundingClientRect();
+  const trackHeight = track.offsetHeight;
+  const viewportHeight = window.innerHeight;
   
-  // Clear existing lines
-  svg.innerHTML = "";
+  // Progress is 0 when top of track is at top of viewport
+  // Progress is 1 when bottom of track is at bottom of viewport
+  const scrollStart = rect.top;
+  const scrollDistance = trackHeight - viewportHeight;
   
-  const cards = container.querySelectorAll(".project-card");
-  if (!cards.length) return;
+  if (scrollDistance <= 0) return;
   
-  // Calculate relative positions
-  const parentRect = playground.getBoundingClientRect();
-  const spiderRect = spiderman.getBoundingClientRect();
+  let progress = -scrollStart / scrollDistance;
+  progress = Math.max(0, Math.min(1, progress));
   
-  if (parentRect.width === 0 || spiderRect.width === 0) return;
+  // Calculate total rotation
+  const count = wheel.children.length;
+  const angleStep = 360 / Math.max(count, 1);
+  const maxRotation = (count - 1) * angleStep;
+  const currentRotation = -progress * maxRotation;
   
-  // Hand origins relative to playground (center top area of Spiderman body)
-  const startX = (spiderRect.left + spiderRect.right) / 2 - parentRect.left;
-  const startY = (spiderRect.top + spiderRect.bottom) / 2 - parentRect.top + 15;
+  wheel.style.transform = `translate3d(-50%, -50%, 0) rotate(${currentRotation}deg)`;
   
-  // Get top cards (slice up to 2)
-  const topCards = Array.from(cards).slice(0, 2);
-  
-  topCards.forEach((card, index) => {
-    const cardRect = card.getBoundingClientRect();
+  // Apply 3D upright positioning, scale focus, and opacity to card children
+  Array.from(wheel.children).forEach((card) => {
+    const cardAngle = parseFloat(card.style.getPropertyValue("--card-angle")) || 0;
+    const globalAngle = (cardAngle + currentRotation) % 360;
     
-    // Web line endpoint target
-    let targetX, targetY;
+    // Normalize globalAngle to [-180, 180]
+    let normalizedAngle = globalAngle;
+    if (normalizedAngle > 180) normalizedAngle -= 360;
+    if (normalizedAngle < -180) normalizedAngle += 360;
     
-    if (index === 0) {
-      // Draw to top-right of left card
-      targetX = cardRect.right - parentRect.left - 20;
-      targetY = cardRect.top - parentRect.top + 20;
+    const distanceFromTop = Math.abs(normalizedAngle);
+    const maxDistance = 90; // dim/hide cards beyond 90 degrees
+    
+    // Card opacity dims as it rotates away
+    let opacity = 1 - (distanceFromTop / maxDistance);
+    opacity = Math.max(0.15, Math.min(1, opacity));
+    
+    // Card scales down slightly as it rotates away
+    let scale = 1 - (distanceFromTop / 360) * 0.4;
+    scale = Math.max(0.7, Math.min(1.05, scale));
+    
+    // Apply transforms: rotate wheel space -> translate out -> counter-rotate to keep upright -> scale
+    card.style.opacity = opacity;
+    card.style.transform = `rotate(var(--card-angle)) translate3d(0, calc(-1 * var(--wheel-radius)), 0) rotate(calc(-1 * var(--card-angle))) scale(${scale})`;
+    
+    // Toggle active border class if card is closest to the focal top position
+    if (distanceFromTop < 30) {
+      card.classList.add("active-card");
     } else {
-      // Draw to top-left of right card
-      targetX = cardRect.left - parentRect.left + 20;
-      targetY = cardRect.top - parentRect.top + 20;
+      card.classList.remove("active-card");
     }
-    
-    // Create SVG line
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", startX);
-    line.setAttribute("y1", startY);
-    line.setAttribute("x2", targetX);
-    line.setAttribute("y2", targetY);
-    line.setAttribute("class", "spider-web-line");
-    svg.appendChild(line);
   });
-}
-
-function triggerSpidermanFall() {
-  const spiderman = document.getElementById("chibiSpiderman");
-  const svg = document.getElementById("spiderWebs");
-  
-  if (!spiderman) return;
-  
-  spidermanIsFalling = true;
-  spiderman.classList.add("falling");
-  
-  if (svg) {
-    svg.classList.add("snapped");
-    setTimeout(() => {
-      svg.innerHTML = "";
-    }, 200);
-  }
-}
-
-function recoverSpiderman() {
-  const spiderman = document.getElementById("chibiSpiderman");
-  const svg = document.getElementById("spiderWebs");
-  
-  if (!spiderman) return;
-  
-  spiderman.classList.remove("falling");
-  if (svg) {
-    svg.classList.remove("snapped");
-  }
-  
-  spidermanIsFalling = false;
-  
-  // Wait for swing-up transition (800ms) to complete before redrawing lines
-  setTimeout(drawSpidermanWebs, 800);
 }
 
