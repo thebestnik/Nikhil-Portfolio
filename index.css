@@ -687,6 +687,12 @@ a {
   .split-content, .split-content-flow {
     width: 100%;
   }
+  #about .split-sidebar {
+    order: 2;
+  }
+  #about .split-content-flow {
+    order: 1;
+  }
 }
 
 /* --- Project Card Styling --- */
