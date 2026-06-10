@@ -508,11 +508,35 @@ a {
 }
 
 .hero-mascot-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 32px;
-  transition: transform 0.5s var(--transition-bezier);
+  transition: transform 0.5s var(--transition-bezier), opacity 0.4s ease;
+}
+
+/* Default state: Smiling is visible, Waving is hidden */
+.mascot-smiling {
+  opacity: 1;
+  z-index: 2;
+}
+
+.mascot-waving {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Hover state: Smiling fades out, Waving fades in and tilts */
+.mascot-container:hover .mascot-smiling {
+  opacity: 0;
+}
+
+.mascot-container:hover .mascot-waving {
+  opacity: 1;
+  z-index: 3;
 }
 
 .mascot-container:hover .hero-mascot-img {
