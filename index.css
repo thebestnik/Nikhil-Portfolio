@@ -313,39 +313,78 @@ a {
   width: 100%;
 }
 
-/* Theme Switcher Button */
-.theme-toggle {
-  background: none;
-  border: none;
+/* Theme Switcher Button (Track) */
+.theme-toggle-track {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  position: relative;
+  width: 60px;
+  height: 32px;
+  border-radius: 99px;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: background-color var(--transition-speed) var(--transition-bezier),
+              border-color var(--transition-speed) var(--transition-bezier),
+              box-shadow var(--transition-speed) var(--transition-bezier);
+}
+
+.theme-toggle-track:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* Theme Toggle Knob */
+.theme-toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: border-color 0.3s, color 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.theme-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  transition: transform var(--transition-speed) var(--transition-bezier),
+              background-color var(--transition-speed) var(--transition-bezier);
 }
 
-.toggle-icon {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-  transition: transform 0.5s var(--transition-bezier);
+/* Knob Icons */
+.knob-icon {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  fill: #ffffff;
+  transition: opacity var(--transition-speed) var(--transition-bezier),
+              transform var(--transition-speed) var(--transition-bezier);
 }
 
-[data-theme="dark"] .sun-icon { transform: translateY(0); }
-[data-theme="dark"] .moon-icon { transform: translateY(-40px); position: absolute; }
-[data-theme="light"] .sun-icon { transform: translateY(40px); position: absolute; }
-[data-theme="light"] .moon-icon { transform: translateY(0); }
+/* Theme state transformations */
+[data-theme="dark"] .theme-toggle-knob {
+  transform: translateX(0);
+}
+[data-theme="dark"] .moon-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+[data-theme="dark"] .sun-icon {
+  opacity: 0;
+  transform: scale(0.5) rotate(-90deg);
+}
+
+[data-theme="light"] .theme-toggle-knob {
+  transform: translateX(30px);
+}
+[data-theme="light"] .moon-icon {
+  opacity: 0;
+  transform: scale(0.5) rotate(90deg);
+}
+[data-theme="light"] .sun-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
 
 /* Mobile Nav Toggle */
 .mobile-nav-toggle {
