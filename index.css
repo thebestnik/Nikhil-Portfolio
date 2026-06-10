@@ -490,21 +490,11 @@ a {
 .mascot-container {
   width: min(380px, 85vw);
   height: min(380px, 85vw);
-  border-radius: 32px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: radial-gradient(circle at 50% 50%, rgba(147, 145, 242, 0.1) 0%, transparent 80%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--card-shadow);
   position: relative;
   animation: floatMascot 6s ease-in-out infinite alternate;
-  transition: border-color 0.3s ease;
-}
-
-.mascot-container:hover {
-  border-color: var(--accent);
 }
 
 .hero-mascot-img {
@@ -636,6 +626,13 @@ a {
   gap: 40px;
 }
 
+.split-content-flow {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 /* Responsive collapse of split columns */
 @media (max-width: 991px) {
   .split-container {
@@ -647,7 +644,7 @@ a {
     position: relative;
     top: 0;
   }
-  .split-content {
+  .split-content, .split-content-flow {
     width: 100%;
   }
 }
@@ -785,10 +782,22 @@ a {
 
 /* --- Deep Research / Blog Cards --- */
 .research-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .research-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .research-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .research-card {
@@ -796,7 +805,7 @@ a {
   background-color: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 32px;
+  padding: 24px;
   transition: all 0.4s var(--transition-bezier);
 }
 
@@ -833,19 +842,23 @@ a {
 
 /* --- About Profile photo polaroid --- */
 .about-photo-wrapper {
-  width: 100%;
-  border-radius: 24px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
   overflow: hidden;
-  background-color: var(--bg-surface);
   border: 1px solid var(--border);
-  padding: 16px;
   box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: var(--bg-surface);
 }
 
 .about-photo {
   width: 100%;
-  height: auto;
-  border-radius: 16px;
+  height: 100%;
+  border-radius: 50%;
   object-fit: cover;
 }
 
