@@ -1534,142 +1534,78 @@ a {
 }
 
 /* ==========================================================================
-   Creative Animations & Interactive Styling Enhancements
+   Creative Chibi Spider-Man & Interactive Web Enhancements
    ========================================================================== */
 
-/* --- Logo Bat-Signal SVG Animation --- */
-.logo-bat-signal {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  width: 0;
-  height: 18px;
-  opacity: 0;
-  overflow: hidden;
-  color: #fdd835; /* Batman Yellow Accent */
-  transition: width var(--transition-speed) var(--transition-bezier),
-              opacity var(--transition-speed) var(--transition-bezier),
-              margin-right var(--transition-speed) var(--transition-bezier);
+.work-playground {
+  position: relative;
+  width: 100%;
 }
 
-.logo-bat-signal svg {
-  width: 18px;
-  height: 18px;
-  filter: drop-shadow(0 0 6px rgba(253, 216, 53, 0.8));
+/* --- Chibi Spider-Man Character --- */
+.chibi-spiderman {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0) scale(1);
+  background-image: url('assets/spiderman_black.png'); /* Venom Black Suit for Dark Theme */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 100;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
 }
 
-[data-theme="dark"] .logo-bat-signal {
-  width: 22px;
-  opacity: 1;
-  margin-right: 4px;
+/* Light Theme: Classic Red & Blue Suit */
+[data-theme="light"] .chibi-spiderman {
+  background-image: url('assets/spiderman_red.png');
 }
 
-/* --- Spinning Works Badge --- */
-.rotating-badge {
-  width: 90px;
-  height: 90px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  animation: rotate-continuous 20s linear infinite;
-  flex-shrink: 0;
+/* Falling State (when work item clicked) */
+.chibi-spiderman.falling {
+  transform: translateX(-50%) translateY(120vh) rotate(540deg) scale(0.8) !important;
+  transition: transform 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
 }
 
-.rotating-badge svg {
+/* --- Spider Webs SVG Lines --- */
+.spider-webs {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
+  z-index: 90;
   overflow: visible;
 }
 
-.rotating-badge text {
-  font-family: var(--font-mono);
-  font-size: 7.5px;
-  font-weight: 500;
-  fill: var(--text-muted);
-  letter-spacing: 2px;
+.spider-web-line {
+  stroke: rgba(255, 255, 255, 0.65);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
+  stroke-dasharray: 6 3;
+  animation: web-tension 4s ease-in-out infinite alternate;
+  transition: opacity 0.2s ease, stroke-dashoffset 0.2s ease;
 }
 
-@keyframes rotate-continuous {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+[data-theme="light"] .spider-web-line {
+  stroke: rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.1));
 }
 
-/* --- Mobile Helpers --- */
-.hidden-mobile {
-  display: inline-flex;
+.spider-webs.snapped .spider-web-line {
+  opacity: 0;
+  stroke-dashoffset: 40;
 }
 
-@media (max-width: 768px) {
-  .hidden-mobile {
-    display: none !important;
-  }
-}
-
-/* --- Bento Card Floating Animations --- */
-@keyframes floatBentoOdd {
-  0% { transform: translateY(0px) rotate(0deg); }
-  25% { transform: translateY(-5px) rotate(0.1deg); }
-  50% { transform: translateY(-2px) translateX(2px) rotate(-0.1deg); }
-  75% { transform: translateY(-6px) translateX(-1px) rotate(0.1deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
-
-@keyframes floatBentoEven {
-  0% { transform: translateY(0px) rotate(0deg); }
-  25% { transform: translateY(-4px) translateX(-2px) rotate(-0.1deg); }
-  50% { transform: translateY(-7px) translateX(1px) rotate(0.15deg); }
-  75% { transform: translateY(-3px) rotate(-0.1deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
-
-/* Only apply floats when idle (not hovered) to preserve 3D tilt tracking */
-.project-card:nth-child(odd):not(:hover) {
-  animation: floatBentoOdd 8s ease-in-out infinite;
-}
-
-.project-card:nth-child(even):not(:hover) {
-  animation: floatBentoEven 10s ease-in-out infinite;
-}
-
-/* --- Widescreen Horizontal Grid Layout for 7th Project Card (Visual Playground) --- */
-@media (min-width: 992px) {
-  .project-card:nth-child(7) {
-    grid-column: span 12;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 48px;
-    align-items: center;
-    min-height: 440px;
-    padding: 40px;
-  }
-  
-  .project-card:nth-child(7) .project-cover-container {
-    grid-column: 1;
-    grid-row: 1 / span 3;
-    height: 100%;
-    min-height: 340px;
-    margin-bottom: 0;
-  }
-  
-  .project-card:nth-child(7) .project-card-header {
-    grid-column: 2;
-    grid-row: 1;
-    margin-bottom: 0;
-  }
-  
-  .project-card:nth-child(7) .project-body {
-    grid-column: 2;
-    grid-row: 2;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  
-  .project-card:nth-child(7) .project-footer {
-    grid-column: 2;
-    grid-row: 3;
-    margin-top: 0;
-  }
+@keyframes web-tension {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 20; }
 }
 
 /* --- Theme-responsive Biography Overlay & Smooth Cross-fade --- */

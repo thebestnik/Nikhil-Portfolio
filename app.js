@@ -14,6 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initEmailClipboard();
   initHeaderHide();
+  
+  // Resize handler for Spider-Man webs
+  window.addEventListener("resize", () => {
+    if (typeof drawSpidermanWebs === "function") {
+      drawSpidermanWebs();
+    }
+  });
 });
 
 /* --- Theme Management --- */
@@ -157,6 +164,9 @@ function renderProjects(filter = "all") {
   
   // Initialize 3D Card Tilt on newly rendered project cards
   init3DTilt();
+  
+  // Draw Spider-Man's webs holding the works together
+  setTimeout(drawSpidermanWebs, 100);
 }
 
 /* --- Project Case Study Modal --- */
@@ -263,6 +273,9 @@ function openProjectModal(project) {
   
   modal.querySelector(".modal-desc-content").innerHTML = contentHtml;
   
+  // Trigger Spider-Man fall and webs snapping
+  triggerSpidermanFall();
+  
   // Show modal
   modal.classList.add("active");
   document.body.style.overflow = "hidden"; // Lock background scroll
@@ -270,12 +283,15 @@ function openProjectModal(project) {
   // Cursor corrections
   document.body.classList.remove("cursor-view");
 }
-
+ 
 window.closeProjectModal = function() {
   const modal = document.getElementById("projectModal");
   if (!modal) return;
   modal.classList.remove("active");
   document.body.style.overflow = ""; // Restore background scroll
+  
+  // Recover Spider-Man and redraw webs
+  recoverSpiderman();
 };
 
 /* --- Scroll-triggered reveals --- */
@@ -514,5 +530,96 @@ function initTimelineAnimation() {
   });
   
   observer.observe(container);
+}
+
+/* --- Chibi Spider-Man Dynamic Webs & Animations --- */
+let spidermanIsFalling = false;
+
+function drawSpidermanWebs() {
+  const spiderman = document.getElementById("chibiSpiderman");
+  const svg = document.getElementById("spiderWebs");
+  const container = document.getElementById("projectsContainer");
+  const playground = document.getElementById("workPlayground");
+  
+  if (!spiderman || !svg || !container || !playground || spidermanIsFalling) return;
+  
+  // Clear existing lines
+  svg.innerHTML = "";
+  
+  const cards = container.querySelectorAll(".project-card");
+  if (!cards.length) return;
+  
+  // Calculate relative positions
+  const parentRect = playground.getBoundingClientRect();
+  const spiderRect = spiderman.getBoundingClientRect();
+  
+  if (parentRect.width === 0 || spiderRect.width === 0) return;
+  
+  // Hand origins relative to playground (center top area of Spiderman body)
+  const startX = (spiderRect.left + spiderRect.right) / 2 - parentRect.left;
+  const startY = (spiderRect.top + spiderRect.bottom) / 2 - parentRect.top + 15;
+  
+  // Get top cards (slice up to 2)
+  const topCards = Array.from(cards).slice(0, 2);
+  
+  topCards.forEach((card, index) => {
+    const cardRect = card.getBoundingClientRect();
+    
+    // Web line endpoint target
+    let targetX, targetY;
+    
+    if (index === 0) {
+      // Draw to top-right of left card
+      targetX = cardRect.right - parentRect.left - 20;
+      targetY = cardRect.top - parentRect.top + 20;
+    } else {
+      // Draw to top-left of right card
+      targetX = cardRect.left - parentRect.left + 20;
+      targetY = cardRect.top - parentRect.top + 20;
+    }
+    
+    // Create SVG line
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", startX);
+    line.setAttribute("y1", startY);
+    line.setAttribute("x2", targetX);
+    line.setAttribute("y2", targetY);
+    line.setAttribute("class", "spider-web-line");
+    svg.appendChild(line);
+  });
+}
+
+function triggerSpidermanFall() {
+  const spiderman = document.getElementById("chibiSpiderman");
+  const svg = document.getElementById("spiderWebs");
+  
+  if (!spiderman) return;
+  
+  spidermanIsFalling = true;
+  spiderman.classList.add("falling");
+  
+  if (svg) {
+    svg.classList.add("snapped");
+    setTimeout(() => {
+      svg.innerHTML = "";
+    }, 200);
+  }
+}
+
+function recoverSpiderman() {
+  const spiderman = document.getElementById("chibiSpiderman");
+  const svg = document.getElementById("spiderWebs");
+  
+  if (!spiderman) return;
+  
+  spiderman.classList.remove("falling");
+  if (svg) {
+    svg.classList.remove("snapped");
+  }
+  
+  spidermanIsFalling = false;
+  
+  // Wait for swing-up transition (800ms) to complete before redrawing lines
+  setTimeout(drawSpidermanWebs, 800);
 }
 

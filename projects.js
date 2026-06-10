@@ -72,18 +72,6 @@ const projects = [
     cover: "https://lh3.googleusercontent.com/aida-public/AB6AXuBygxu8QUQugbWATmhGQXLeVfMnffg5hH5hGKYfAMhseJzdWqj3Q0hQ7psOAHOytYe-_c4I2padgmHBbUU_WTchBnMscAWNHrdpn5FhPHq_BMcMkgVeQh-ppDc72akHWh5JeJ1BWK4oqEooeXr2jDWeLskGHMXhZc2dWa5tXp_T3cgDXpiYQp5hgg7dmoCPuj3gWFMWJCoUU-kn2Vj9SKAEjHcuQIGWmHjFgHu_q45SkOt1i0vQSzYUDB6RvZfeB8MaM0zxdlnzhTg",
     hasCaseStudy: true,
     category: "website"
-  },
-  {
-    id: "07",
-    title: "Visual Playground",
-    role: "Digital Artist & Designer",
-    timeline: "2026",
-    description: "An interactive digital art study of dark thematic shadows, high-contrast silhouettes, and light sweeps inspired by the Dark Knight.",
-    tags: ["Photoshop", "Digital Art", "Lighting Study"],
-    link: "",
-    cover: "assets/batman_artwork.png",
-    hasCaseStudy: false,
-    category: "design"
   }
 ];
 
