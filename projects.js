@@ -10,7 +10,7 @@ const projects = [
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444913905-BjqQCcYi.png",
     mediumLink: "https://medium.com/@bhojwaninikhil12",
     hasCaseStudy: true,
-    category: "design"
+    category: "best"
   },
   {
     id: "02",
@@ -23,34 +23,10 @@ const projects = [
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445060193-C2m7wRBR.png",
     mediumLink: "https://medium.com/@bhojwaninikhil12",
     hasCaseStudy: true,
-    category: "design"
+    category: "best"
   },
   {
     id: "03",
-    title: "Burger King: Redesign",
-    role: "Visual Designer",
-    timeline: "2025",
-    description: "A bold, appetite-driven landing page redesign for Burger King. Focusing on 'Get Your Favourite One' 40% off campaign narrative for their spicy burger range.",
-    tags: ["Figma", "Photoshop"],
-    link: "",
-    cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445063502-DwgVyMe9.png",
-    hasCaseStudy: false,
-    category: "design"
-  },
-  {
-    id: "04",
-    title: "Nike: Air Max Style",
-    role: "UI Designer",
-    timeline: "2025",
-    description: "A dark, street-inspired landing page concept for Nike Air Max 90. Design emphasizes 'Style Takes Over' narrative.",
-    tags: ["Figma", "Spline"],
-    link: "",
-    cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445065819-ppo9wbW9.png",
-    hasCaseStudy: false,
-    category: "design"
-  },
-  {
-    id: "05",
     title: "Dr. Sanjay Sakarwal: Clinic Site",
     role: "Frontend Developer & UI Designer",
     timeline: "2026",
@@ -59,10 +35,10 @@ const projects = [
     link: "https://doctor-pi-seven.vercel.app/",
     cover: "assets/doctor_sanjay.png",
     hasCaseStudy: true,
-    category: "website"
+    category: "labs"
   },
   {
-    id: "06",
+    id: "04",
     title: "L'Élixir de Rose: Landing Page",
     role: "Creative Frontend Developer",
     timeline: "2025",
@@ -71,7 +47,31 @@ const projects = [
     link: "https://l-lixir-milk.vercel.app/",
     cover: "https://lh3.googleusercontent.com/aida-public/AB6AXuBygxu8QUQugbWATmhGQXLeVfMnffg5hH5hGKYfAMhseJzdWqj3Q0hQ7psOAHOytYe-_c4I2padgmHBbUU_WTchBnMscAWNHrdpn5FhPHq_BMcMkgVeQh-ppDc72akHWh5JeJ1BWK4oqEooeXr2jDWeLskGHMXhZc2dWa5tXp_T3cgDXpiYQp5hgg7dmoCPuj3gWFMWJCoUU-kn2Vj9SKAEjHcuQIGWmHjFgHu_q45SkOt1i0vQSzYUDB6RvZfeB8MaM0zxdlnzhTg",
     hasCaseStudy: true,
-    category: "website"
+    category: "labs"
+  },
+  {
+    id: "05",
+    title: "Burger King: Redesign",
+    role: "Visual Designer",
+    timeline: "2025",
+    description: "A bold, appetite-driven landing page redesign for Burger King. Focusing on 'Get Your Favourite One' 40% off campaign narrative for their spicy burger range.",
+    tags: ["Figma", "Photoshop"],
+    link: "",
+    cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445063502-DwgVyMe9.png",
+    hasCaseStudy: false,
+    category: "action"
+  },
+  {
+    id: "06",
+    title: "Nike: Air Max Style",
+    role: "UI Designer",
+    timeline: "2025",
+    description: "A dark, street-inspired landing page concept for Nike Air Max 90. Design emphasizes 'Style Takes Over' narrative.",
+    tags: ["Figma", "Spline"],
+    link: "",
+    cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445065819-ppo9wbW9.png",
+    hasCaseStudy: false,
+    category: "action"
   }
 ];
 

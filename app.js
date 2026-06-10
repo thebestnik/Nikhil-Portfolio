@@ -6,9 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initCustomCursor();
   renderProjects();
-  initProjectFilters();
   initDynamicGlow();
-  initHeroMeshParallax();
+  initHeroParallax();
   initTimelineAnimation();
   initScrollAnimations();
   initMobileNav();
@@ -74,7 +73,7 @@ function initCustomCursor() {
   animateRing();
   
   // Custom Hover States
-  const hoverTargets = document.querySelectorAll("a, button, .interactive-card, .stack-card");
+  const hoverTargets = document.querySelectorAll("a, button, .interactive-card, .stack-card, .research-card");
   hoverTargets.forEach(target => {
     target.addEventListener("mouseenter", () => {
       document.body.classList.add("cursor-hover");
@@ -86,24 +85,26 @@ function initCustomCursor() {
 }
 
 /* --- Dynamic Projects Rendering & Case Studies --- */
-function renderProjects(filter = "all") {
-  const container = document.getElementById("projectsContainer");
-  if (!container || typeof projects === "undefined") return;
+function renderProjects() {
+  const bestGrid = document.getElementById("bestWorksGrid");
+  const labsGrid = document.getElementById("labsGrid");
+  const actionGrid = document.getElementById("actionGrid");
   
-  container.innerHTML = "";
-  
-  const filteredProjects = filter === "all"
-    ? projects
-    : projects.filter(p => p.category === filter);
-  
-  filteredProjects.forEach((proj) => {
+  if (typeof projects === "undefined") return;
+
+  // Clear existing elements
+  if (bestGrid) bestGrid.innerHTML = "";
+  if (labsGrid) labsGrid.innerHTML = "";
+  if (actionGrid) actionGrid.innerHTML = "";
+
+  projects.forEach((proj) => {
     const card = document.createElement("div");
     card.className = "project-card reveal interactive-card fade-in";
     
     // Build tags
     const tagsHtml = proj.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join("");
     
-    // Build action button indicator
+    // Action button inside card header or footer
     let actionBtnHtml = `
       <button class="project-action-btn" aria-label="Open project case study">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -111,40 +112,34 @@ function renderProjects(filter = "all") {
         </svg>
       </button>
     `;
-    
+
+    // Category label
+    let categoryLabel = proj.category === "best" ? "Core User Experience" : (proj.category === "labs" ? "Product & Frontend Design" : "Visual Redesign");
+
     card.innerHTML = `
       <div class="project-cover-container">
         <img class="project-cover-img" src="${proj.cover}" alt="${proj.title} Cover Image" loading="lazy">
       </div>
       
-      <div class="project-card-header">
-        <span class="project-id">${proj.id}</span>
-        <div class="project-meta-row">
-          <span>Role: <strong>${proj.role}</strong></span>
-          <span>•</span>
-          <span>${proj.timeline}</span>
+      <div class="project-card-info">
+        <span class="project-category-meta">${categoryLabel}</span>
+        <div class="project-title-row">
+          <h3 class="project-title">${proj.title}</h3>
+          ${actionBtnHtml}
         </div>
-      </div>
-      
-      <div class="project-body">
-        <h3 class="project-title">${proj.title}</h3>
         <p class="project-description">${proj.description}</p>
-      </div>
-      
-      <div class="project-footer">
         <div class="project-tags">
           ${tagsHtml}
         </div>
-        ${actionBtnHtml}
       </div>
     `;
     
-    // Modal toggle interaction on clicking cards
+    // Modal toggle interaction on clicking cards or button
     card.addEventListener("click", () => {
       openProjectModal(proj);
     });
     
-    // Add specific view state styling indicators on hover
+    // Custom cursor text hover states
     card.addEventListener("mouseenter", () => {
       document.body.classList.add("cursor-view");
     });
@@ -152,10 +147,17 @@ function renderProjects(filter = "all") {
       document.body.classList.remove("cursor-view");
     });
     
-    container.appendChild(card);
+    // Distribute to respective containers
+    if (proj.category === "best" && bestGrid) {
+      bestGrid.appendChild(card);
+    } else if (proj.category === "labs" && labsGrid) {
+      labsGrid.appendChild(card);
+    } else if (proj.category === "action" && actionGrid) {
+      actionGrid.appendChild(card);
+    }
   });
   
-  // Initialize 3D Card Tilt on newly rendered project cards
+  // Initialize 3D Perspective Tilt
   init3DTilt();
 }
 
@@ -229,7 +231,7 @@ function openProjectModal(project) {
   } else {
     contentHtml = `
       <p>A high-fidelity mockup concept focusing on brand strategy and visual redesign. The project targets optimized responsive interfaces and high visual punch to maximize conversion rates.</p>
-      <p>Designed using custom visual styles in Photoshop and Spline to construct beautiful, interactive elements that draw consumer attention directly onto key product narratives.</p>
+      <p>Designed using custom visual styles in Figma and Spline to construct beautiful, interactive elements that draw consumer attention directly onto key product narratives.</p>
     `;
   }
   
@@ -334,13 +336,11 @@ function initEmailClipboard() {
   
   copyBtn.addEventListener("click", () => {
     navigator.clipboard.writeText(emailText).then(() => {
-      const tooltip = copyBtn.closest(".tooltip");
-      if (tooltip) {
-        tooltip.classList.add("copied");
-        setTimeout(() => {
-          tooltip.classList.remove("copied");
-        }, 2000);
-      }
+      // Add visual feedback
+      copyBtn.classList.add("copied");
+      setTimeout(() => {
+        copyBtn.classList.remove("copied");
+      }, 2000);
     }).catch(err => {
       console.error("Failed to copy text: ", err);
     });
@@ -368,25 +368,6 @@ function initHeaderHide() {
   });
 }
 
-/* --- Project Category Filters Initialization --- */
-function initProjectFilters() {
-  const filtersContainer = document.getElementById("projectFilters");
-  if (!filtersContainer) return;
-  
-  const buttons = filtersContainer.querySelectorAll(".filter-btn");
-  buttons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Avoid triggering document bubble listeners
-      
-      buttons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      
-      const filterVal = btn.getAttribute("data-filter");
-      renderProjects(filterVal);
-    });
-  });
-}
-
 /* --- Mouse-Follow Ambient Glow Spotlight --- */
 function initDynamicGlow() {
   const glow1 = document.querySelector(".ambient-glow-1");
@@ -406,7 +387,6 @@ function initDynamicGlow() {
   });
   
   function updateGlow() {
-    // Smooth linear interpolation (lerp) toward target mouse position
     glow1X += (mouseX - glow1X) * 0.04;
     glow1Y += (mouseY - glow1Y) * 0.04;
     
@@ -425,7 +405,6 @@ function initDynamicGlow() {
     requestAnimationFrame(updateGlow);
   }
   
-  // Set glow coordinate origin
   if (glow1) {
     glow1.style.position = "absolute";
     glow1.style.top = "0px";
@@ -456,7 +435,6 @@ function init3DTilt() {
       const width = rect.width;
       const height = rect.height;
       
-      // Compute 3D rotation ratios (max 6deg tilt to maintain high text readability)
       const rotateX = -((y - height / 2) / (height / 2)) * 6;
       const rotateY = ((x - width / 2) / (width / 2)) * 6;
       
@@ -469,43 +447,33 @@ function init3DTilt() {
   });
 }
 
-/* --- Hero Mesh Mouse Parallax Tilt --- */
-function initHeroMeshParallax() {
-  const mesh = document.getElementById("heroMesh");
-  if (!mesh) return;
+/* --- Hero Graphic Mouse Parallax Tilt --- */
+function initHeroParallax() {
+  const sphere = document.querySelector(".gradient-mesh-sphere");
+  if (!sphere) return;
   
   window.addEventListener("mousemove", (e) => {
     const x = (e.clientX / window.innerWidth) - 0.5;
     const y = (e.clientY / window.innerHeight) - 0.5;
     
-    // Smoothly rotate and shift the mesh SVG elements
-    mesh.style.transform = `rotateX(${y * 12}deg) rotateY(${x * 12}deg) translate3d(${x * 20}px, ${y * 20}px, 0)`;
+    sphere.style.transform = `translate3d(${x * 30}px, ${y * 30}px, 0) scale(1.02)`;
   });
 }
 
 /* --- Dynamic Connector Timeline Animation --- */
 function initTimelineAnimation() {
-  const container = document.getElementById("timelineContainer");
-  const line = document.getElementById("timelineLine");
-  
-  if (!container || !line) return;
+  const timeline = document.querySelector(".timeline");
+  if (!timeline) return;
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Expand timeline line to full height
-        line.style.height = "calc(100% - 20px)";
-        
-        // Stagger activation of timeline pulses
-        setTimeout(() => {
-          const items = container.querySelectorAll(".timeline-item");
-          items.forEach((item, idx) => {
-            setTimeout(() => {
-              item.classList.add("active");
-            }, idx * 300);
-          });
-        }, 1200);
-        
+        const items = timeline.querySelectorAll(".timeline-item");
+        items.forEach((item, idx) => {
+          setTimeout(() => {
+            item.classList.add("active");
+          }, idx * 300);
+        });
         observer.unobserve(entry.target);
       }
     });
@@ -513,8 +481,5 @@ function initTimelineAnimation() {
     threshold: 0.15
   });
   
-  observer.observe(container);
+  observer.observe(timeline);
 }
-
-// Circular scroll tracking removed. Reverted back to high-performance bento grid.
-
