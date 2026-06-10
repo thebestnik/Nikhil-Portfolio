@@ -449,14 +449,14 @@ function init3DTilt() {
 
 /* --- Hero Graphic Mouse Parallax Tilt --- */
 function initHeroParallax() {
-  const sphere = document.querySelector(".gradient-mesh-sphere");
-  if (!sphere) return;
+  const container = document.querySelector(".mascot-container");
+  if (!container) return;
   
   window.addEventListener("mousemove", (e) => {
     const x = (e.clientX / window.innerWidth) - 0.5;
     const y = (e.clientY / window.innerHeight) - 0.5;
     
-    sphere.style.transform = `translate3d(${x * 30}px, ${y * 30}px, 0) scale(1.02)`;
+    container.style.transform = `translate3d(${x * 25}px, ${y * 25}px, 0) rotate(${x * 3}deg)`;
   });
 }
 
