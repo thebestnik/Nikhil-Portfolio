@@ -206,17 +206,18 @@ a {
 
 /* Cursor Word Hover State */
 .cursor-word-hover .custom-cursor {
-  width: 28px;
-  height: 28px;
+  width: 72px;
+  height: 72px;
   background-color: var(--accent);
-  box-shadow: 0 0 20px 6px var(--accent);
-  opacity: 0.85;
+  box-shadow: 0 0 25px 8px var(--accent);
+  opacity: 0.25;
+  mix-blend-mode: difference;
 }
 .cursor-word-hover .custom-cursor-ring {
-  width: 44px;
-  height: 44px;
+  width: 88px;
+  height: 88px;
   border-color: var(--accent);
-  box-shadow: 0 0 25px var(--accent);
+  box-shadow: 0 0 35px var(--accent);
 }
 
 /* Hide default cursor on desktop */
