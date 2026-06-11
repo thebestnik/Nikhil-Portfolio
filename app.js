@@ -82,6 +82,20 @@ function initCustomCursor() {
       document.body.classList.remove("cursor-hover");
     });
   });
+
+  // Cursor Word Hover Light Effect on Text
+  const textElements = document.querySelectorAll("p, h1, h2, h3, h4, span, li");
+  textElements.forEach(el => {
+    // Skip if it's already an interactive target or inside one to preserve click cursors
+    if (el.tagName === 'A' || el.closest('a') || el.closest('button') || el.closest('.interactive-card') || el.closest('.stack-card') || el.closest('.research-card')) return;
+
+    el.addEventListener("mouseenter", () => {
+      document.body.classList.add("cursor-word-hover");
+    });
+    el.addEventListener("mouseleave", () => {
+      document.body.classList.remove("cursor-word-hover");
+    });
+  });
 }
 
 /* --- Dynamic Projects Rendering & Case Studies --- */
