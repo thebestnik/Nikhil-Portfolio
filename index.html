@@ -15,15 +15,19 @@
   <meta property="og:description" content="Crafting empathetic digital experiences with a focus on refined minimal interfaces. Explore my product design work.">
   <meta property="og:type" content="website">
   
-  <!-- Google Fonts (Plus Jakarta Sans & Inter) -->
+  <!-- Google Fonts (Bricolage Grotesque & Public Sans & Inter) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Public+Sans:ital,wght@0,300..900;1,300..900&family=Inter:wght@300..800&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+  <!-- Background Glow Accents -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
 
   <!-- Custom Trailing Cursor Rings -->
   <div class="custom-cursor"></div>
@@ -35,7 +39,7 @@
       <a href="#" class="logo">/ NB</a>
       
       <nav class="nav-menu" id="navMenu">
-        <a href="#work" class="nav-link">Work</a>
+        <a href="#work-best" class="nav-link">Work</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link">Contact</a>
         <a href="https://linkedin.com/in/nikhil-bhojwani-3a5972327" target="_blank" rel="noopener" class="nav-link">LinkedIn</a>
@@ -70,21 +74,31 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container hero-grid">
-      <div class="hero-content">
-        <span class="hero-pretitle">PRODUCT DESIGNER & DEVSIGNER</span>
+      <div class="hero-content reveal-on-load">
         <h1 class="hero-title">
-          <span class="title-word">nikhil</span>
-          <span class="title-word">bhojwani.</span>
+          <span class="title-line-wrapper">
+            <span class="title-line">Nikhil Bhojwani.</span>
+          </span>
         </h1>
-        <p class="hero-description">A selectively skilled product designer with strong focus on producing high quality & impactful digital experiences.</p>
         
-        <div class="hero-ctas">
-          <a href="#work" class="btn btn-primary">view my work</a>
+        <!-- Animated / Stacked Tagline Badges -->
+        <div class="hero-taglines">
+          <span class="hero-badge badge-primary">Product Designer @ MediSetu</span>
+          <span class="hero-badge">Designer By Education</span>
+          <span class="hero-badge">Details Obsessed</span>
+          <span class="hero-badge">Coffee Enthusiast</span>
+          <span class="hero-badge">Collaborative Team Player</span>
+        </div>
+
+        <p class="hero-description reveal-fade" style="animation-delay: 0.5s;">Product Designer crafting empathetic digital experiences with a focus on refined minimal interfaces.</p>
+        
+        <div class="hero-ctas reveal-fade" style="animation-delay: 0.6s;">
+          <a href="#work-best" class="btn btn-primary">view my work</a>
         </div>
       </div>
       
       <!-- Animated Cartoon Mascot Visual -->
-      <div class="hero-visual">
+      <div class="hero-visual reveal-fade" style="animation-delay: 0.3s;">
         <div class="mascot-container">
           <img class="hero-mascot-img mascot-smiling" src="assets/deadpool_smiling.png" alt="Deadpool Mascot Smiling">
           <img class="hero-mascot-img mascot-waving" src="assets/deadpool_waving.png" alt="Deadpool Mascot Waving">
@@ -93,115 +107,177 @@
     </div>
   </section>
 
-  <!-- Capabilities Section -->
-  <section class="capabilities-section" id="capabilities" style="border-top: 1px solid var(--border)">
+  <!-- Capabilities / Design Stack Section -->
+  <section class="section-padding capabilities-section" style="border-top: 1px solid var(--border)">
     <div class="container">
-      <span class="section-meta-label">CAPABILITIES</span>
-      <h2 class="section-display-title">bringing ideas to life.</h2>
-      
-      <div class="capabilities-list">
-        <div class="capability-row">
-          <span class="cap-num">01</span>
-          <span class="cap-title">Product & Visual Design</span>
-          <p class="cap-desc">Crafting beautiful, high-fidelity UI designs, custom design systems, and responsive layouts that look stunning and feel intuitive.</p>
-        </div>
-        <div class="capability-row">
-          <span class="cap-num">02</span>
-          <span class="cap-title">UX Discovery & Prototyping</span>
-          <p class="cap-desc">Leading user research, mapping user journeys, wireframing workflows, and building high-fidelity interaction prototypes.</p>
-        </div>
-        <div class="capability-row">
-          <span class="cap-num">03</span>
-          <span class="cap-title">Creative Web Development</span>
-          <p class="cap-desc">Building fast, clean static sites and no-code interactive web apps using modern frameworks, animations, and custom interactions.</p>
+      <span class="section-label">Capabilities</span>
+      <h2 class="section-title-large">I love bringing ideas to life!</h2>
+      <div class="capabilities-grid">
+        <div class="capability-item">UX Discovery & Strategy Design</div>
+        <div class="capability-item">User Research & Interviews</div>
+        <div class="capability-item">Creating Design Systems</div>
+        <div class="capability-item">Storytelling & Visual Narrative</div>
+        <div class="capability-item">Visual & UI Design</div>
+        <div class="capability-item">Prototyping & Interaction Design</div>
+        <div class="capability-item">No Code & Frontend Development</div>
+        <div class="capability-item">Responsive Web Design</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Section 1: Best Works (Split Layout) -->
+  <section class="split-section" id="work-best">
+    <div class="container split-container">
+      <!-- Left Sidebar (Sticky) -->
+      <div class="split-sidebar">
+        <span class="section-label">01 // Best Works</span>
+        <h2 class="split-sidebar-title">Best Works</h2>
+        <p class="split-sidebar-desc">My design journey centers on a human-centered approach to solve real-world problems. Currently, I design digital healthcare platforms at MediSetu, aiming to deliver seamless, intuitive workflows.</p>
+      </div>
+      <!-- Right Content (Scrollable Grid) -->
+      <div class="split-content" id="bestWorksGrid">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Section 2: Labs / Creative Projects (Split Layout) -->
+  <section class="split-section" id="work-labs" style="border-top: 1px solid var(--border)">
+    <div class="container split-container">
+      <!-- Left Sidebar (Sticky) -->
+      <div class="split-sidebar">
+        <span class="section-label">02 // NB Labs</span>
+        <h2 class="split-sidebar-title">Say hi to my brain child!</h2>
+        <p class="split-sidebar-desc">A space for creative exploration, merging frontend technology, interactive canvas workflows, custom animations, and clean, modular interfaces.</p>
+      </div>
+      <!-- Right Content (Scrollable Grid) -->
+      <div class="split-content" id="labsGrid">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Section 3: Design in Action (Split Layout) -->
+  <section class="split-section" id="work-action" style="border-top: 1px solid var(--border)">
+    <div class="container split-container">
+      <!-- Left Sidebar (Sticky) -->
+      <div class="split-sidebar">
+        <span class="section-label">03 // Design in Action</span>
+        <h2 class="split-sidebar-title">Design in Action</h2>
+        <p class="split-sidebar-desc">Discover the breadth of my work through live web pages, interactive design redesigns, highlighting problem-solving skills and creative workflows.</p>
+      </div>
+      <!-- Right Content (Scrollable Grid) -->
+      <div class="split-content" id="actionGrid">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Section 4: Deep Research & Thought Dives (Split Layout) -->
+  <section class="split-section" id="work-research" style="border-top: 1px solid var(--border)">
+    <div class="container split-container">
+      <!-- Left Sidebar (Sticky) -->
+      <div class="split-sidebar">
+        <span class="section-label">04 // Deep Research</span>
+        <h2 class="split-sidebar-title">Spaces that Speak</h2>
+        <p class="split-sidebar-desc">Exploring user-centric design principles, minimal design systems, and mental usability mappings through articles and literature reviews.</p>
+      </div>
+      <!-- Right Content (Scrollable List) -->
+      <div class="split-content-flow">
+        <div class="research-list">
+          <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="research-card">
+            <span class="research-meta">MEDIUM ARTICLE // 2026</span>
+            <h3 class="research-card-title">The Place of Space in Mental Well-Being</h3>
+            <p class="research-card-desc">An inquiry into how cognitive layouts and digital spatial design principles influence user focus and emotional output.</p>
+          </a>
+          <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="research-card">
+            <span class="research-meta">DESIGN STUDY // 2025</span>
+            <h3 class="research-card-title">Vernacular Cultural Identity in Contemporary Design</h3>
+            <p class="research-card-desc">Analyzing how modern digital interfaces adapt traditional layout styles to retain accessibility across diverse audiences.</p>
+          </a>
+          <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="research-card">
+            <span class="research-meta">SYSTEM ANALYSIS // 2025</span>
+            <h3 class="research-card-title">Why Refined Minimal Interfaces Build Stronger Focus</h3>
+            <p class="research-card-desc">How cognitive load reduction and extreme layout minimalism result in higher task success and digital retention rates.</p>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Works Section -->
-  <section class="works-section" id="work" style="border-top: 1px solid var(--border)">
-    <div class="container">
-      <span class="section-meta-label">SELECTED WORKS</span>
-      <h2 class="section-display-title">featured projects.</h2>
-      
-      <!-- Unified Projects Feed -->
-      <div class="projects-feed" id="projectsFeed">
-        <!-- Projects loaded dynamically from projects.js -->
+  <!-- About Section (Split Layout) -->
+  <section class="split-section" id="about" style="border-top: 1px solid var(--border)">
+    <div class="container split-container">
+      <!-- Left Sidebar (Sticky Profile Photo) -->
+      <div class="split-sidebar">
+        <div class="about-photo-wrapper">
+          <img class="about-photo" src="https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444778856-AO2qKUTk.jpg" alt="Nikhil Bhojwani Profile Photo">
+        </div>
+      </div>
+      <!-- Right Column: Personal Narrative -->
+      <div class="split-content-flow">
+        <span class="section-label">05 // About</span>
+        <h2 class="section-title-large" style="margin-top: 8px;">Beyond Pixels & Codes</h2>
+        <div class="about-narrative-wrapper">
+          <p>I design digital products with a single conviction: simplicity is the highest sophistication. Operating at the intersection of complex logic and visual harmony, I craft interfaces that feel intuitive, human, and responsive. I focus on translating intricate user requirements into clean grid hierarchies, intentional typography, and micro-animations that deliver high-delight outcomes.</p>
+          <p>Currently, I lead the UI/UX design efforts at MediSetu, designing patient-facing healthcare applications that simplify clinical consultation and patient onboarding. By structuring interfaces that respect cognitive limits, I bridge medical workflows with user accessibility.</p>
+          <p>Outside the canvas, I am deeply curious about design history, typography systems, and frontend logic. You will often find me exploring local cafes in Jaipur, curating aesthetic setups, reading design books, or getting competitive with new interaction design patterns. I believe that good designers are empathetic observers, always looking to bring positive, constructive vibes to any table.</p>
+        </div>
+        
+        <h3 class="timeline-section-title" style="margin-top: 48px;">Experience</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span>EXPERIENCE</span>
+              <span>2026 — PRESENT</span>
+            </div>
+            <h4 class="timeline-title">Product Designer</h4>
+            <div class="timeline-subtitle">MediSetu</div>
+            <p class="timeline-desc">Solely designed and delivered the end-to-end UI/UX for the patient-facing healthcare platform serving Jaipur.</p>
+          </div>
+        </div>
+
+        <h3 class="timeline-section-title" style="margin-top: 48px;">Design Stack</h3>
+        <div class="stack-grid">
+          <div class="stack-card"><div class="stack-dot"></div>Figma</div>
+          <div class="stack-card"><div class="stack-dot"></div>Framer</div>
+          <div class="stack-card"><div class="stack-dot"></div>Webflow</div>
+          <div class="stack-card"><div class="stack-dot"></div>HTML / CSS / JS</div>
+          <div class="stack-card"><div class="stack-dot"></div>Spline</div>
+          <div class="stack-card"><div class="stack-dot"></div>Linear</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about-section" id="about" style="border-top: 1px solid var(--border)">
+  <!-- Contact & Footer Section (Pastel Card Style) -->
+  <section class="section-padding contact-section" id="contact" style="border-top: 1px solid var(--border)">
     <div class="container">
-      <span class="section-meta-label">ABOUT ME</span>
-      <h2 class="section-display-title">beyond pixels & codes.</h2>
-      
-      <div class="about-layout-grid">
-        <div class="about-left-text">
-          <div class="about-reveal-text">
-            <p class="reveal-words">I design digital products with a single conviction: simplicity is the highest sophistication. Operating at the intersection of complex logic and visual harmony, I craft interfaces that feel intuitive, human, and responsive. I focus on translating intricate user requirements into clean grid hierarchies, intentional typography, and micro-animations that deliver high-delight outcomes.</p>
-            <p class="reveal-words">Currently, I lead the UI/UX design efforts at MediSetu, designing patient-facing healthcare applications that simplify clinical consultation and patient onboarding. By structuring interfaces that respect cognitive limits, I bridge medical workflows with user accessibility.</p>
-            <p class="reveal-words">Outside the canvas, I am deeply curious about design history, typography systems, and frontend logic. You will often find me exploring local cafes in Jaipur, curating aesthetic setups, reading design books, or getting competitive with new interaction design patterns. I believe that good designers are empathetic observers, always looking to bring positive, constructive vibes to any table.</p>
+      <div class="contact-card-pastel">
+        <span class="section-label">06 // Contact</span>
+        <h2 class="contact-card-title">Say hi to me!</h2>
+        <p class="contact-card-subtitle">Get in Touch</p>
+        
+        <div class="contact-details-row">
+          <div class="contact-item">
+            <span class="contact-meta">EMAIL ADDRESS</span>
+            <div class="contact-email-container">
+              <a href="mailto:bhojwaninikhil12@gmail.com" class="contact-email-link">bhojwaninikhil12@gmail.com</a>
+              <button class="copy-btn-new" id="copyEmailBtn" aria-label="Copy email to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+              </button>
+            </div>
           </div>
           
-          <div class="about-meta-row">
-            <div class="about-meta-col">
-              <h4 class="about-sub-label">EXPERIENCE</h4>
-              <div class="experience-list-item">
-                <span class="exp-role">Product Designer</span>
-                <span class="exp-company">MediSetu</span>
-                <span class="exp-date">2026 — Present</span>
-              </div>
-            </div>
-            
-            <div class="about-meta-col">
-              <h4 class="about-sub-label">DESIGN STACK</h4>
-              <div class="stack-list-pills">
-                <span class="stack-pill">Figma</span>
-                <span class="stack-pill">Framer</span>
-                <span class="stack-pill">Webflow</span>
-                <span class="stack-pill">HTML/CSS/JS</span>
-                <span class="stack-pill">Spline</span>
-                <span class="stack-pill">Linear</span>
-              </div>
-            </div>
+          <div class="contact-item">
+            <span class="contact-meta">BASE LOCATION</span>
+            <span class="contact-val">Jaipur, Rajasthan (UTC +5:30)</span>
           </div>
         </div>
         
-        <div class="about-right-visual">
-          <div class="about-photo-frame">
-            <img class="about-photo" src="https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444778856-AO2qKUTk.jpg" alt="Nikhil Bhojwani Profile Photo">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section class="contact-section" id="contact" style="border-top: 1px solid var(--border)">
-    <div class="container">
-      <span class="section-meta-label">GET IN TOUCH</span>
-      <h2 class="contact-title">let's build<br>together.</h2>
-      
-      <div class="contact-links-row">
-        <div class="contact-email-block">
-          <span class="contact-item-label">EMAIL ADDRESS</span>
-          <div class="email-click-wrapper">
-            <a href="mailto:bhojwaninikhil12@gmail.com" class="giant-email-link">bhojwaninikhil12@gmail.com</a>
-            <button class="copy-email-btn" id="copyEmailBtn" aria-label="Copy email to clipboard">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        
-        <div class="contact-info-block">
-          <span class="contact-item-label">BASE LOCATION</span>
-          <span class="contact-item-value">Jaipur, Rajasthan (UTC +5:30)</span>
-        </div>
       </div>
     </div>
   </section>
@@ -209,7 +285,7 @@
   <!-- Site Footer Credits -->
   <footer class="site-footer">
     <div class="container footer-container">
-      <p>© 2026 Nikhil Bhojwani. Crafted with Minh Pham inspired design & code details.</p>
+      <p>© 2026 Nikhil Bhojwani. Made with love and Framer-level detail.</p>
       
       <div class="footer-socials">
         <a href="https://linkedin.com/in/nikhil-bhojwani-3a5972327" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
