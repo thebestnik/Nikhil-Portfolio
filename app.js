@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroParallax();
   initTimelineAnimation();
   initScrollAnimations();
+  initTextReveal();
   initMobileNav();
   initEmailClipboard();
   initHeaderHide();
@@ -86,25 +87,19 @@ function initCustomCursor() {
 
 /* --- Dynamic Projects Rendering & Case Studies --- */
 function renderProjects() {
-  const bestGrid = document.getElementById("bestWorksGrid");
-  const labsGrid = document.getElementById("labsGrid");
-  const actionGrid = document.getElementById("actionGrid");
-  
-  if (typeof projects === "undefined") return;
+  const feed = document.getElementById("projectsFeed");
+  if (!feed || typeof projects === "undefined") return;
 
-  // Clear existing elements
-  if (bestGrid) bestGrid.innerHTML = "";
-  if (labsGrid) labsGrid.innerHTML = "";
-  if (actionGrid) actionGrid.innerHTML = "";
+  feed.innerHTML = "";
 
   projects.forEach((proj) => {
     const card = document.createElement("div");
-    card.className = "project-card reveal interactive-card fade-in";
+    card.className = "project-card interactive-card fade-in";
     
     // Build tags
     const tagsHtml = proj.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join("");
     
-    // Action button inside card header or footer
+    // Action button
     let actionBtnHtml = `
       <button class="project-action-btn" aria-label="Open project case study">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -134,7 +129,7 @@ function renderProjects() {
       </div>
     `;
     
-    // Modal toggle interaction on clicking cards or button
+    // Modal toggle interaction
     card.addEventListener("click", () => {
       openProjectModal(proj);
     });
@@ -147,14 +142,7 @@ function renderProjects() {
       document.body.classList.remove("cursor-view");
     });
     
-    // Distribute to respective containers
-    if (proj.category === "best" && bestGrid) {
-      bestGrid.appendChild(card);
-    } else if (proj.category === "labs" && labsGrid) {
-      labsGrid.appendChild(card);
-    } else if (proj.category === "action" && actionGrid) {
-      actionGrid.appendChild(card);
-    }
+    feed.appendChild(card);
   });
   
   // Initialize 3D Perspective Tilt
@@ -482,4 +470,36 @@ function initTimelineAnimation() {
   });
   
   observer.observe(timeline);
+}
+
+/* --- Scroll Text Reveal Animation (Minh Pham Style) --- */
+function initTextReveal() {
+  const paragraphs = document.querySelectorAll(".reveal-words");
+  if (!paragraphs.length) return;
+
+  paragraphs.forEach(p => {
+    const text = p.innerText;
+    const words = text.split(" ");
+    p.innerHTML = words.map(w => `<span class="reveal-word">${w}</span>`).join(" ");
+  });
+
+  const spans = document.querySelectorAll(".reveal-word");
+
+  function checkReveal() {
+    const triggerHeight = window.innerHeight * 0.82;
+    spans.forEach(span => {
+      const rect = span.getBoundingClientRect();
+      if (rect.top < triggerHeight) {
+        span.classList.add("active");
+      } else {
+        span.classList.remove("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", checkReveal);
+  window.addEventListener("resize", checkReveal);
+  
+  // Initial trigger delay
+  setTimeout(checkReveal, 200);
 }
