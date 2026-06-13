@@ -45,7 +45,7 @@ const projects = [
     description: "Created an immersive, high-end skincare landing page utilizing interactive canvas video-scrub animations, fluid responsive styles, and custom theme layouts.",
     tags: ["HTML", "CSS", "JavaScript", "Tailwind", "Canvas"],
     link: "https://l-lixir-milk.vercel.app/",
-    cover: "https://lh3.googleusercontent.com/aida-public/AB6AXuBygxu8QUQugbWATmhGQXLeVfMnffg5hH5hGKYfAMhseJzdWqj3Q0hQ7psOAHOytYe-_c4I2padgmHBbUU_WTchBnMscAWNHrdpn5FhPHq_BMcMkgVeQh-ppDc72akHWh5JeJ1BWK4oqEooeXr2jDWeLskGHMXhZc2dWa5tXp_T3cgDXpiYQp5hgg7dmoCPuj3gWFMWJCoUU-kn2Vj9SKAEjHcuQIGWmHjFgHu_q45SkOt1i0vQSzYUDB6RvZfeB8MaM0zxdlnzhTg",
+    cover: "assets/liquid_swirl.mp4",
     hasCaseStudy: true,
     category: "labs"
   },
@@ -72,6 +72,18 @@ const projects = [
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445065819-ppo9wbW9.png",
     hasCaseStudy: false,
     category: "action"
+  },
+  {
+    id: "07",
+    title: "Valorant: Jett Showcase",
+    role: "UI Designer & Animator",
+    timeline: "2026",
+    description: "An interactive web page showcasing character Jett's abilities with engaging animations, motion assets, and interactive dropdown menus.",
+    tags: ["Figma Sites", "Interaction Design", "Motion"],
+    link: "https://wages-buy-44199642.figma.site/",
+    cover: "assets/valorant_cover.jpg",
+    hasCaseStudy: false,
+    category: "labs"
   }
 ];
 

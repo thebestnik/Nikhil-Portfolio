@@ -34,6 +34,7 @@ try {
                     ".html" { $contentType = "text/html; charset=utf-8" }
                     ".css"  { $contentType = "text/css; charset=utf-8" }
                     ".js"   { $contentType = "application/javascript; charset=utf-8" }
+                    ".json" { $contentType = "application/json; charset=utf-8" }
                     ".jpg"  { $contentType = "image/jpeg" }
                     ".jpeg" { $contentType = "image/jpeg" }
                     ".png"  { $contentType = "image/png" }
@@ -46,6 +47,7 @@ try {
                 
                 # Read and write file content
                 [byte[]]$bytes = [System.IO.File]::ReadAllBytes($filePath)
+                Write-Host "Serving: $cleanPath | Size: $($bytes.Length) bytes"
                 $response.ContentLength64 = $bytes.Length
                 $response.OutputStream.Write($bytes, 0, $bytes.Length)
             } else {

@@ -130,9 +130,13 @@ function renderProjects() {
     // Category label
     let categoryLabel = proj.category === "best" ? "Core User Experience" : (proj.category === "labs" ? "Product & Frontend Design" : "Visual Redesign");
 
+    const isVideo = proj.cover && (proj.cover.endsWith('.mp4') || proj.cover.endsWith('.webm') || proj.cover.endsWith('.mov'));
     card.innerHTML = `
       <div class="project-cover-container">
-        <img class="project-cover-img" src="${proj.cover}" alt="${proj.title} Cover Image" loading="lazy">
+        ${isVideo 
+          ? `<video class="project-cover-img" src="${proj.cover}" autoplay loop muted playsinline></video>`
+          : `<img class="project-cover-img" src="${proj.cover}" alt="${proj.title} Cover Image" loading="lazy">`
+        }
       </div>
       
       <div class="project-card-info">
@@ -148,9 +152,13 @@ function renderProjects() {
       </div>
     `;
     
-    // Modal toggle interaction on clicking cards or button
+    // Modal toggle or direct link navigation on clicking cards
     card.addEventListener("click", () => {
-      openProjectModal(proj);
+      if (!proj.hasCaseStudy && proj.link && proj.link !== "#" && proj.link !== "") {
+        window.open(proj.link, "_blank", "noopener,noreferrer");
+      } else {
+        openProjectModal(proj);
+      }
     });
     
     // Custom cursor text hover states
