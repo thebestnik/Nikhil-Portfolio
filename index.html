@@ -75,10 +75,11 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content reveal-on-load">
+        <div class="hero-greeting-wrapper">
+          <span class="hero-greeting">Namaste !</span>
+        </div>
         <h1 class="hero-title">
-          <span class="title-line-wrapper">
-            <span class="title-line">Nikhil Bhojwani.</span>
-          </span>
+          I am <span class="text-accent-glow">Nikhil Bhojwani</span>, a Product Designer crafting refined minimal interfaces.
         </h1>
         
         <!-- Animated / Stacked Tagline Badges -->
@@ -86,11 +87,10 @@
           <span class="hero-badge badge-primary">Product Designer @ MediSetu</span>
           <span class="hero-badge">Designer By Education</span>
           <span class="hero-badge">Details Obsessed</span>
-          <span class="hero-badge">Coffee Enthusiast</span>
           <span class="hero-badge">Collaborative Team Player</span>
         </div>
 
-        <p class="hero-description reveal-fade" style="animation-delay: 0.5s;">Product Designer crafting empathetic digital experiences with a focus on refined minimal interfaces.</p>
+        <p class="hero-description reveal-fade" style="animation-delay: 0.5s;">Currently leading design at MediSetu, bridging logic and visual harmony to build zero-friction clinical systems.</p>
         
         <div class="hero-ctas reveal-fade" style="animation-delay: 0.6s;">
           <a href="#work-best" class="btn btn-primary">view my work</a>
@@ -103,6 +103,46 @@
           <div class="speech-bubble">Hola!</div>
           <img class="hero-mascot-img mascot-smiling" src="assets/deadpool_smiling.png" alt="Deadpool Mascot Smiling">
           <img class="hero-mascot-img mascot-waving" src="assets/deadpool_waving.png" alt="Deadpool Mascot Waving">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaborated Companies Marquee Banner -->
+  <section class="marquee-section">
+    <div class="marquee-container">
+      <span class="marquee-label">COMPANIES I HAVE COLLABORATED WITH //</span>
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <div class="marquee-item">MediSetu</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">Arsh Polyclinic</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">L'Élixir de Rose</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">tickit App</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">Burger King</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">Nike</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">Valorant</div>
+          <div class="marquee-item-dot"></div>
+          <!-- Loop duplicate -->
+          <div class="marquee-item">MediSetu</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">Arsh Polyclinic</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">L'Élixir de Rose</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">tickit App</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">Burger King</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">Nike</div>
+          <div class="marquee-item-dot"></div>
+          <div class="marquee-item">Valorant</div>
+          <div class="marquee-item-dot"></div>
         </div>
       </div>
     </div>
@@ -206,6 +246,37 @@
     </div>
   </section>
 
+  <!-- Testimonials Section (Split Layout) -->
+  <section class="split-section" id="testimonials" style="border-top: 1px solid var(--border)">
+    <div class="container split-container">
+      <!-- Left Sidebar (Sticky) -->
+      <div class="split-sidebar">
+        <span class="section-label">05 // Testimonials</span>
+        <h2 class="split-sidebar-title">What people say</h2>
+        <p class="split-sidebar-desc">Feedback from developers, designers, and project managers I've worked with.</p>
+      </div>
+      <!-- Right Column: Testimonial Cards -->
+      <div class="split-content-flow">
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Nikhil has an incredible eye for detail. During his work at MediSetu, he transformed our patient onboarding workflows into a seamless, high-delight experience. His design system reduced friction and speeded up booking times significantly."</p>
+            <div class="testimonial-author">
+              <span class="author-name">Niveda Govindaraj</span>
+              <span class="author-title">Senior PM @ MediSetu</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Working with Nikhil was exceptional. He doesn't just design screens; he understands how logic maps to visual layouts, utilizing Framer and Figma to make frontend translation extremely clean."</p>
+            <div class="testimonial-author">
+              <span class="author-name">Kalpana Sharma</span>
+              <span class="author-title">Senior Frontend Lead</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- About Section (Split Layout) -->
   <section class="split-section" id="about" style="border-top: 1px solid var(--border)">
     <div class="container split-container">
@@ -217,7 +288,7 @@
       </div>
       <!-- Right Column: Personal Narrative -->
       <div class="split-content-flow">
-        <span class="section-label">05 // About</span>
+        <span class="section-label">06 // About</span>
         <h2 class="section-title-large" style="margin-top: 8px;">Beyond Pixels & Codes</h2>
         <div class="about-narrative-wrapper">
           <p>I design digital products with a single conviction: simplicity is the highest sophistication. Operating at the intersection of complex logic and visual harmony, I craft interfaces that feel intuitive, human, and responsive. I focus on translating intricate user requirements into clean grid hierarchies, intentional typography, and micro-animations that deliver high-delight outcomes.</p>
@@ -251,11 +322,67 @@
     </div>
   </section>
 
+  <!-- FAQ Section (Split Layout) -->
+  <section class="split-section" id="faq" style="border-top: 1px solid var(--border)">
+    <div class="container split-container">
+      <!-- Left Sidebar (Sticky) -->
+      <div class="split-sidebar">
+        <span class="section-label">07 // FAQ</span>
+        <h2 class="split-sidebar-title">Your questions, answered</h2>
+        <p class="split-sidebar-desc">A quick dive into my design philosophy, creative principles, and workflows.</p>
+      </div>
+      <!-- Right Column: Accordions -->
+      <div class="split-content-flow">
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What principles guide your design work?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>I believe that simplicity is the highest sophistication. I focus on reducing cognitive load, creating strict typography hierarchies, utilizing fluid spacing, and designing intentional micro-interactions that make interfaces feel alive and human.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How do you collaborate with developers?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>I design with high engineering feasibility in mind. Having experience with frontend technologies (HTML, CSS, JS, Framer), I deliver detailed design handoffs in Figma with clear responsive rules, states, variables, and animations, making translation clean and painless.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What is your setup for motion and prototyping?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>I primarily use Figma for interactive component logic, Framer for publishing production-level layouts, and Spline for 3D interactions. I love prototyping micro-interactions early in the design phase to validate transitions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact & Footer Section (Pastel Card Style) -->
   <section class="section-padding contact-section" id="contact" style="border-top: 1px solid var(--border)">
     <div class="container">
       <div class="contact-card-pastel">
-        <span class="section-label">06 // Contact</span>
+        <span class="section-label">08 // Contact</span>
         <h2 class="contact-card-title">Say hi to me!</h2>
         <p class="contact-card-subtitle">Get in Touch</p>
         

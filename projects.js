@@ -10,7 +10,8 @@ const projects = [
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444913905-BjqQCcYi.png",
     mediumLink: "https://medium.com/@bhojwaninikhil12",
     hasCaseStudy: true,
-    category: "best"
+    category: "best",
+    metric: "45% faster booking"
   },
   {
     id: "02",
@@ -23,7 +24,8 @@ const projects = [
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445060193-C2m7wRBR.png",
     mediumLink: "https://medium.com/@bhojwaninikhil12",
     hasCaseStudy: true,
-    category: "best"
+    category: "best",
+    metric: "98% focus retention"
   },
   {
     id: "03",
@@ -35,7 +37,8 @@ const projects = [
     link: "https://doctor-pi-seven.vercel.app/",
     cover: "assets/doctor_sanjay.png",
     hasCaseStudy: true,
-    category: "labs"
+    category: "labs",
+    metric: "+150% search visibility"
   },
   {
     id: "04",
@@ -47,7 +50,8 @@ const projects = [
     link: "https://l-lixir-milk.vercel.app/",
     cover: "assets/liquid_swirl.mp4",
     hasCaseStudy: true,
-    category: "labs"
+    category: "labs",
+    metric: "Canvas Video-Scrub"
   },
   {
     id: "05",
@@ -59,7 +63,8 @@ const projects = [
     link: "",
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445063502-DwgVyMe9.png",
     hasCaseStudy: false,
-    category: "action"
+    category: "action",
+    metric: "Bold brand styling"
   },
   {
     id: "06",
@@ -71,7 +76,8 @@ const projects = [
     link: "",
     cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445065819-ppo9wbW9.png",
     hasCaseStudy: false,
-    category: "action"
+    category: "action",
+    metric: "3D Spline concept"
   },
   {
     id: "07",
@@ -83,7 +89,8 @@ const projects = [
     link: "https://wages-buy-44199642.figma.site/",
     cover: "assets/valorant_cover.jpg",
     hasCaseStudy: false,
-    category: "labs"
+    category: "labs",
+    metric: "Interactive Figma prototype"
   }
 ];
 

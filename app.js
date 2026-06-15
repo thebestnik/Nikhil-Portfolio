@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initEmailClipboard();
   initHeaderHide();
+  initFaqAccordion();
 });
 
 /* --- Theme Management --- */
@@ -140,6 +141,7 @@ function renderProjects() {
       </div>
       
       <div class="project-card-info">
+        ${proj.metric ? `<div class="project-metric-badge">${proj.metric}</div>` : ''}
         <span class="project-category-meta">${categoryLabel}</span>
         <div class="project-title-row">
           <h3 class="project-title">${proj.title}</h3>
@@ -188,7 +190,10 @@ function openProjectModal(project) {
   const modal = document.getElementById("projectModal");
   if (!modal) return;
   
-  const tagsHtml = project.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join("");
+  let tagsHtml = project.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join("");
+  if (project.metric) {
+    tagsHtml = `<span class="project-metric-badge" style="margin-bottom: 0;">${project.metric}</span>` + tagsHtml;
+  }
   
   modal.querySelector(".modal-header-meta").innerText = `${project.id} // CASE STUDY`;
   modal.querySelector(".modal-title").innerText = project.title;
@@ -504,4 +509,39 @@ function initTimelineAnimation() {
   });
   
   observer.observe(timeline);
+}
+
+/* --- FAQ Accordion Interactive Logic --- */
+function initFaqAccordion() {
+  const faqQuestions = document.querySelectorAll(".faq-question");
+  faqQuestions.forEach(question => {
+    question.addEventListener("click", () => {
+      const item = question.closest(".faq-item");
+      const answer = item.querySelector(".faq-answer");
+      const isExpanded = question.getAttribute("aria-expanded") === "true";
+      
+      // Close other open FAQ items for a clean accordion effect
+      const allItems = document.querySelectorAll(".faq-item");
+      allItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove("active");
+          const otherQuestion = otherItem.querySelector(".faq-question");
+          if (otherQuestion) otherQuestion.setAttribute("aria-expanded", "false");
+          const otherAnswer = otherItem.querySelector(".faq-answer");
+          if (otherAnswer) otherAnswer.style.maxHeight = null;
+        }
+      });
+
+      // Toggle current item
+      if (isExpanded) {
+        question.setAttribute("aria-expanded", "false");
+        item.classList.remove("active");
+        answer.style.maxHeight = null;
+      } else {
+        question.setAttribute("aria-expanded", "true");
+        item.classList.add("active");
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+  });
 }

@@ -1267,11 +1267,11 @@ a {
 
 .modal-container {
   width: 100%;
-  max-width: 680px;
+  max-width: 900px;
   height: 100%;
   background-color: var(--bg);
   border-left: 1px solid var(--border);
-  padding: 64px 48px;
+  padding: 80px 48px;
   overflow-y: auto;
   position: relative;
   transform: translateX(100%);
@@ -1406,4 +1406,213 @@ a {
     grid-template-columns: 1fr;
     gap: 16px;
   }
+}
+
+/* --- Hero Greeting & Typography Inspiration --- */
+.hero-greeting-wrapper {
+  margin-bottom: 16px;
+}
+.hero-greeting {
+  font-family: 'Grape Nuts', cursive, 'Brush Script MT', sans-serif;
+  font-size: 3.2rem;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(147, 145, 242, 0.15);
+  display: inline-block;
+  transform: rotate(-3deg);
+}
+.text-accent-glow {
+  color: var(--accent-purple-light);
+  text-shadow: 0 0 15px rgba(147, 145, 242, 0.35);
+  font-weight: 800;
+}
+
+/* --- Collaborated Companies Marquee Banner --- */
+.marquee-section {
+  width: 100%;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background-color: var(--bg);
+  overflow: hidden;
+  margin: 32px 0 16px 0;
+}
+.marquee-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.marquee-label {
+  font-family: var(--font-alt);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: max-content;
+  animation: scrollMarquee 25s linear infinite;
+}
+.marquee-item {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  letter-spacing: -0.5px;
+  transition: color 0.3s ease;
+}
+.marquee-item:hover {
+  color: var(--accent);
+}
+.marquee-item-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  opacity: 0.5;
+}
+@keyframes scrollMarquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* --- Project Card Metric Badge --- */
+.project-metric-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-alt);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #000000;
+  background-color: var(--accent-purple-light);
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(202, 201, 255, 0.25);
+  align-self: flex-start;
+}
+
+/* --- Testimonials Styling --- */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.testimonial-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.4s var(--transition-bezier), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px rgba(147, 145, 242, 0.08);
+}
+.testimonial-quote {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.author-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.author-title {
+  font-family: var(--font-alt);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* --- FAQ Accordion Styling --- */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  border: 1px solid var(--border);
+  background-color: var(--bg-surface);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+.faq-item:hover {
+  border-color: rgba(147, 145, 242, 0.4);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  text-align: left;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+.faq-question:hover {
+  color: var(--accent);
+}
+.faq-chevron {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  transition: transform 0.3s var(--transition-bezier), color 0.3s ease;
+}
+.faq-item.active .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-answer-inner {
+  padding: 0 24px 20px 24px;
+}
+.faq-answer p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.98rem;
+  margin: 0;
 }
