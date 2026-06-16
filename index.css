@@ -1101,7 +1101,11 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
-  margin-bottom: 48px;
+  margin-bottom: 0;
+}
+
+.contact-section {
+  padding-bottom: 40px;
 }
 
 .contact-item {
