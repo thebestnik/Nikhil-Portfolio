@@ -47,11 +47,13 @@ function initTheme() {
 function initCustomCursor() {
   const cursor = document.querySelector(".custom-cursor");
   const ring = document.querySelector(".custom-cursor-ring");
+  const glow = document.querySelector(".cursor-gradient-glow");
   
   if (!cursor || !ring) return;
   
   let mouseX = 0, mouseY = 0;
   let ringX = 0, ringY = 0;
+  let glowX = 0, glowY = 0;
   
   window.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
@@ -60,19 +62,36 @@ function initCustomCursor() {
     // Immediate cursor position
     cursor.style.left = mouseX + "px";
     cursor.style.top = mouseY + "px";
+    
+    if (glow) {
+      glow.style.opacity = "1";
+    }
   });
   
-  // Smooth trailing ring animation
-  function animateRing() {
+  document.addEventListener("mouseleave", () => {
+    if (glow) {
+      glow.style.opacity = "0";
+    }
+  });
+  
+  // Smooth trailing ring and glow animation
+  function animateCursorElements() {
     ringX += (mouseX - ringX) * 0.15;
     ringY += (mouseY - ringY) * 0.15;
     
     ring.style.left = ringX + "px";
     ring.style.top = ringY + "px";
     
-    requestAnimationFrame(animateRing);
+    if (glow) {
+      glowX += (mouseX - glowX) * 0.08;
+      glowY += (mouseY - glowY) * 0.08;
+      glow.style.left = glowX + "px";
+      glow.style.top = glowY + "px";
+    }
+    
+    requestAnimationFrame(animateCursorElements);
   }
-  animateRing();
+  animateCursorElements();
   
   // Custom Hover States
   const hoverTargets = document.querySelectorAll("a, button, .interactive-card, .stack-card, .research-card");

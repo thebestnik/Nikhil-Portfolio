@@ -180,6 +180,26 @@ a {
   border-color: var(--accent-secondary);
 }
 
+/* Background Purple Cursor Gradient Glow */
+.cursor-gradient-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(168, 85, 247, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-theme="dark"] .cursor-gradient-glow {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0) 70%);
+}
+
 .cursor-view .custom-cursor {
   width: 72px;
   height: 72px;
@@ -1423,9 +1443,26 @@ a {
   transform: rotate(-3deg);
 }
 .text-accent-glow {
-  color: var(--accent-purple-light);
-  text-shadow: 0 0 15px rgba(147, 145, 242, 0.35);
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 800;
+  position: relative;
+  display: inline-block;
+}
+
+.text-accent-glow::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  border-radius: 2px;
+  z-index: -1;
+  opacity: 0.4;
+  transform: skewX(-10deg);
 }
 
 /* --- Collaborated Companies Marquee Banner --- */
@@ -1664,19 +1701,7 @@ a {
   opacity: 1;
 }
 
-/* 3. Text Accent Neon Glow Flicker */
-.text-accent-glow {
-  animation: glowFlicker 4s ease-in-out infinite alternate;
-}
 
-@keyframes glowFlicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow: 0 0 15px rgba(147, 145, 242, 0.35), 0 0 30px rgba(147, 145, 242, 0.15);
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
-}
 
 /* 4. Missing Scroll-triggered Reveal Animations */
 .reveal {
