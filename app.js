@@ -22,12 +22,12 @@ function initTheme() {
   const toggleBtn = document.getElementById("themeToggle");
   const storedTheme = localStorage.getItem("theme");
   
-  // Default to system settings or dark
-  let currentTheme = "dark";
+  // Default to system settings or light
+  let currentTheme = "light";
   if (storedTheme) {
     currentTheme = storedTheme;
-  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-    currentTheme = "light";
+  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    currentTheme = "dark";
   }
   
   document.documentElement.setAttribute("data-theme", currentTheme);

@@ -4,12 +4,11 @@
 
 /* --- Root Color Variables --- */
 :root {
-  /* Sanya's pastel accents */
-  --accent-lavender: #9391f2;
-  --accent-purple-light: #cac9ff;
-  --accent-blue-light: #a5c0ee;
-  --accent-pink-light: #e9defa;
-  --accent-translucent: rgba(147, 145, 242, 0.15);
+  /* PORTFOLIO 2024 (Bảo Trân) rose-pink accents */
+  --accent-rose: #fe929e;
+  --accent-rose-light: #ffccd3;
+  --accent-rose-dark: #e06c7a;
+  --accent-translucent: rgba(254, 146, 158, 0.15);
   
   /* Transition Configurations */
   --transition-speed: 0.4s;
@@ -21,60 +20,60 @@
   --font-alt: 'Inter', sans-serif;
 }
 
-/* --- Dark Theme (Default) --- */
+/* --- Dark Theme (Eggplant & Glowing Rose) --- */
 [data-theme="dark"] {
-  --bg: #000000;
-  --bg-surface: #0a0a0a;
-  --bg-surface-elevated: #141414;
+  --bg: #120509;
+  --bg-surface: #1a0a0f;
+  --bg-surface-elevated: #241117;
   
   --text-primary: #ffffff;
-  --text-secondary: #999999;
-  --text-muted: #666666;
+  --text-secondary: #c5a9b2;
+  --text-muted: #8d7079;
   
-  --border: rgba(255, 255, 255, 0.08);
-  --border-focus: var(--accent-lavender);
+  --border: rgba(254, 146, 158, 0.15);
+  --border-focus: var(--accent-rose);
   
-  --accent: var(--accent-lavender);
-  --accent-secondary: var(--accent-purple-light);
-  --accent-glow: rgba(147, 145, 242, 0.1);
+  --accent: var(--accent-rose);
+  --accent-secondary: var(--accent-rose-light);
+  --accent-glow: rgba(254, 146, 158, 0.12);
   
-  --glass-bg: rgba(0, 0, 0, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-bg: rgba(18, 5, 9, 0.75);
+  --glass-border: rgba(254, 146, 158, 0.1);
   
-  --scroll-thumb: #1a1a1a;
-  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  --scroll-thumb: #241117;
+  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   
   /* Contact Card Gradient */
-  --contact-grad: linear-gradient(135deg, #1b1625 0%, #0d0d11 100%);
-  --contact-border: rgba(147, 145, 242, 0.2);
+  --contact-grad: linear-gradient(135deg, #1f0b11 0%, #120509 100%);
+  --contact-border: rgba(254, 146, 158, 0.3);
 }
 
-/* --- Light Theme --- */
+/* --- Light Theme (Warm Rose-Cream & Dark Plum) --- */
 [data-theme="light"] {
-  --bg: #ffffff;
-  --bg-surface: #f9f9fb;
-  --bg-surface-elevated: #f4f3f6;
+  --bg: #fff5f6;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #fdeef1;
   
-  --text-primary: #121212;
-  --text-secondary: #555555;
-  --text-muted: #888888;
+  --text-primary: #1f0b11;
+  --text-secondary: #6d4d57;
+  --text-muted: #a4868f;
   
-  --border: rgba(0, 0, 0, 0.08);
-  --border-focus: var(--accent-lavender);
+  --border: rgba(254, 146, 158, 0.22);
+  --border-focus: var(--accent-rose-dark);
   
-  --accent: #5e54d6; /* Deeper violet for readability on light */
-  --accent-secondary: var(--accent-lavender);
-  --accent-glow: rgba(94, 84, 214, 0.08);
+  --accent: var(--accent-rose-dark);
+  --accent-secondary: var(--accent-rose);
+  --accent-glow: rgba(254, 146, 158, 0.1);
   
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(254, 146, 158, 0.15);
   
-  --scroll-thumb: #e0e0e0;
-  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  --scroll-thumb: #ffccd3;
+  --card-shadow: 0 20px 40px rgba(254, 146, 158, 0.06);
   
   /* Contact Card Gradient */
-  --contact-grad: linear-gradient(135deg, #f7f6fd 0%, #ffffff 100%);
-  --contact-border: rgba(147, 145, 242, 0.4);
+  --contact-grad: linear-gradient(135deg, #fff2f4 0%, #ffebeb 100%);
+  --contact-border: rgba(254, 146, 158, 0.35);
 }
 
 /* --- Reset & Core Setup --- */
@@ -124,8 +123,8 @@ a {
 
 /* Selection colors */
 ::selection {
-  background-color: var(--accent);
-  color: #000;
+  background-color: var(--accent-secondary);
+  color: #1f0b11;
 }
 
 /* --- Background Ambient Glow --- */
@@ -1631,12 +1630,12 @@ a {
   z-index: 10;
   pointer-events: none;
   animation: spinSeal 24s linear infinite;
-  background: rgba(10, 10, 10, 0.4);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 50%;
-  border: 1px dashed rgba(147, 145, 242, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(147, 145, 242, 0.05);
+  border: 1px dashed var(--border);
+  box-shadow: var(--card-shadow), 0 0 20px var(--accent-glow);
 }
 
 @keyframes spinSeal {
@@ -1656,7 +1655,7 @@ a {
   width: 100%;
   height: 100%;
   border-radius: inherit;
-  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(147, 145, 242, 0.08), transparent 80%);
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(254, 146, 158, 0.1), transparent 80%);
   z-index: 1;
   pointer-events: none;
   opacity: 0;
