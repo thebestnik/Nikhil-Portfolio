@@ -7,7 +7,7 @@ const projects = [
     description: "Designed end-to-end UI/UX screens for a healthcare platform serving patients across Jaipur.",
     tags: ["Figma", "User Research", "Prototyping", "Design Systems"],
     link: "#",
-    cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444913905-BjqQCcYi.png",
+    cover: "assets/medisetu_cover.png",
     mediumLink: "https://medium.com/@bhojwaninikhil12",
     hasCaseStudy: true,
     category: "best",
