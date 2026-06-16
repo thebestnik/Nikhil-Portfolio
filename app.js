@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initEmailClipboard();
   initHeaderHide();
   initFaqAccordion();
+  initInteractiveCardSpotlights();
 });
 
 /* --- Theme Management --- */
@@ -181,8 +182,9 @@ function renderProjects() {
     }
   });
   
-  // Initialize 3D Perspective Tilt
+  // Initialize 3D Perspective Tilt & Spotlight card coordinates
   init3DTilt();
+  initInteractiveCardSpotlights();
 }
 
 /* --- Project Case Study Modal --- */
@@ -422,11 +424,14 @@ function initDynamicGlow() {
     glow2X += (offsetTargetX - glow2X) * 0.03;
     glow2Y += (offsetTargetY - glow2Y) * 0.03;
     
+    // Scroll-linked parallax vertical drift offsets
+    const scrollOffset = window.scrollY * 0.12;
+    
     if (glow1) {
-      glow1.style.transform = `translate3d(${glow1X - 300}px, ${glow1Y - 300}px, 0)`;
+      glow1.style.transform = `translate3d(${glow1X - 300}px, ${glow1Y - 300 - scrollOffset}px, 0)`;
     }
     if (glow2) {
-      glow2.style.transform = `translate3d(${glow2X - 300}px, ${glow2Y - 300}px, 0)`;
+      glow2.style.transform = `translate3d(${glow2X - 300}px, ${glow2Y - 300 + scrollOffset}px, 0)`;
     }
     
     requestAnimationFrame(updateGlow);
@@ -542,6 +547,21 @@ function initFaqAccordion() {
         item.classList.add("active");
         answer.style.maxHeight = answer.scrollHeight + "px";
       }
+    });
+  });
+}
+
+/* --- Interactive Spotlight Glass Cards Coordinate Tracker --- */
+function initInteractiveCardSpotlights() {
+  const cards = document.querySelectorAll(".interactive-card");
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
     });
   });
 }
