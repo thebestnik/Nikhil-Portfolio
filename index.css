@@ -29,9 +29,9 @@
   
   --accent: #ffffff;
   --accent-secondary: #a3a3a3;
-  --accent-glow: rgba(255, 255, 255, 0.04);
-  --spotlight-color: rgba(255, 255, 255, 0.06);
-  --glow-color: rgba(255, 255, 255, 0.025);
+  --accent-glow: rgba(136, 85, 255, 0.12);
+  --spotlight-color: rgba(136, 85, 255, 0.08);
+  --glow-color: rgba(136, 85, 255, 0.06);
   
   --glass-bg: rgba(10, 10, 10, 0.75);
   --glass-border: rgba(255, 255, 255, 0.06);
@@ -39,9 +39,14 @@
   --scroll-thumb: #1f1f1f;
   --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
   
+  /* Mesh Gradient Colors - Purple/Violet Palette */
+  --mesh-color-1: rgba(136, 85, 255, 0.18);
+  --mesh-color-2: rgba(91, 55, 190, 0.12);
+  --mesh-color-3: rgba(168, 85, 247, 0.14);
+  
   /* Contact Card Gradient */
-  --contact-grad: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
-  --contact-border: rgba(255, 255, 255, 0.12);
+  --contact-grad: linear-gradient(135deg, #0a0a0a 0%, #050010 100%);
+  --contact-border: rgba(136, 85, 255, 0.2);
 }
 
 /* --- Light Theme (Minimalist Light Monochrome - Default) --- */
@@ -59,9 +64,9 @@
   
   --accent: #000000;
   --accent-secondary: #555555;
-  --accent-glow: rgba(0, 0, 0, 0.03);
-  --spotlight-color: rgba(0, 0, 0, 0.04);
-  --glow-color: rgba(0, 0, 0, 0.02);
+  --accent-glow: rgba(136, 85, 255, 0.05);
+  --spotlight-color: rgba(136, 85, 255, 0.04);
+  --glow-color: rgba(136, 85, 255, 0.03);
   
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(0, 0, 0, 0.06);
@@ -69,9 +74,14 @@
   --scroll-thumb: #e5e5e5;
   --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
   
+  /* Mesh Gradient Colors - Light Purple/Violet Palette */
+  --mesh-color-1: rgba(136, 85, 255, 0.07);
+  --mesh-color-2: rgba(91, 55, 190, 0.05);
+  --mesh-color-3: rgba(168, 85, 247, 0.06);
+  
   /* Contact Card Gradient */
-  --contact-grad: linear-gradient(135deg, #fcfcfc 0%, #ffffff 100%);
-  --contact-border: rgba(0, 0, 0, 0.12);
+  --contact-grad: linear-gradient(135deg, #faf8ff 0%, #ffffff 100%);
+  --contact-border: rgba(136, 85, 255, 0.15);
 }
 
 /* --- Reset & Core Setup --- */
@@ -126,21 +136,45 @@ a {
   color: var(--bg);
 }
 
-/* --- Background Ambient Glow --- */
+/* --- Background Ambient Glow (Framer-inspired Purple Mesh) --- */
 .ambient-glow {
   position: absolute;
-  width: 60vw;
-  height: 60vw;
-  max-width: 800px;
-  max-height: 800px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  max-height: 900px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
-  filter: blur(100px);
+  filter: blur(120px);
+  will-change: transform;
 }
-.ambient-glow-1 { top: -200px; right: -200px; }
-.ambient-glow-2 { bottom: 10%; left: -350px; }
+.ambient-glow-1 {
+  top: -200px;
+  right: -200px;
+  background: radial-gradient(ellipse at center, var(--mesh-color-1) 0%, var(--mesh-color-2) 40%, transparent 75%);
+}
+.ambient-glow-2 {
+  bottom: 10%;
+  left: -350px;
+  background: radial-gradient(ellipse at center, var(--mesh-color-3) 0%, var(--mesh-color-2) 35%, transparent 70%);
+}
+
+/* Noise/Grain Texture Overlay for Framer-style Depth */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+[data-theme="dark"] body::after {
+  opacity: 0.045;
+}
 
 /* --- Custom Magnetic Viewport Cursor --- */
 .custom-cursor {
@@ -180,24 +214,25 @@ a {
   border-color: var(--accent-secondary);
 }
 
-/* Background Purple Cursor Gradient Glow */
+/* Background Purple Cursor Gradient Glow — Framer-style spotlight */
 .cursor-gradient-glow {
   position: fixed;
   top: 0;
   left: 0;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(168, 85, 247, 0) 70%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(136, 85, 255, 0.1) 0%, rgba(136, 85, 255, 0.04) 40%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 0;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
+  will-change: transform, left, top;
 }
 
 [data-theme="dark"] .cursor-gradient-glow {
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0) 70%);
+  background: radial-gradient(circle, rgba(136, 85, 255, 0.18) 0%, rgba(136, 85, 255, 0.08) 40%, transparent 70%);
 }
 
 .cursor-view .custom-cursor {
@@ -1443,26 +1478,52 @@ a {
   transform: rotate(-3deg);
 }
 .text-accent-glow {
-  background: linear-gradient(90deg, #a855f7, #6366f1);
+  background: linear-gradient(100deg, #c084fc 0%, #818cf8 35%, #a855f7 65%, #6366f1 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-weight: 800;
   position: relative;
   display: inline-block;
+  animation: shimmerText 4s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.35));
+}
+
+@keyframes shimmerText {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 .text-accent-glow::after {
   content: '';
   position: absolute;
-  bottom: 2px;
+  bottom: 0px;
   left: 0;
   width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #a855f7, #6366f1);
-  border-radius: 2px;
+  height: 6px;
+  background: linear-gradient(90deg, #c084fc, #818cf8, #a855f7);
+  background-size: 200% auto;
+  border-radius: 3px;
   z-index: -1;
-  opacity: 0.4;
-  transform: skewX(-10deg);
+  opacity: 0.6;
+  transform: skewX(-8deg);
+  animation: shimmerText 3s linear infinite;
+}
+
+.text-accent-glow::before {
+  content: '';
+  position: absolute;
+  inset: -8px -12px;
+  background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+  border-radius: 12px;
+  z-index: -2;
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0%   { opacity: 0.5; transform: scale(0.95); }
+  100% { opacity: 1;   transform: scale(1.05); }
 }
 
 /* --- Collaborated Companies Marquee Banner --- */
@@ -1691,7 +1752,7 @@ a {
   width: 100%;
   height: 100%;
   border-radius: inherit;
-  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(254, 146, 158, 0.1), transparent 80%);
+  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(136, 85, 255, 0.12), transparent 80%);
   z-index: 1;
   pointer-events: none;
   opacity: 0;
@@ -1758,9 +1819,13 @@ a {
 }
 
 [data-theme="dark"] .quote-accent-section {
-  background-color: #0a0a0a;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background-color: #060010;
+  border-top: 1px solid rgba(136, 85, 255, 0.15);
+  border-bottom: 1px solid rgba(136, 85, 255, 0.15);
+}
+
+[data-theme="light"] .quote-accent-section {
+  background: linear-gradient(160deg, #faf7ff 0%, #f9f9f9 60%);
 }
 
 .quote-text-container {
@@ -1898,8 +1963,8 @@ a {
 }
 
 [data-theme="dark"] .marquee-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+  border-color: rgba(136, 85, 255, 0.6);
+  box-shadow: 0 20px 40px rgba(136, 85, 255, 0.15);
 }
 
 .marquee-card:hover .default-img {
