@@ -91,6 +91,19 @@ const projects = [
     hasCaseStudy: false,
     category: "labs",
     metric: "Interactive Figma prototype"
+  },
+  {
+    id: "08",
+    title: "Marvel Character Page",
+    role: "Visual & UI Designer",
+    timeline: "2026",
+    description: "An immersive, high-fidelity Marvel character showcase page designed with a bold comic-inspired layout, interactive typography, and motion details.",
+    tags: ["Figma", "Visual Design", "Interaction Design"],
+    link: "https://www.figma.com/proto/VQybtVRWy1xPhT2g9FHIZ1/Marvel-Character-Page--Community-?node-id=2004-2&viewport=-530%2C975%2C0.3&t=LFan6MuJOM09clr0-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2007%3A101&page-id=0%3A1",
+    cover: "assets/marvel_character.png",
+    hasCaseStudy: false,
+    category: "action",
+    metric: "Figma Prototype"
   }
 ];
 
