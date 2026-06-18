@@ -41,6 +41,7 @@ try {
                     ".gif"  { $contentType = "image/gif" }
                     ".svg"  { $contentType = "image/svg+xml" }
                     ".ico"  { $contentType = "image/x-icon" }
+                    ".mp4"  { $contentType = "video/mp4" }
                 }
                 
                 $response.ContentType = $contentType

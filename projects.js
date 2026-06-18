@@ -100,7 +100,7 @@ const projects = [
     description: "An immersive, high-fidelity Marvel character showcase page designed with a bold comic-inspired layout, interactive typography, and motion details.",
     tags: ["Figma", "Visual Design", "Interaction Design"],
     link: "https://www.figma.com/proto/VQybtVRWy1xPhT2g9FHIZ1/Marvel-Character-Page--Community-?node-id=2004-2&viewport=-530%2C975%2C0.3&t=LFan6MuJOM09clr0-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2007%3A101&page-id=0%3A1",
-    cover: "assets/marvel_character.png",
+    cover: "assets/cursorful-video-1781777657593.mp4",
     hasCaseStudy: false,
     category: "action",
     metric: "Figma Prototype"
