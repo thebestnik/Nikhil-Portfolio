@@ -14,40 +14,40 @@
   --font-alt: 'Inter', sans-serif;
 }
 
-/* --- Dark Theme (Minimalist Dark Monochrome) --- */
+/* --- Dark Theme (Minimalist Dark Monochrome - High Contrast Lines) --- */
 [data-theme="dark"] {
   --bg: #000000;
-  --bg-surface: #0a0a0a;
-  --bg-surface-elevated: #161616;
-  --bg-card: rgba(18, 18, 18, 0.85);
+  --bg-surface: #0c0c0e;
+  --bg-surface-elevated: #16161a;
+  --bg-card: rgba(22, 22, 26, 0.9);
   
   --text-primary: #ffffff;
-  --text-secondary: #c0c0c0;
-  --text-muted: #999999;
+  --text-secondary: #d1d5db;
+  --text-muted: #a1a1aa;
   
-  --border: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.2);
   --border-focus: #ffffff;
   
   --accent: #ffffff;
-  --accent-secondary: #c0c0c0;
-  --accent-glow: rgba(136, 85, 255, 0.18);
-  --spotlight-color: rgba(136, 85, 255, 0.12);
-  --glow-color: rgba(136, 85, 255, 0.08);
+  --accent-secondary: #d1d5db;
+  --accent-glow: rgba(136, 85, 255, 0.25);
+  --spotlight-color: rgba(136, 85, 255, 0.15);
+  --glow-color: rgba(136, 85, 255, 0.1);
   
-  --glass-bg: rgba(10, 10, 10, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-bg: rgba(15, 15, 18, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.18);
   
-  --scroll-thumb: #2a2a2a;
-  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  --scroll-thumb: #333338;
+  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
   
   /* Mesh Gradient Colors - Purple/Violet Palette */
-  --mesh-color-1: rgba(136, 85, 255, 0.18);
-  --mesh-color-2: rgba(91, 55, 190, 0.12);
-  --mesh-color-3: rgba(168, 85, 247, 0.14);
+  --mesh-color-1: rgba(136, 85, 255, 0.22);
+  --mesh-color-2: rgba(91, 55, 190, 0.16);
+  --mesh-color-3: rgba(168, 85, 247, 0.18);
   
   /* Contact Card Gradient */
-  --contact-grad: linear-gradient(135deg, #0a0a0a 0%, #050010 100%);
-  --contact-border: rgba(136, 85, 255, 0.25);
+  --contact-grad: linear-gradient(135deg, #0c0c0e 0%, #080018 100%);
+  --contact-border: rgba(136, 85, 255, 0.35);
 }
 
 /* --- Light Theme (Minimalist Light Monochrome - Default) --- */
@@ -2325,4 +2325,39 @@ body::after {
   padding: 3px 8px;
   border-radius: 999px;
   text-transform: uppercase;
+}
+
+/* ==========================================================================
+   High Contrast Line & Border Overrides for Dark Mode
+   ========================================================================== */
+[data-theme="dark"] .split-section,
+[data-theme="dark"] .capabilities-section,
+[data-theme="dark"] .contact-section,
+[data-theme="dark"] #work-best,
+[data-theme="dark"] #work-labs,
+[data-theme="dark"] #work-designs,
+[data-theme="dark"] #work-research,
+[data-theme="dark"] #about,
+[data-theme="dark"] #faq {
+  border-top-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .research-card,
+[data-theme="dark"] .stack-card,
+[data-theme="dark"] .capability-item,
+[data-theme="dark"] .faq-item,
+[data-theme="dark"] .timeline-item,
+[data-theme="dark"] .about-photo-wrapper,
+[data-theme="dark"] .linktree-hub-container,
+[data-theme="dark"] .linktree-pill-btn {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .site-header {
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="dark"] .site-footer {
+  border-top-color: rgba(255, 255, 255, 0.18);
 }
