@@ -300,14 +300,20 @@ body::after {
 }
 
 .section-label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-alt);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-surface-elevated);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .section-title-large {
@@ -536,26 +542,27 @@ body::after {
 .hero-badge {
   font-family: var(--font-alt);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.02em;
-  padding: 6px 14px;
-  border-radius: 99px;
-  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
   background-color: var(--bg-surface);
   color: var(--text-secondary);
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--transition-bezier);
 }
 
 .hero-badge.badge-primary {
   border-color: var(--accent);
   background-color: var(--accent-translucent);
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .hero-badge:hover {
-  border-color: var(--accent-secondary);
-  transform: translateY(-2px);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(136, 85, 255, 0.15);
 }
 
 .hero-description {
@@ -571,21 +578,22 @@ body::after {
   align-items: center;
   justify-content: center;
   font-family: var(--font-alt);
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 16px 32px;
-  border-radius: 99px;
-  transition: all 0.4s var(--transition-bezier);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 16px;
+  transition: all 0.35s var(--transition-bezier);
 }
 
 .btn-primary {
   background-color: var(--accent);
-  color: #000;
-  border: 1px solid var(--accent);
+  color: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 10px 24px rgba(136, 85, 255, 0.2);
 }
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(147, 145, 242, 0.3);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(136, 85, 255, 0.3);
 }
 
 /* Hero Mascot Cartoon Styling */
@@ -739,15 +747,16 @@ body::after {
   font-size: 1.15rem;
   font-weight: 600;
   padding: 24px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
+  border-radius: 20px;
+  border: 2px solid var(--border);
   background-color: var(--bg-surface);
-  transition: all 0.3s var(--transition-bezier);
+  transition: all 0.35s var(--transition-bezier);
 }
 .capability-item:hover {
   border-color: var(--accent);
   background-color: var(--accent-translucent);
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(136, 85, 255, 0.15);
 }
 
 /* --- Split Sticky Layout Row (The Core Sanya Structure) --- */
@@ -826,10 +835,10 @@ body::after {
 .project-card {
   grid-column: span 2; /* Default: take full width of grid */
   background-color: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 28px;
+  border: 2px solid var(--border);
+  border-radius: 24px;
   overflow: hidden;
-  transition: all 0.5s var(--transition-bezier);
+  transition: all 0.4s var(--transition-bezier);
   display: flex;
   flex-direction: column;
   box-shadow: var(--card-shadow);
@@ -863,7 +872,8 @@ body::after {
 
 .project-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 30px 60px rgba(147, 145, 242, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(136, 85, 255, 0.18);
 }
 
 .project-card:hover .project-cover-img {
@@ -946,10 +956,10 @@ body::after {
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 5px 12px;
+  border-radius: 10px;
   background-color: var(--bg-surface-elevated);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   color: var(--text-secondary);
 }
 
@@ -976,10 +986,10 @@ body::after {
 .research-card {
   display: block;
   background-color: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 24px;
-  transition: all 0.4s var(--transition-bezier);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  transition: all 0.35s var(--transition-bezier);
 }
 
 .research-meta {
@@ -1009,18 +1019,19 @@ body::after {
 
 .research-card:hover {
   border-color: var(--accent);
-  background-color: var(--accent-translucent);
-  transform: translateY(-4px);
+  background-color: var(--bg-surface-elevated);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(136, 85, 255, 0.15);
 }
 
 /* --- About Profile photo polaroid --- */
 .about-photo-wrapper {
   width: 100%;
-  border-radius: 24px;
+  border-radius: 28px;
   overflow: hidden;
   background-color: var(--bg-surface);
-  border: 1px solid var(--border);
-  padding: 16px;
+  border: 2px solid var(--border);
+  padding: 18px;
   box-shadow: var(--card-shadow);
 }
 
@@ -1054,13 +1065,15 @@ body::after {
 
 .timeline-item {
   background-color: var(--bg-surface);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   padding: 24px;
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  border-radius: 20px;
+  transition: all 0.35s var(--transition-bezier);
 }
 .timeline-item:hover {
   border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(136, 85, 255, 0.12);
 }
 
 .timeline-meta {
@@ -1105,9 +1118,9 @@ body::after {
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
-  border-radius: 12px;
+  border-radius: 14px;
   background-color: var(--bg-surface);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   font-family: var(--font-alt);
   font-size: 0.85rem;
   font-weight: 600;
@@ -1116,7 +1129,8 @@ body::after {
 }
 .stack-card:hover {
   border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(136, 85, 255, 0.15);
 }
 
 .stack-dot {
