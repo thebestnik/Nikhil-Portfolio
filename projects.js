@@ -29,6 +29,20 @@ const projects = [
   },
   {
     id: "03",
+    title: "Paper Bull: Trading & Investment App",
+    role: "Lead Product Designer",
+    timeline: "2026",
+    description: "An in-depth Medium case study mapping the end-to-end design of Paper Bull, a next-gen paper trading and market investment platform built for seamless user onboarding and financial clarity.",
+    tags: ["Figma", "UX Research", "Fintech", "Case Study"],
+    link: "https://medium.com/@bhojwaninikhil12",
+    cover: "assets/paperbull_cover.jpg",
+    mediumLink: "https://medium.com/@bhojwaninikhil12",
+    hasCaseStudy: true,
+    category: "best",
+    metric: "Featured Medium Case Study"
+  },
+  {
+    id: "04",
     title: "Dr. Sanjay Sakarwal: Clinic Site",
     role: "Frontend Developer & UI Designer",
     timeline: "2026",
@@ -41,7 +55,7 @@ const projects = [
     metric: "+150% search visibility"
   },
   {
-    id: "04",
+    id: "05",
     title: "L'Élixir de Rose: Landing Page",
     role: "Creative Frontend Developer",
     timeline: "2025",
@@ -54,7 +68,7 @@ const projects = [
     metric: "Canvas Video-Scrub"
   },
   {
-    id: "05",
+    id: "06",
     title: "Burger King: Redesign",
     role: "Visual Designer",
     timeline: "2025",
@@ -67,7 +81,7 @@ const projects = [
     metric: "Bold brand styling"
   },
   {
-    id: "06",
+    id: "07",
     title: "Nike: Air Max Style",
     role: "UI Designer",
     timeline: "2025",
@@ -80,7 +94,7 @@ const projects = [
     metric: "3D Spline concept"
   },
   {
-    id: "07",
+    id: "08",
     title: "Valorant: Jett Showcase",
     role: "UI Designer & Animator",
     timeline: "2026",
@@ -93,14 +107,14 @@ const projects = [
     metric: "Interactive Figma prototype"
   },
   {
-    id: "08",
+    id: "09",
     title: "Marvel Character Page",
     role: "Visual & UI Designer",
     timeline: "2026",
     description: "An immersive, high-fidelity Marvel character showcase page designed with a bold comic-inspired layout, interactive typography, and motion details.",
     tags: ["Figma", "Visual Design", "Interaction Design"],
     link: "https://www.figma.com/proto/VQybtVRWy1xPhT2g9FHIZ1/Marvel-Character-Page--Community-?node-id=2004-2&viewport=-530%2C975%2C0.3&t=LFan6MuJOM09clr0-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2007%3A101&page-id=0%3A1",
-    cover: "assets/cursorful-video-1781777657593.mp4",
+    cover: "assets/marvel_character.mp4",
     hasCaseStudy: false,
     category: "action",
     metric: "Figma Prototype"

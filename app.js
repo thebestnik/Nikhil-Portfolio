@@ -227,6 +227,8 @@ function openProjectModal(project) {
   let contextText = "Client / Platform Design";
   if (project.title.includes("MediSetu")) {
     contextText = "Healthcare & Clinical Systems";
+  } else if (project.title.includes("Paper Bull")) {
+    contextText = "Fintech & Paper Trading Platform";
   } else if (project.title.includes("Sakarwal")) {
     contextText = "Medical Branding & SEO Pipelines";
   } else if (project.title.includes("Élixir")) {
@@ -247,6 +249,17 @@ function openProjectModal(project) {
         <li>Completed end-to-end Figma workflows mapping the user journey.</li>
         <li>Conducted research with 20+ local patients to isolate friction points.</li>
         <li>Engineered a unified design system that decreased time-to-book by 45%.</li>
+      </ul>
+    `;
+  } else if (project.title.includes("Paper Bull")) {
+    contentHtml = `
+      <p>Paper Bull is a modern paper trading and investment interface designed to simplify stock market learning, portfolio tracking, and financial analytics for traders and investors.</p>
+      <p>As the Lead Product Designer, I crafted an intuitive, zero-friction interface featuring real-time market data visualizers, clear transaction flows, and modular design components built to enhance user confidence and financial literacy.</p>
+      <p><strong>Key Highlights & Case Study Outcomes:</strong></p>
+      <ul>
+        <li>Designed end-to-end trading screens, portfolio dashboards, and watchlists.</li>
+        <li>Published an in-depth UX Case Study on Medium analyzing fintech onboarding heuristics.</li>
+        <li>Created a scalable, high-feasibility design system tailored for rapid market interactions.</li>
       </ul>
     `;
   } else if (project.title.includes("tickit")) {

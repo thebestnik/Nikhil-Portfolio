@@ -18,25 +18,26 @@
 [data-theme="dark"] {
   --bg: #000000;
   --bg-surface: #0a0a0a;
-  --bg-surface-elevated: #121212;
+  --bg-surface-elevated: #161616;
+  --bg-card: rgba(18, 18, 18, 0.85);
   
   --text-primary: #ffffff;
-  --text-secondary: #a3a3a3;
-  --text-muted: #666666;
+  --text-secondary: #c0c0c0;
+  --text-muted: #999999;
   
-  --border: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.16);
   --border-focus: #ffffff;
   
   --accent: #ffffff;
-  --accent-secondary: #a3a3a3;
-  --accent-glow: rgba(136, 85, 255, 0.12);
-  --spotlight-color: rgba(136, 85, 255, 0.08);
-  --glow-color: rgba(136, 85, 255, 0.06);
+  --accent-secondary: #c0c0c0;
+  --accent-glow: rgba(136, 85, 255, 0.18);
+  --spotlight-color: rgba(136, 85, 255, 0.12);
+  --glow-color: rgba(136, 85, 255, 0.08);
   
-  --glass-bg: rgba(10, 10, 10, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-bg: rgba(10, 10, 10, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.12);
   
-  --scroll-thumb: #1f1f1f;
+  --scroll-thumb: #2a2a2a;
   --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
   
   /* Mesh Gradient Colors - Purple/Violet Palette */
@@ -46,33 +47,34 @@
   
   /* Contact Card Gradient */
   --contact-grad: linear-gradient(135deg, #0a0a0a 0%, #050010 100%);
-  --contact-border: rgba(136, 85, 255, 0.2);
+  --contact-border: rgba(136, 85, 255, 0.25);
 }
 
 /* --- Light Theme (Minimalist Light Monochrome - Default) --- */
 [data-theme="light"] {
   --bg: #ffffff;
   --bg-surface: #ffffff;
-  --bg-surface-elevated: #fcfcfc;
+  --bg-surface-elevated: #f4f4f7;
+  --bg-card: rgba(255, 255, 255, 0.95);
   
   --text-primary: #000000;
-  --text-secondary: #555555;
-  --text-muted: #888888;
+  --text-secondary: #333333;
+  --text-muted: #555555;
   
-  --border: rgba(0, 0, 0, 0.08);
+  --border: rgba(0, 0, 0, 0.14);
   --border-focus: #000000;
   
   --accent: #000000;
-  --accent-secondary: #555555;
-  --accent-glow: rgba(136, 85, 255, 0.05);
-  --spotlight-color: rgba(136, 85, 255, 0.04);
-  --glow-color: rgba(136, 85, 255, 0.03);
+  --accent-secondary: #333333;
+  --accent-glow: rgba(136, 85, 255, 0.08);
+  --spotlight-color: rgba(136, 85, 255, 0.06);
+  --glow-color: rgba(136, 85, 255, 0.04);
   
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.12);
   
-  --scroll-thumb: #e5e5e5;
-  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  --scroll-thumb: #d0d0d0;
+  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
   
   /* Mesh Gradient Colors - Light Purple/Violet Palette */
   --mesh-color-1: rgba(136, 85, 255, 0.07);
@@ -81,7 +83,7 @@
   
   /* Contact Card Gradient */
   --contact-grad: linear-gradient(135deg, #faf8ff 0%, #ffffff 100%);
-  --contact-border: rgba(136, 85, 255, 0.15);
+  --contact-border: rgba(136, 85, 255, 0.2);
 }
 
 /* --- Reset & Core Setup --- */
@@ -1947,7 +1949,13 @@ body::after {
 }
 
 .quote-line.green-text {
-  color: var(--text-secondary);
+  color: #10b981;
+  text-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+[data-theme="dark"] .quote-line.green-text {
+  color: #34d399;
+  text-shadow: 0 0 30px rgba(52, 211, 153, 0.4);
 }
 
 /* Background Cards Marquee */
@@ -2163,4 +2171,158 @@ body::after {
 @keyframes floatRightShallow {
   0% { transform: translateY(0) rotate(4deg); }
   100% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* ==========================================================================
+   Linktree-Inspired Bio Hub & Pill Buttons System
+   ========================================================================== */
+.linktree-hub-container {
+  margin-top: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px);
+  max-width: 580px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.linktree-hub-container:hover {
+  border-color: rgba(136, 85, 255, 0.3);
+  box-shadow: 0 24px 48px rgba(136, 85, 255, 0.12);
+}
+
+.linktree-badge-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.linktree-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-alt);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(136, 85, 255, 0.08);
+  border: 1px solid rgba(136, 85, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.linktree-verified-tag {
+  font-family: var(--font-alt);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.linktree-links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linktree-pill-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.linktree-pill-btn:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: var(--accent);
+  background: var(--bg-card);
+  box-shadow: 0 10px 25px rgba(136, 85, 255, 0.15);
+  color: var(--accent);
+}
+
+.linktree-btn-highlight {
+  background: linear-gradient(135deg, rgba(136, 85, 255, 0.12), rgba(136, 85, 255, 0.03));
+  border-color: rgba(136, 85, 255, 0.3);
+}
+
+.pill-icon {
+  font-size: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.linktree-pill-btn:hover .pill-icon {
+  transform: scale(1.2) rotate(8deg);
+}
+
+.pill-text {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.pill-text strong {
+  color: var(--text-primary);
+}
+
+.linktree-pill-btn:hover .pill-text strong {
+  color: var(--accent);
+}
+
+.pill-arrow {
+  font-family: var(--font-alt);
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+  color: var(--text-muted);
+}
+
+.linktree-pill-btn:hover .pill-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+.pill-badge {
+  font-family: var(--font-alt);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: var(--accent);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
 }
