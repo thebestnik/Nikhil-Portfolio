@@ -35,75 +35,63 @@ const spiderFacts = [
 ];
 
 function initDualIdentityMode() {
-  const spiderBtn = document.getElementById("spiderSenseBtn");
-  const overlay = document.getElementById("spiderCinematicOverlay");
-  const nextFactBtn = document.getElementById("nextFactBtn");
-  const enterSpiderBtn = document.getElementById("enterSpiderModeBtn");
-  const closeBtn = document.getElementById("closeSpiderOverlayBtn");
   const storedMode = localStorage.getItem("identityMode");
   
   if (storedMode) {
     document.documentElement.setAttribute("data-mode", storedMode);
     updateSpiderBtnUI(storedMode);
   }
+}
+
+function openSpiderCinematic() {
+  const currentMode = document.documentElement.getAttribute("data-mode") || "peter-parker";
+  const overlay = document.getElementById("spiderCinematicOverlay");
   
-  if (spiderBtn && overlay) {
-    spiderBtn.addEventListener("click", () => {
-      let currentMode = document.documentElement.getAttribute("data-mode") || "peter-parker";
-      
-      if (currentMode === "spiderman") {
-        // Toggle back to Peter Parker Mode
-        document.body.classList.add("spider-sense-flip");
-        setTimeout(() => {
-          document.documentElement.setAttribute("data-mode", "peter-parker");
-          localStorage.setItem("identityMode", "peter-parker");
-          updateSpiderBtnUI("peter-parker");
-        }, 400);
-        setTimeout(() => {
-          document.body.classList.remove("spider-sense-flip");
-        }, 800);
-      } else {
-        // Open TASM2 Fullscreen Web-Swinging Cinematic & Show Random Fact
-        showRandomSpiderFact();
-        overlay.classList.add("active");
-        
-        const video = document.getElementById("spiderVideo");
-        if (video) {
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        }
+  if (currentMode === "spiderman") {
+    // If currently Spider-Man, switch back to Peter Parker Mode
+    document.body.classList.add("spider-sense-flip");
+    setTimeout(() => {
+      document.documentElement.setAttribute("data-mode", "peter-parker");
+      localStorage.setItem("identityMode", "peter-parker");
+      updateSpiderBtnUI("peter-parker");
+    }, 400);
+    setTimeout(() => {
+      document.body.classList.remove("spider-sense-flip");
+    }, 800);
+  } else {
+    // Launch TASM2 Fullscreen Web-Swinging Intro & Show Random Fact
+    showRandomSpiderFact();
+    if (overlay) {
+      overlay.classList.add("active");
+      const video = document.getElementById("spiderVideo");
+      if (video) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
       }
-    });
+    }
   }
+}
 
-  if (closeBtn && overlay) {
-    closeBtn.addEventListener("click", () => {
-      overlay.classList.remove("active");
-    });
+function closeSpiderCinematic() {
+  const overlay = document.getElementById("spiderCinematicOverlay");
+  if (overlay) {
+    overlay.classList.remove("active");
   }
+}
 
-  if (nextFactBtn) {
-    nextFactBtn.addEventListener("click", () => {
-      showRandomSpiderFact();
-    });
-  }
-
-  if (enterSpiderBtn && overlay) {
-    enterSpiderBtn.addEventListener("click", () => {
-      overlay.classList.remove("active");
-      
-      // Trigger Spider-Sense Screen Flip Transition
-      document.body.classList.add("spider-sense-flip");
-      setTimeout(() => {
-        document.documentElement.setAttribute("data-mode", "spiderman");
-        localStorage.setItem("identityMode", "spiderman");
-        updateSpiderBtnUI("spiderman");
-      }, 400);
-      setTimeout(() => {
-        document.body.classList.remove("spider-sense-flip");
-      }, 800);
-    });
-  }
+function activateSpiderMode() {
+  closeSpiderCinematic();
+  
+  // Trigger Spider-Sense Screen Flip Transition
+  document.body.classList.add("spider-sense-flip");
+  setTimeout(() => {
+    document.documentElement.setAttribute("data-mode", "spiderman");
+    localStorage.setItem("identityMode", "spiderman");
+    updateSpiderBtnUI("spiderman");
+  }, 400);
+  setTimeout(() => {
+    document.body.classList.remove("spider-sense-flip");
+  }, 800);
 }
 
 function showRandomSpiderFact() {
@@ -120,7 +108,7 @@ function showRandomSpiderFact() {
       factNumber.textContent = `#${(randomIndex + 1).toString().padStart(2, '0')}`;
     }
     factText.style.opacity = "1";
-  }, 200);
+  }, 180);
 }
 
 function updateSpiderBtnUI(mode) {

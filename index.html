@@ -49,7 +49,7 @@
       
       <div style="display: flex; align-items: center; gap: 12px;">
         <!-- Spider-Man Dual Identity Mode Toggle Button -->
-        <button class="spider-sense-btn" id="spiderSenseBtn" aria-label="Toggle Spider-Man Identity Mode">
+        <button class="spider-sense-btn" id="spiderSenseBtn" onclick="openSpiderCinematic();" aria-label="Toggle Spider-Man Identity Mode">
           <span class="spider-pulse-dot"></span>
           <span class="spider-btn-text">SUIT UP! 🕷️</span>
         </button>
@@ -622,7 +622,7 @@
 
   <!-- Fullscreen TASM2 Spider-Man Cinematic Intro Overlay -->
   <div class="spider-cinematic-overlay" id="spiderCinematicOverlay">
-    <button class="spider-overlay-close-btn" id="closeSpiderOverlayBtn" aria-label="Close Overlay">&times;</button>
+    <button class="spider-overlay-close-btn" id="closeSpiderOverlayBtn" onclick="closeSpiderCinematic();" aria-label="Close Overlay">&times;</button>
     <div class="cinematic-bg-video-container">
       <video class="cinematic-video" id="spiderVideo" autoplay loop muted playsinline>
         <source src="assets/marvel_character.mp4" type="video/mp4">
@@ -640,8 +640,8 @@
         <p class="spider-fact-text" id="spiderFactText">Spider-Man's web-fluid is 300 times stronger than steel and dissolves naturally after 1 hour!</p>
         
         <div class="spider-trivia-actions">
-          <button class="spider-fact-btn" id="nextFactBtn">Next Fact 🎲</button>
-          <button class="spider-enter-btn" id="enterSpiderModeBtn">ENTER SPIDER-MAN MODE 🕷️</button>
+          <button class="spider-fact-btn" id="nextFactBtn" onclick="showRandomSpiderFact();">Next Fact 🎲</button>
+          <button class="spider-enter-btn" id="enterSpiderModeBtn" onclick="activateSpiderMode();">ENTER SPIDER-MAN MODE 🕷️</button>
         </div>
       </div>
     </div>
