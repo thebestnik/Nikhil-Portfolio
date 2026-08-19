@@ -4,6 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
+  initDualIdentityMode();
   initCustomCursor();
   renderProjects();
   initDynamicGlow();
@@ -16,6 +17,48 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaqAccordion();
   initInteractiveCardSpotlights();
 });
+
+/* --- Dual Identity Mode (Peter Parker vs Spider-Man) --- */
+function initDualIdentityMode() {
+  const spiderBtn = document.getElementById("spiderSenseBtn");
+  const storedMode = localStorage.getItem("identityMode");
+  
+  if (storedMode) {
+    document.documentElement.setAttribute("data-mode", storedMode);
+    updateSpiderBtnUI(storedMode);
+  }
+  
+  if (spiderBtn) {
+    spiderBtn.addEventListener("click", () => {
+      let currentMode = document.documentElement.getAttribute("data-mode") || "peter-parker";
+      let nextMode = currentMode === "spiderman" ? "peter-parker" : "spiderman";
+      
+      // Trigger Spider-Sense Screen Flip Animation
+      document.body.classList.add("spider-sense-flip");
+      
+      setTimeout(() => {
+        document.documentElement.setAttribute("data-mode", nextMode);
+        localStorage.setItem("identityMode", nextMode);
+        updateSpiderBtnUI(nextMode);
+      }, 400);
+      
+      setTimeout(() => {
+        document.body.classList.remove("spider-sense-flip");
+      }, 800);
+    });
+  }
+}
+
+function updateSpiderBtnUI(mode) {
+  const btnText = document.querySelector(".spider-btn-text");
+  if (!btnText) return;
+  
+  if (mode === "spiderman") {
+    btnText.innerHTML = "PETER PARKER 👓";
+  } else {
+    btnText.innerHTML = "SUIT UP! 🕷️";
+  }
+}
 
 /* --- Theme Management --- */
 function initTheme() {

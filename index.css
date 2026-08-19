@@ -50,6 +50,40 @@
   --contact-border: rgba(136, 85, 255, 0.35);
 }
 
+/* --- Spider-Man Theme Mode (Suit Up!) --- */
+[data-mode="spiderman"] {
+  --bg: #07070b;
+  --bg-surface: #0f0f18;
+  --bg-surface-elevated: #1a1a27;
+  --bg-card: rgba(22, 22, 35, 0.95);
+  
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  
+  --border: rgba(255, 30, 66, 0.35);
+  --border-focus: #ff1e42;
+  
+  --accent: #ff1e42;
+  --accent-secondary: #00e5ff;
+  --accent-glow: rgba(255, 30, 66, 0.35);
+  --spotlight-color: rgba(255, 30, 66, 0.2);
+  --glow-color: rgba(0, 229, 255, 0.15);
+  
+  --glass-bg: rgba(15, 15, 24, 0.92);
+  --glass-border: rgba(255, 30, 66, 0.3);
+  
+  --scroll-thumb: #ff1e42;
+  --card-shadow: 0 20px 45px rgba(255, 30, 66, 0.25);
+  
+  --mesh-color-1: rgba(255, 30, 66, 0.3);
+  --mesh-color-2: rgba(0, 229, 255, 0.25);
+  --mesh-color-3: rgba(15, 15, 24, 0.8);
+  
+  --contact-grad: linear-gradient(135deg, #120308 0%, #030a18 100%);
+  --contact-border: rgba(255, 30, 66, 0.5);
+}
+
 /* --- Light Theme (Minimalist Light Monochrome - Default) --- */
 [data-theme="light"] {
   --bg: #ffffff;
@@ -2464,4 +2498,120 @@ body::after {
 
 [data-theme="dark"] .site-footer {
   border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ==========================================================================
+   Spider-Man Dual Identity Mode Component & Animation Styles
+   ========================================================================== */
+.spider-sense-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 2px solid #ff1e42;
+  background: linear-gradient(135deg, #ff1e42 0%, #b3001e 100%);
+  color: #ffffff;
+  font-family: var(--font-alt);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 30, 66, 0.4);
+  transition: all 0.35s var(--transition-bezier);
+}
+
+.spider-sense-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 30, 66, 0.75);
+}
+
+.spider-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #00e5ff;
+  box-shadow: 0 0 10px #00e5ff;
+  animation: pulseWebDot 1.5s infinite alternate;
+}
+
+@keyframes pulseWebDot {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 1; }
+}
+
+/* Spider-Sense Screen Flip Transition */
+.spider-sense-flip {
+  animation: spiderFlip 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes spiderFlip {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) scale(1);
+    filter: blur(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(180deg) scale(0.88);
+    filter: blur(6px) hue-rotate(180deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(360deg) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* About Section Profile Photo vs Spider-Man Mask */
+.about-spiderman-mask {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+}
+
+.spiderman-svg-mask {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  filter: drop-shadow(0 10px 25px rgba(255, 30, 66, 0.5));
+  animation: floatMask 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatMask {
+  0% { transform: translateY(0) rotate(-1.5deg); }
+  100% { transform: translateY(-10px) rotate(1.5deg); }
+}
+
+.spiderman-mask-badge {
+  font-family: var(--font-alt);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #ff1e42;
+  margin-top: 14px;
+  background: rgba(255, 30, 66, 0.15);
+  border: 1px solid rgba(255, 30, 66, 0.4);
+  padding: 5px 14px;
+  border-radius: 99px;
+  text-align: center;
+}
+
+[data-mode="spiderman"] .photo-peter {
+  display: none !important;
+}
+
+[data-mode="spiderman"] .about-spiderman-mask {
+  display: flex !important;
+}
+
+/* Spider-Man mode active button styling */
+[data-mode="spiderman"] .spider-sense-btn {
+  background: linear-gradient(135deg, #00e5ff 0%, #0077ff 100%);
+  border-color: #00e5ff;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+}
+
+[data-mode="spiderman"] .spider-sense-btn:hover {
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.8);
 }
