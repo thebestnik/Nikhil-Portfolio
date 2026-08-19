@@ -18,9 +18,27 @@ document.addEventListener("DOMContentLoaded", () => {
   initInteractiveCardSpotlights();
 });
 
-/* --- Dual Identity Mode (Peter Parker vs Spider-Man) --- */
+/* --- Dual Identity Mode & TASM2 Cinematic Fact Overlay --- */
+const spiderFacts = [
+  "Spider-Man's web-fluid is 300 times stronger than steel and dissolves naturally after 1 hour!",
+  "Peter Parker has an IQ of 250, putting him on par with Tony Stark and Reed Richards in scientific genius!",
+  "In The Amazing Spider-Man 2, Andrew Garfield's suit features enlarged, white reflective eyes inspired directly by classic comic art!",
+  "Spider-Man's Spider-Sense is so powerful it alerts him to danger before it happens and works even while he is asleep!",
+  "Spider-Man was created by Stan Lee and Steve Ditko in 1962, debuting in Amazing Fantasy #15!",
+  "Peter Parker built his original web-shooters himself in his bedroom using spare parts and chemical formulas!",
+  "Spider-Man can lift up to 10 tons (over 20,000 lbs) and stick to surfaces using electrostatic attraction at the molecular level!",
+  "In Spider-Man: Into the Spider-Verse, animators held frames on 12s instead of 24s to give Miles Morales a comic-book motion feel!",
+  "Peter Parker once worked as a high school science teacher and a freelance photojournalist for the Daily Bugle!",
+  "The iconic Spider-Man web-slinging sound effect in movies was created using magnetic tape zips and leather whip snaps!",
+  "Spider-Man has teamed up with the Avengers, Fantastic Four, X-Men, and even Deadpool across Marvel history!",
+  "With Great Power Comes Great Responsibility — Aunt May and Uncle Ben's guiding lesson that shapes every design decision!"
+];
+
 function initDualIdentityMode() {
   const spiderBtn = document.getElementById("spiderSenseBtn");
+  const overlay = document.getElementById("spiderCinematicOverlay");
+  const nextFactBtn = document.getElementById("nextFactBtn");
+  const enterSpiderBtn = document.getElementById("enterSpiderModeBtn");
   const storedMode = localStorage.getItem("identityMode");
   
   if (storedMode) {
@@ -28,25 +46,74 @@ function initDualIdentityMode() {
     updateSpiderBtnUI(storedMode);
   }
   
-  if (spiderBtn) {
+  if (spiderBtn && overlay) {
     spiderBtn.addEventListener("click", () => {
       let currentMode = document.documentElement.getAttribute("data-mode") || "peter-parker";
-      let nextMode = currentMode === "spiderman" ? "peter-parker" : "spiderman";
       
-      // Trigger Spider-Sense Screen Flip Animation
+      if (currentMode === "spiderman") {
+        // Toggle back to Peter Parker Mode
+        document.body.classList.add("spider-sense-flip");
+        setTimeout(() => {
+          document.documentElement.setAttribute("data-mode", "peter-parker");
+          localStorage.setItem("identityMode", "peter-parker");
+          updateSpiderBtnUI("peter-parker");
+        }, 400);
+        setTimeout(() => {
+          document.body.classList.remove("spider-sense-flip");
+        }, 800);
+      } else {
+        // Open TASM2 Fullscreen Web-Swinging Cinematic & Show Random Fact
+        showRandomSpiderFact();
+        overlay.classList.add("active");
+        
+        const video = document.getElementById("spiderVideo");
+        if (video) {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        }
+      }
+    });
+  }
+
+  if (nextFactBtn) {
+    nextFactBtn.addEventListener("click", () => {
+      showRandomSpiderFact();
+    });
+  }
+
+  if (enterSpiderBtn && overlay) {
+    enterSpiderBtn.addEventListener("click", () => {
+      overlay.classList.remove("active");
+      
+      // Trigger Spider-Sense Screen Flip Transition
       document.body.classList.add("spider-sense-flip");
-      
       setTimeout(() => {
-        document.documentElement.setAttribute("data-mode", nextMode);
-        localStorage.setItem("identityMode", nextMode);
-        updateSpiderBtnUI(nextMode);
+        document.documentElement.setAttribute("data-mode", "spiderman");
+        localStorage.setItem("identityMode", "spiderman");
+        updateSpiderBtnUI("spiderman");
       }, 400);
-      
       setTimeout(() => {
         document.body.classList.remove("spider-sense-flip");
       }, 800);
     });
   }
+}
+
+function showRandomSpiderFact() {
+  const factText = document.getElementById("spiderFactText");
+  const factNumber = document.getElementById("spiderFactNumber");
+  if (!factText) return;
+  
+  const randomIndex = Math.floor(Math.random() * spiderFacts.length);
+  factText.style.opacity = "0";
+  
+  setTimeout(() => {
+    factText.textContent = spiderFacts[randomIndex];
+    if (factNumber) {
+      factNumber.textContent = `#${(randomIndex + 1).toString().padStart(2, '0')}`;
+    }
+    factText.style.opacity = "1";
+  }, 200);
 }
 
 function updateSpiderBtnUI(mode) {

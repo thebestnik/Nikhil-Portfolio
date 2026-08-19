@@ -2615,3 +2615,167 @@ body::after {
 [data-mode="spiderman"] .spider-sense-btn:hover {
   box-shadow: 0 0 25px rgba(0, 229, 255, 0.8);
 }
+
+/* ==========================================================================
+   Full Screen Spider-Man TASM2 Cinematic Web-Swinging Overlay & Fact Box
+   ========================================================================== */
+.spider-cinematic-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background-color: #050508;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.spider-cinematic-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.cinematic-bg-video-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cinematic-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  filter: contrast(1.1) brightness(0.85);
+}
+
+.cinematic-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(7, 7, 11, 0.4) 0%, rgba(5, 5, 8, 0.85) 80%);
+}
+
+.spider-web-mesh {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: radial-gradient(#ff1e42 1px, transparent 1px), radial-gradient(#00e5ff 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.cinematic-content {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.spider-trivia-card {
+  background: rgba(15, 15, 24, 0.92);
+  border: 2px solid #ff1e42;
+  border-radius: 28px;
+  padding: 36px 32px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(255, 30, 66, 0.4), inset 0 0 20px rgba(0, 229, 255, 0.15);
+  animation: popTriviaCard 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popTriviaCard {
+  0% { transform: scale(0.8) translateY(30px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.spider-trivia-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.spider-comic-badge {
+  font-family: var(--font-alt);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  background: #ff1e42;
+  padding: 6px 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(255, 30, 66, 0.5);
+}
+
+.spider-fact-number {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #00e5ff;
+  letter-spacing: 0.1em;
+}
+
+.spider-fact-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.45;
+  color: #ffffff;
+  margin-bottom: 28px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.spider-trivia-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.spider-fact-btn {
+  font-family: var(--font-alt);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 14px 24px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.spider-fact-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.spider-enter-btn {
+  font-family: var(--font-alt);
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 14px 28px;
+  border-radius: 16px;
+  border: 2px solid #00e5ff;
+  background: linear-gradient(135deg, #00e5ff 0%, #0077ff 100%);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.spider-enter-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.8);
+}
