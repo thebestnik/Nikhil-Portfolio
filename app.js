@@ -39,6 +39,7 @@ function initDualIdentityMode() {
   const overlay = document.getElementById("spiderCinematicOverlay");
   const nextFactBtn = document.getElementById("nextFactBtn");
   const enterSpiderBtn = document.getElementById("enterSpiderModeBtn");
+  const closeBtn = document.getElementById("closeSpiderOverlayBtn");
   const storedMode = localStorage.getItem("identityMode");
   
   if (storedMode) {
@@ -72,6 +73,12 @@ function initDualIdentityMode() {
           video.play().catch(() => {});
         }
       }
+    });
+  }
+
+  if (closeBtn && overlay) {
+    closeBtn.addEventListener("click", () => {
+      overlay.classList.remove("active");
     });
   }
 
