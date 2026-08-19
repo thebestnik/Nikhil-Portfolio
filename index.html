@@ -47,13 +47,7 @@
         <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="nav-link">Medium</a>
       </nav>
       
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <!-- Spider-Man Dual Identity Mode Toggle Button -->
-        <button class="spider-sense-btn" id="spiderSenseBtn" onclick="openSpiderCinematic();" aria-label="Toggle Spider-Man Identity Mode">
-          <span class="spider-pulse-dot"></span>
-          <span class="spider-btn-text">SUIT UP! 🕷️</span>
-        </button>
-
+      <div style="display: flex; align-items: center; gap: 16px;">
         <button class="theme-toggle-track" id="themeToggle" aria-label="Toggle Light/Dark Theme">
           <div class="theme-toggle-knob">
             <!-- Moon Icon -->
@@ -395,22 +389,8 @@
     <div class="container split-container">
       <!-- Left Sidebar (Sticky Profile Photo) -->
       <div class="split-sidebar">
-        <div class="about-photo-wrapper" id="aboutPhotoWrapper">
-          <img class="about-photo photo-peter" src="https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444778856-AO2qKUTk.jpg" alt="Nikhil Bhojwani Profile Photo">
-          <div class="about-spiderman-mask" id="spidermanMask">
-            <svg viewBox="0 0 200 240" class="spiderman-svg-mask">
-              <path d="M100 10 C 150 10, 185 50, 185 110 C 185 175, 145 225, 100 230 C 55 225, 15 175, 15 110 C 15 50, 50 10, 100 10 Z" fill="#e61c24" stroke="#0f0f15" stroke-width="6"/>
-              <path d="M100 10 L100 230 M15 110 L185 110 M38 45 L162 175 M162 45 L38 175" stroke="#000000" stroke-width="2.5" opacity="0.65"/>
-              <path d="M100 60 C125 70, 125 95, 100 105 C75 95, 75 70, 100 60 Z" fill="none" stroke="#000000" stroke-width="2" opacity="0.6"/>
-              <path d="M100 35 C140 50, 140 120, 100 140 C60 120, 60 50, 100 35 Z" fill="none" stroke="#000000" stroke-width="2" opacity="0.6"/>
-              <path d="M100 15 C160 30, 160 150, 100 175 C40 150, 40 30, 100 15 Z" fill="none" stroke="#000000" stroke-width="2" opacity="0.6"/>
-              <path d="M35 90 C50 65, 85 70, 92 98 C80 115, 45 125, 35 90 Z" fill="#0c0c12" stroke="#000000" stroke-width="4"/>
-              <path d="M42 92 C53 72, 80 77, 86 97 C76 110, 48 118, 42 92 Z" fill="#ffffff"/>
-              <path d="M165 90 C150 65, 115 70, 108 98 C120 115, 155 125, 165 90 Z" fill="#0c0c12" stroke="#000000" stroke-width="4"/>
-              <path d="M158 92 C147 72, 120 77, 114 97 C124 110, 152 118, 158 92 Z" fill="#ffffff"/>
-            </svg>
-            <div class="spiderman-mask-badge">FRIENDLY NEIGHBORHOOD DESIGNER</div>
-          </div>
+        <div class="about-photo-wrapper">
+          <img class="about-photo" src="https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444778856-AO2qKUTk.jpg" alt="Nikhil Bhojwani Profile Photo">
         </div>
       </div>
       <!-- Right Column: Personal Narrative -->
@@ -615,33 +595,6 @@
             <h6>Interactive Prototype Loaded</h6>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Double-click container or scroll to view mockups</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Fullscreen TASM2 Spider-Man Cinematic Intro Overlay -->
-  <div class="spider-cinematic-overlay" id="spiderCinematicOverlay">
-    <button class="spider-overlay-close-btn" id="closeSpiderOverlayBtn" onclick="closeSpiderCinematic();" aria-label="Close Overlay">&times;</button>
-    <div class="cinematic-bg-video-container">
-      <video class="cinematic-video" id="spiderVideo" autoplay loop muted playsinline>
-        <source src="assets/marvel_character.mp4" type="video/mp4">
-      </video>
-      <div class="cinematic-video-overlay"></div>
-      <div class="spider-web-mesh"></div>
-    </div>
-    
-    <div class="cinematic-content">
-      <div class="spider-trivia-card">
-        <div class="spider-trivia-header">
-          <span class="spider-comic-badge">🕷️ SPIDER-MAN TRIVIA FACT</span>
-          <span class="spider-fact-number" id="spiderFactNumber">#01</span>
-        </div>
-        <p class="spider-fact-text" id="spiderFactText">Spider-Man's web-fluid is 300 times stronger than steel and dissolves naturally after 1 hour!</p>
-        
-        <div class="spider-trivia-actions">
-          <button class="spider-fact-btn" id="nextFactBtn" onclick="showRandomSpiderFact();">Next Fact 🎲</button>
-          <button class="spider-enter-btn" id="enterSpiderModeBtn" onclick="activateSpiderMode();">ENTER SPIDER-MAN MODE 🕷️</button>
         </div>
       </div>
     </div>
