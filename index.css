@@ -221,7 +221,7 @@ body::after {
   position: fixed;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 9999;
+  z-index: 10000000;
   mix-blend-mode: difference;
   transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
@@ -234,7 +234,7 @@ body::after {
   position: fixed;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 9998;
+  z-index: 9999999;
   transition: transform 0.1s ease-out, width 0.3s, height 0.3s, border-color 0.3s, opacity 0.2s;
 }
 
@@ -2634,9 +2634,20 @@ body::after {
 }
 
 .spider-cinematic-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  cursor: auto !important;
+}
+
+.spider-cinematic-overlay * {
+  cursor: auto !important;
+}
+
+.spider-overlay-close-btn,
+.spider-fact-btn,
+.spider-enter-btn {
+  cursor: pointer !important;
 }
 
 .spider-overlay-close-btn {
