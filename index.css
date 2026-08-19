@@ -728,6 +728,95 @@ body::after {
   }
 }
 
+/* --- Achievements Bento Grid Section --- */
+.achievements-section {
+  position: relative;
+  z-index: 2;
+  padding: 40px 0 60px;
+  background-color: var(--bg);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 991px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.achievement-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  transition: all 0.35s var(--transition-bezier);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--card-shadow);
+}
+
+.achievement-card-highlight {
+  border-color: var(--accent);
+  background: var(--bg-surface-elevated);
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 36px rgba(136, 85, 255, 0.16);
+}
+
+.achievement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.achievement-tag {
+  font-family: var(--font-alt);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 8px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.achievement-icon {
+  font-size: 1.4rem;
+}
+
+.achievement-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.achievement-company {
+  font-family: var(--font-alt);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.achievement-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: auto;
+}
+
 /* --- Capabilities Section --- */
 .capabilities-section {
   position: relative;
@@ -2358,6 +2447,7 @@ body::after {
 
 [data-theme="dark"] .project-card,
 [data-theme="dark"] .research-card,
+[data-theme="dark"] .achievement-card,
 [data-theme="dark"] .stack-card,
 [data-theme="dark"] .capability-item,
 [data-theme="dark"] .faq-item,
