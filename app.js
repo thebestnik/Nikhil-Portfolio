@@ -236,7 +236,7 @@ function openProjectModal(project) {
   let contextText = "Client / Platform Design";
   if (project.title.includes("MediSetu")) {
     contextText = "Healthcare & Clinical Systems";
-  } else if (project.title.includes("Paper Bull")) {
+  } else if (project.title.includes("Paper")) {
     contextText = "Fintech & Paper Trading Platform";
   } else if (project.title.includes("Sakarwal")) {
     contextText = "Medical Branding & SEO Pipelines";
@@ -260,9 +260,9 @@ function openProjectModal(project) {
         <li>Engineered a unified design system that decreased time-to-book by 45%.</li>
       </ul>
     `;
-  } else if (project.title.includes("Paper Bull")) {
+  } else if (project.title.includes("Paper")) {
     contentHtml = `
-      <p>Paper Bull is a modern paper trading and investment interface designed to simplify stock market learning, portfolio tracking, and financial analytics for traders and investors.</p>
+      <p>Paperbull is a modern paper trading and investment learning platform designed to simplify stock market learning, portfolio tracking, and financial analytics for traders and investors.</p>
       <p>As the Lead Product Designer, I crafted an intuitive, zero-friction interface featuring real-time market data visualizers, clear transaction flows, and modular design components built to enhance user confidence and financial literacy.</p>
       <p><strong>Key Highlights & Case Study Outcomes:</strong></p>
       <ul>

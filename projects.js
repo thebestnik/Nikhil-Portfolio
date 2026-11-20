@@ -29,10 +29,10 @@ const projects = [
   },
   {
     id: "03",
-    title: "Paper Bull: Trading & Investment App",
+    title: "Paperbull UX & Investment Training",
     role: "Lead Product Designer",
     timeline: "2026",
-    description: "An in-depth Medium case study mapping the end-to-end design of Paper Bull, a next-gen paper trading and market investment platform built for seamless user onboarding and financial clarity.",
+    description: "An in-depth UX case study mapping the end-to-end design of Paperbull, a next-gen paper trading and investment learning platform built for seamless user onboarding and financial clarity.",
     tags: ["Figma", "UX Research", "Fintech", "Case Study"],
     link: "https://medium.com/@bhojwaninikhil12",
     cover: "assets/paperbull_cover.jpg",
@@ -51,7 +51,7 @@ const projects = [
     link: "https://doctor-pi-seven.vercel.app/",
     cover: "assets/doctor_sanjay.png",
     hasCaseStudy: true,
-    category: "labs",
+    category: "best",
     metric: "+150% search visibility"
   },
   {
