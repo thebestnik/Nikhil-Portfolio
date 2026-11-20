@@ -66,18 +66,10 @@
         <h1 class="hero-title">
           I am <span class="text-accent-glow">Nikhil Bhojwani</span>, a Product Designer crafting refined minimal interfaces.
         </h1>
-        
-        <!-- Animated / Stacked Tagline Badges -->
-        <div class="hero-taglines">
-          <span class="hero-badge badge-primary">Product Design Intern @ Webknot</span>
-          <span class="hero-badge badge-primary">NextLeap Product Design Fellow</span>
-          <span class="hero-badge">Ex-Lead Designer @ MediSetu</span>
-          <span class="hero-badge">Details Obsessed</span>
-        </div>
 
-        <p class="hero-description reveal-fade" style="animation-delay: 0.5s;">Product Design Intern at Webknot Technologies (Bangalore) & Product Design Fellow at NextLeap. Formerly Lead Product Designer at MediSetu. Crafting refined, minimal interfaces and zero-friction digital products.</p>
+        <p class="hero-description reveal-fade" style="animation-delay: 0.4s;">Product Design Intern at Webknot Technologies (Bangalore) &amp; Product Design Fellow at NextLeap. Crafting refined, minimal interfaces and zero-friction digital products.</p>
         
-        <div class="hero-ctas reveal-fade" style="animation-delay: 0.6s;">
+        <div class="hero-ctas reveal-fade" style="animation-delay: 0.5s;">
           <a href="#work-best" class="btn btn-primary">View my work</a>
         </div>
       </div>
@@ -85,7 +77,10 @@
       <!-- Animated Cartoon Mascot Visual -->
       <div class="hero-visual reveal-fade" style="animation-delay: 0.3s;">
         <div class="mascot-container">
-          <div class="speech-bubble">Namaste</div>
+          <div class="speech-bubble" id="mascotSpeechBubble">
+            <span class="speech-text">Namaste! 🙏</span>
+            <span class="speech-lang">Hindi 🇮🇳</span>
+          </div>
           <img class="hero-mascot-img mascot-smiling" src="assets/deadpool_smiling.png" alt="Deadpool Mascot Smiling">
           <img class="hero-mascot-img mascot-waving" src="assets/deadpool_waving.png" alt="Deadpool Mascot Waving">
           
@@ -100,41 +95,6 @@
               </text>
             </svg>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Highlights & Achievements Bento Section -->
-  <section class="achievements-section">
-    <div class="container">
-      <div class="achievements-grid">
-        <div class="achievement-card achievement-card-highlight">
-          <div class="achievement-header">
-            <span class="achievement-tag">NEW ROLE // 2026</span>
-            <span class="achievement-icon">🏢</span>
-          </div>
-          <h3 class="achievement-title">Product Design Intern</h3>
-          <p class="achievement-company">Webknot Technologies — Bangalore</p>
-          <p class="achievement-desc">Engineering scalable digital product workflows, design systems, and consumer/enterprise interfaces in Bangalore.</p>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-header">
-            <span class="achievement-tag">FELLOWSHIP // 2026</span>
-            <span class="achievement-icon">🎓</span>
-          </div>
-          <h3 class="achievement-title">Product Design Fellow</h3>
-          <p class="achievement-company">NextLeap Cohort</p>
-          <p class="achievement-desc">Deepening UX research frameworks, business usability metrics, product strategy, and design thinking methodologies.</p>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-header">
-            <span class="achievement-tag">FEATURED CASE STUDIES</span>
-            <span class="achievement-icon">⚡</span>
-          </div>
-          <h3 class="achievement-title">Paper Bull & MediSetu</h3>
-          <p class="achievement-company">Fintech & Healthcare UX</p>
-          <p class="achievement-desc">Crafted end-to-end patient booking applications and paper trading fintech platforms featured on Medium.</p>
         </div>
       </div>
     </div>
@@ -266,20 +226,82 @@
     </div>
   </section>
 
-  <!-- Capabilities / Design Stack Section -->
-  <section class="section-padding capabilities-section" style="border-top: 1px solid var(--border)">
+  <!-- Interactive Design Craft & Product Pillars (2026 Trend) -->
+  <section class="section-padding capabilities-section" id="craft" style="border-top: 1px solid var(--border)">
     <div class="container">
-      <span class="section-label">Capabilities</span>
-      <h2 class="section-title-large">I love bringing ideas to life!</h2>
-      <div class="capabilities-grid">
-        <div class="capability-item">UX Discovery & Strategy Design</div>
-        <div class="capability-item">User Research & Interviews</div>
-        <div class="capability-item">Creating Design Systems</div>
-        <div class="capability-item">Storytelling & Visual Narrative</div>
-        <div class="capability-item">Visual & UI Design</div>
-        <div class="capability-item">Prototyping & Interaction Design</div>
-        <div class="capability-item">No Code & Frontend Development</div>
-        <div class="capability-item">Responsive Web Design</div>
+      <div class="craft-header-flex">
+        <div>
+          <span class="section-label">Core Pillars &amp; Passion</span>
+          <h2 class="section-title-large">How I Think, Design &amp; Build</h2>
+          <p class="section-desc-subtle">Treating design as an engineering discipline: zero-friction UX, scalable systems, and obsessive micro-interactions.</p>
+        </div>
+      </div>
+
+      <!-- Interactive 4-Pillar Explorer -->
+      <div class="craft-interactive-deck">
+        <div class="craft-card active" data-pillar="frictionless">
+          <div class="craft-card-top">
+            <span class="craft-icon">⚡</span>
+            <span class="craft-badge">Ergonomics</span>
+          </div>
+          <h3 class="craft-card-title">Zero-Friction Flows</h3>
+          <p class="craft-card-desc">Eliminating cognitive overload and unnecessary friction in every user journey.</p>
+          <div class="craft-detail-preview">
+            <div class="craft-metric-chip"><strong>-60%</strong> Drop-offs</div>
+            <p class="craft-insight">At MediSetu, restructured healthcare booking from a 6-step questionnaire into an intuitive 2-tap scheduling interface.</p>
+          </div>
+        </div>
+
+        <div class="craft-card" data-pillar="systems">
+          <div class="craft-card-top">
+            <span class="craft-icon">📐</span>
+            <span class="craft-badge">Scalability</span>
+          </div>
+          <h3 class="craft-card-title">Atomic Design Systems</h3>
+          <p class="craft-card-desc">Architecting robust token systems that seamlessly bridge Figma variables and code.</p>
+          <div class="craft-detail-preview">
+            <div class="craft-metric-chip"><strong>100%</strong> Tokenized</div>
+            <p class="craft-insight">At Webknot, standardizing enterprise component tokens, WCAG AA contrast rules, and unified design handoff.</p>
+          </div>
+        </div>
+
+        <div class="craft-card" data-pillar="microdelight">
+          <div class="craft-card-top">
+            <span class="craft-icon">🪄</span>
+            <span class="craft-badge">Craft</span>
+          </div>
+          <h3 class="craft-card-title">Micro-Delights &amp; Feel</h3>
+          <p class="craft-card-desc">Infusing physical spring dynamics, tactile feedback, and intentional motion.</p>
+          <div class="craft-detail-preview">
+            <div class="craft-metric-chip"><strong>60 FPS</strong> Kinetic Motion</div>
+            <p class="craft-insight">Every button state, drawer transition, and hover response is tuned with organic bezier easing for tactile satisfaction.</p>
+          </div>
+        </div>
+
+        <div class="craft-card" data-pillar="business">
+          <div class="craft-card-top">
+            <span class="craft-icon">📊</span>
+            <span class="craft-badge">Strategy</span>
+          </div>
+          <h3 class="craft-card-title">Business &amp; Usability ROI</h3>
+          <p class="craft-card-desc">Connecting aesthetic polish with bottom-line retention, conversion, and task speed.</p>
+          <div class="craft-detail-preview">
+            <div class="craft-metric-chip"><strong>+42%</strong> Usability Score</div>
+            <p class="craft-insight">NextLeap fellowship research frameworks focused on UX heuristics, funnel drop-off diagnostics, and behavioral economics.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Capabilities Chips -->
+      <div class="capabilities-grid" style="margin-top: 36px;">
+        <div class="capability-item">UX Discovery &amp; Strategy</div>
+        <div class="capability-item">Figma Variables &amp; Tokens</div>
+        <div class="capability-item">Design Systems Architecture</div>
+        <div class="capability-item">Interaction Prototyping</div>
+        <div class="capability-item">Frontend Development (HTML/CSS/JS)</div>
+        <div class="capability-item">User Research &amp; Heuristic Audits</div>
+        <div class="capability-item">Fintech &amp; HealthTech Product UX</div>
+        <div class="capability-item">Responsive Web &amp; Mobile Design</div>
       </div>
     </div>
   </section>
@@ -396,6 +418,37 @@
           <p>I design digital products with a single conviction: simplicity is the highest sophistication. Operating at the intersection of complex logic and visual harmony, I craft interfaces that feel intuitive, human, and responsive. I focus on translating intricate user requirements into clean grid hierarchies, intentional typography, and micro-animations that deliver high-delight outcomes.</p>
           <p>Currently, I am working as a <strong>Product Design Intern at Webknot Technologies</strong> (Bangalore), engineering digital product workflows, design systems, and user-centric interfaces. Simultaneously, I am enrolled in <strong>NextLeap's Product Design Course</strong>, deepening my expertise in product strategy, UX research frameworks, business metrics, and interaction architecture.</p>
           <p>Previously, I led the UI/UX design efforts at MediSetu, designing patient-facing healthcare applications that simplified clinical consultation and patient onboarding, alongside creating featured Medium case studies such as Paper Bull.</p>
+        </div>
+
+        <!-- Career Highlights & Current Pursuits Bento -->
+        <div class="about-highlights-grid">
+          <div class="achievement-card achievement-card-highlight">
+            <div class="achievement-header">
+              <span class="achievement-tag">NEW ROLE // 2026</span>
+              <span class="achievement-icon">🏢</span>
+            </div>
+            <h3 class="achievement-title">Product Design Intern</h3>
+            <p class="achievement-company">Webknot Technologies — Bangalore</p>
+            <p class="achievement-desc">Engineering scalable digital product workflows, design systems, and consumer/enterprise interfaces in Bangalore.</p>
+          </div>
+          <div class="achievement-card">
+            <div class="achievement-header">
+              <span class="achievement-tag">FELLOWSHIP // 2026</span>
+              <span class="achievement-icon">🎓</span>
+            </div>
+            <h3 class="achievement-title">Product Design Fellow</h3>
+            <p class="achievement-company">NextLeap Cohort</p>
+            <p class="achievement-desc">Deepening UX research frameworks, business usability metrics, product strategy, and design thinking methodologies.</p>
+          </div>
+          <div class="achievement-card">
+            <div class="achievement-header">
+              <span class="achievement-tag">FEATURED CASE STUDIES</span>
+              <span class="achievement-icon">⚡</span>
+            </div>
+            <h3 class="achievement-title">Paper Bull &amp; MediSetu</h3>
+            <p class="achievement-company">Fintech &amp; Healthcare UX</p>
+            <p class="achievement-desc">Crafted end-to-end patient booking applications and paper trading fintech platforms featured on Medium.</p>
+          </div>
         </div>
         
         <h3 class="timeline-section-title" style="margin-top: 48px;">Work Experience</h3>
