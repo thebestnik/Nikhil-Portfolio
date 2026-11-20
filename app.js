@@ -702,17 +702,16 @@ function showToast(message) {
 
 /* 5. Multilingual Mascot Greeting on Hover (Deadpool Avatar) */
 const MASCOT_GREETINGS = [
-  { text: "Namaste! 🙏", lang: "Hindi 🇮🇳" },
-  { text: "Hello! 👋", lang: "English 🇬🇧" },
-  { text: "Namaskara! 🙏", lang: "Kannada 🇮🇳" },
-  { text: "Bonjour! 🥐", lang: "French 🇫🇷" },
-  { text: "¡Hola! ☀️", lang: "Spanish 🇪🇸" },
-  { text: "Konnichiwa! 🌸", lang: "Japanese 🇯🇵" },
-  { text: "Hallo! 🥨", lang: "German 🇩🇪" },
-  { text: "Ciao! 🍕", lang: "Italian 🇮🇹" },
-  { text: "Vanakkam! ✨", lang: "Tamil 🇮🇳" },
-  { text: "Olá! 🌊", lang: "Portuguese 🇵🇹" },
-  { text: "Marhaban! 🌙", lang: "Arabic 🇦🇪" }
+  "Namaste! 🙏",
+  "Hello! 👋",
+  "Namaskara! 🙏",
+  "Bonjour! 🥐",
+  "¡Hola! ☀️",
+  "Konnichiwa! 🌸",
+  "Hallo! 🥨",
+  "Ciao! 🍕",
+  "Olá! 🌊",
+  "Marhaban! 🌙"
 ];
 
 let mascotGreetingIdx = 0;
@@ -723,14 +722,10 @@ function initMultilingualMascot() {
   if (!mascotContainer || !speechBubble) return;
 
   mascotContainer.addEventListener("mouseenter", () => {
-    // Cycle to next greeting on hover
     mascotGreetingIdx = (mascotGreetingIdx + 1) % MASCOT_GREETINGS.length;
-    const item = MASCOT_GREETINGS[mascotGreetingIdx];
-    
-    // Smooth pop & content swap
-    speechBubble.innerHTML = `<span class="speech-text">${item.text}</span><span class="speech-lang">${item.lang}</span>`;
+    speechBubble.textContent = MASCOT_GREETINGS[mascotGreetingIdx];
     speechBubble.classList.remove("bubble-pop");
-    void speechBubble.offsetWidth; // Force CSS animation restart
+    void speechBubble.offsetWidth; // Force animation restart
     speechBubble.classList.add("bubble-pop");
   });
 }

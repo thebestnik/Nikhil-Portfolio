@@ -69,32 +69,6 @@ const projects = [
   },
   {
     id: "06",
-    title: "Burger King: Redesign",
-    role: "Visual Designer",
-    timeline: "2025",
-    description: "A bold, appetite-driven landing page redesign for Burger King. Focusing on 'Get Your Favourite One' 40% off campaign narrative for their spicy burger range.",
-    tags: ["Figma", "Photoshop"],
-    link: "",
-    cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445063502-DwgVyMe9.png",
-    hasCaseStudy: false,
-    category: "action",
-    metric: "Bold brand styling"
-  },
-  {
-    id: "07",
-    title: "Nike: Air Max Style",
-    role: "UI Designer",
-    timeline: "2025",
-    description: "A dark, street-inspired landing page concept for Nike Air Max 90. Design emphasizes 'Style Takes Over' narrative.",
-    tags: ["Figma", "Spline"],
-    link: "",
-    cover: "https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778445065819-ppo9wbW9.png",
-    hasCaseStudy: false,
-    category: "action",
-    metric: "3D Spline concept"
-  },
-  {
-    id: "08",
     title: "Valorant: Jett Showcase",
     role: "UI Designer & Animator",
     timeline: "2026",
@@ -107,16 +81,16 @@ const projects = [
     metric: "Interactive Figma prototype"
   },
   {
-    id: "09",
+    id: "07",
     title: "Marvel Character Page",
     role: "Visual & UI Designer",
     timeline: "2026",
-    description: "An immersive, high-fidelity Marvel character showcase page designed with a bold comic-inspired layout, interactive typography, and motion details.",
+    description: "An immersive, high-fidelity character showcase page designed with a bold comic-inspired layout, interactive typography, and motion details.",
     tags: ["Figma", "Visual Design", "Interaction Design"],
     link: "https://www.figma.com/proto/VQybtVRWy1xPhT2g9FHIZ1/Marvel-Character-Page--Community-?node-id=2004-2&viewport=-530%2C975%2C0.3&t=LFan6MuJOM09clr0-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2007%3A101&page-id=0%3A1",
     cover: "assets/marvel_character.mp4",
     hasCaseStudy: false,
-    category: "action",
+    category: "labs",
     metric: "Figma Prototype"
   }
 ];
