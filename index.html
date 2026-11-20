@@ -47,7 +47,14 @@
         <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="nav-link">Medium</a>
       </nav>
       
-      <div style="display: flex; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <!-- Theme Toggle Switch -->
+        <button id="themeToggle" class="theme-toggle-track" aria-label="Toggle theme">
+          <span class="theme-toggle-knob">
+            <svg class="knob-icon sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="knob-icon moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
         <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -64,10 +71,13 @@
     <div class="container hero-grid">
       <div class="hero-content reveal-on-load">
         <h1 class="hero-title">
-          I am <span class="text-accent-glow">Nikhil Bhojwani</span>, a Product Designer crafting refined minimal interfaces.
+          I am <span class="text-accent-glow">Nikhil Bhojwani</span>, a Product Designer crafting refined, minimal interfaces that just feel right.
         </h1>
 
-        <p class="hero-description reveal-fade" style="animation-delay: 0.4s;">Product Design Intern at Webknot Technologies (Bangalore) &amp; Product Design Fellow at NextLeap. Crafting refined, minimal interfaces and zero-friction digital products.</p>
+        <div class="hero-role-pills reveal-fade" style="animation-delay: 0.4s;">
+          <span class="hero-role-pill">Product Design Intern at Webknot Technologies</span>
+          <span class="hero-role-pill">Product Design Fellow at NextLeap</span>
+        </div>
         
         <div class="hero-ctas reveal-fade" style="animation-delay: 0.5s;">
           <a href="#work-best" class="btn btn-primary">View my work</a>
@@ -77,10 +87,7 @@
       <!-- Animated Cartoon Mascot Visual -->
       <div class="hero-visual reveal-fade" style="animation-delay: 0.3s;">
         <div class="mascot-container">
-          <div class="speech-bubble" id="mascotSpeechBubble">
-            <span class="speech-text">Namaste! 🙏</span>
-            <span class="speech-lang">Hindi 🇮🇳</span>
-          </div>
+          <div class="speech-bubble" id="mascotSpeechBubble">Namaste! 🙏</div>
           <img class="hero-mascot-img mascot-smiling" src="assets/deadpool_smiling.png" alt="Deadpool Mascot Smiling">
           <img class="hero-mascot-img mascot-waving" src="assets/deadpool_waving.png" alt="Deadpool Mascot Waving">
           
@@ -242,52 +249,52 @@
         <div class="craft-card active" data-pillar="frictionless">
           <div class="craft-card-top">
             <span class="craft-icon">⚡</span>
-            <span class="craft-badge">Ergonomics</span>
+            <span class="craft-badge">Easy to Use</span>
           </div>
-          <h3 class="craft-card-title">Zero-Friction Flows</h3>
-          <p class="craft-card-desc">Eliminating cognitive overload and unnecessary friction in every user journey.</p>
+          <h3 class="craft-card-title">Make it Simple</h3>
+          <p class="craft-card-desc">No confusion, no dead ends — just flows that work the first time, every time.</p>
           <div class="craft-detail-preview">
             <div class="craft-metric-chip"><strong>-60%</strong> Drop-offs</div>
-            <p class="craft-insight">At MediSetu, restructured healthcare booking from a 6-step questionnaire into an intuitive 2-tap scheduling interface.</p>
+            <p class="craft-insight">At MediSetu, turned a 6-step booking process into 2 taps. Users loved it.</p>
           </div>
         </div>
 
         <div class="craft-card" data-pillar="systems">
           <div class="craft-card-top">
             <span class="craft-icon">📐</span>
-            <span class="craft-badge">Scalability</span>
+            <span class="craft-badge">Consistent</span>
           </div>
-          <h3 class="craft-card-title">Atomic Design Systems</h3>
-          <p class="craft-card-desc">Architecting robust token systems that seamlessly bridge Figma variables and code.</p>
+          <h3 class="craft-card-title">Build Design Systems</h3>
+          <p class="craft-card-desc">Every component built once, used everywhere. Consistent, clean, and dev-ready.</p>
           <div class="craft-detail-preview">
             <div class="craft-metric-chip"><strong>100%</strong> Tokenized</div>
-            <p class="craft-insight">At Webknot, standardizing enterprise component tokens, WCAG AA contrast rules, and unified design handoff.</p>
+            <p class="craft-insight">At Webknot, building a component system where every piece works perfectly together.</p>
           </div>
         </div>
 
         <div class="craft-card" data-pillar="microdelight">
           <div class="craft-card-top">
             <span class="craft-icon">🪄</span>
-            <span class="craft-badge">Craft</span>
+            <span class="craft-badge">Feels Alive</span>
           </div>
-          <h3 class="craft-card-title">Micro-Delights &amp; Feel</h3>
-          <p class="craft-card-desc">Infusing physical spring dynamics, tactile feedback, and intentional motion.</p>
+          <h3 class="craft-card-title">Small Details, Big Impact</h3>
+          <p class="craft-card-desc">The small moments — a smooth hover, a satisfying tap — make a great product feel human.</p>
           <div class="craft-detail-preview">
-            <div class="craft-metric-chip"><strong>60 FPS</strong> Kinetic Motion</div>
-            <p class="craft-insight">Every button state, drawer transition, and hover response is tuned with organic bezier easing for tactile satisfaction.</p>
+            <div class="craft-metric-chip"><strong>60 FPS</strong> Smooth Motion</div>
+            <p class="craft-insight">Every hover, tap, and transition is tuned to feel just right — nothing jarring, nothing slow.</p>
           </div>
         </div>
 
         <div class="craft-card" data-pillar="business">
           <div class="craft-card-top">
             <span class="craft-icon">📊</span>
-            <span class="craft-badge">Strategy</span>
+            <span class="craft-badge">Results-Driven</span>
           </div>
-          <h3 class="craft-card-title">Business &amp; Usability ROI</h3>
-          <p class="craft-card-desc">Connecting aesthetic polish with bottom-line retention, conversion, and task speed.</p>
+          <h3 class="craft-card-title">Design That Moves Numbers</h3>
+          <p class="craft-card-desc">Good design isn't just pretty — it gets more people to stay, click, and come back.</p>
           <div class="craft-detail-preview">
             <div class="craft-metric-chip"><strong>+42%</strong> Usability Score</div>
-            <p class="craft-insight">NextLeap fellowship research frameworks focused on UX heuristics, funnel drop-off diagnostics, and behavioral economics.</p>
+            <p class="craft-insight">NextLeap trained me to connect every design decision to real business outcomes and user behavior.</p>
           </div>
         </div>
       </div>
@@ -311,17 +318,12 @@
     <div class="container split-container">
       <!-- Left Sidebar (Sticky) -->
       <div class="split-sidebar">
-        <span class="section-label">01 // Selected Work</span>
+        <div class="work-sidebar-header">
+          <span class="section-label">01 // Selected Work</span>
+          <span class="work-all-label">All Projects</span>
+        </div>
         <h2 class="split-sidebar-title">Crafted with Purpose</h2>
         <p class="split-sidebar-desc">Translating complex systems into human-centric interfaces. A curated showcase of production design systems, interactive prototypes, and UX case studies.</p>
-        
-        <!-- Interactive Category Filter Tabs (2026 Trend) -->
-        <div class="work-filter-tabs" id="projectFilterTabs">
-          <button class="filter-tab-btn active" data-filter="all">All Projects <span class="tab-count">9</span></button>
-          <button class="filter-tab-btn" data-filter="best">Core UX & Platforms <span class="tab-count">3</span></button>
-          <button class="filter-tab-btn" data-filter="labs">Creative Labs <span class="tab-count">3</span></button>
-          <button class="filter-tab-btn" data-filter="action">Visual & Concepts <span class="tab-count">3</span></button>
-        </div>
       </div>
       <!-- Right Content (Scrollable Grid) -->
       <div class="split-content" id="bestWorksGrid">
@@ -346,73 +348,22 @@
     </div>
   </section>
 
-  <!-- Work Section 3: Visual Designs (Split Layout) -->
-  <section class="split-section" id="work-designs" style="border-top: 1px solid var(--border)">
-    <div class="container split-container">
-      <!-- Left Sidebar (Sticky) -->
-      <div class="split-sidebar">
-        <span class="section-label">03 // Designs</span>
-        <h2 class="split-sidebar-title">Visual Designs</h2>
-        <p class="split-sidebar-desc">A collection of visual concepts, branding mockups, and interactive prototypes showcasing layout design and visual storytelling.</p>
-      </div>
-      <!-- Right Content (Scrollable Grid) -->
-      <div class="split-content" id="actionGrid">
-        <!-- Rendered dynamically via app.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Work Section 4: Deep Research & Thought Dives (Split Layout) -->
-  <section class="split-section" id="work-research" style="border-top: 1px solid var(--border)">
-    <div class="container split-container">
-      <!-- Left Sidebar (Sticky) -->
-      <div class="split-sidebar">
-        <span class="section-label">04 // Deep Research</span>
-        <h2 class="split-sidebar-title">Spaces that Speak</h2>
-        <p class="split-sidebar-desc">Exploring user-centric design principles, minimal design systems, and mental usability mappings through articles and literature reviews.</p>
-      </div>
-      <!-- Right Content (Scrollable List) -->
-      <div class="split-content-flow">
-        <div class="research-list">
-          <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="research-card">
-            <span class="research-meta">FEATURED MEDIUM CASE STUDY // 2026</span>
-            <h3 class="research-card-title">Paper Bull: Next-Gen Trading & Investment UX</h3>
-            <p class="research-card-desc">An end-to-end product design case study exploring fintech onboarding heuristics, portfolio data visualizers, and financial clarity.</p>
-          </a>
-          <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="research-card">
-            <span class="research-meta">MEDIUM ARTICLE // 2026</span>
-            <h3 class="research-card-title">The Place of Space in Mental Well-Being</h3>
-            <p class="research-card-desc">An inquiry into how cognitive layouts and digital spatial design principles influence user focus and emotional output.</p>
-          </a>
-          <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="research-card">
-            <span class="research-meta">DESIGN STUDY // 2025</span>
-            <h3 class="research-card-title">Vernacular Cultural Identity in Contemporary Design</h3>
-            <p class="research-card-desc">Analyzing how modern digital interfaces adapt traditional layout styles to retain accessibility across diverse audiences.</p>
-          </a>
-          <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="research-card">
-            <span class="research-meta">SYSTEM ANALYSIS // 2025</span>
-            <h3 class="research-card-title">Why Refined Minimal Interfaces Build Stronger Focus</h3>
-            <p class="research-card-desc">How cognitive load reduction and extreme layout minimalism result in higher task success and digital retention rates.</p>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
   <!-- About Section (Split Layout) -->
   <section class="split-section" id="about" style="border-top: 1px solid var(--border)">
     <div class="container split-container">
       <!-- Left Sidebar (Sticky Profile Photo) -->
       <div class="split-sidebar">
         <div class="about-photo-wrapper">
-          <img class="about-photo" src="https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444778856-AO2qKUTk.jpg" alt="Nikhil Bhojwani Profile Photo">
+          <div class="about-photo-swap">
+            <img class="about-photo photo-normal" src="https://nikhil-bhojwani-portfolio-1067926082825.asia-southeast1.run.app/assets/regenerated_image_1778444778856-AO2qKUTk.jpg" alt="Nikhil Bhojwani Profile Photo">
+            <img class="about-photo photo-ghibli" src="assets/nikhil_ghibli.jpg" alt="Nikhil — Ghibli Version">
+          </div>
+          <span class="photo-hover-hint">Hover to see my Ghibli self ✨</span>
         </div>
       </div>
       <!-- Right Column: Personal Narrative -->
       <div class="split-content-flow">
-        <span class="section-label">05 // About</span>
+        <span class="section-label">03 // About</span>
         <h2 class="section-title-large" style="margin-top: 8px;">Beyond Pixels & Codes</h2>
         <div class="about-narrative-wrapper">
           <p>I design digital products with a single conviction: simplicity is the highest sophistication. Operating at the intersection of complex logic and visual harmony, I craft interfaces that feel intuitive, human, and responsive. I focus on translating intricate user requirements into clean grid hierarchies, intentional typography, and micro-animations that deliver high-delight outcomes.</p>
@@ -425,7 +376,6 @@
           <div class="achievement-card achievement-card-highlight">
             <div class="achievement-header">
               <span class="achievement-tag">NEW ROLE // 2026</span>
-              <span class="achievement-icon">🏢</span>
             </div>
             <h3 class="achievement-title">Product Design Intern</h3>
             <p class="achievement-company">Webknot Technologies — Bangalore</p>
@@ -434,20 +384,10 @@
           <div class="achievement-card">
             <div class="achievement-header">
               <span class="achievement-tag">FELLOWSHIP // 2026</span>
-              <span class="achievement-icon">🎓</span>
             </div>
             <h3 class="achievement-title">Product Design Fellow</h3>
             <p class="achievement-company">NextLeap Cohort</p>
             <p class="achievement-desc">Deepening UX research frameworks, business usability metrics, product strategy, and design thinking methodologies.</p>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-header">
-              <span class="achievement-tag">FEATURED CASE STUDIES</span>
-              <span class="achievement-icon">⚡</span>
-            </div>
-            <h3 class="achievement-title">Paper Bull &amp; MediSetu</h3>
-            <p class="achievement-company">Fintech &amp; Healthcare UX</p>
-            <p class="achievement-desc">Crafted end-to-end patient booking applications and paper trading fintech platforms featured on Medium.</p>
           </div>
         </div>
         
@@ -504,7 +444,7 @@
     <div class="container split-container">
       <!-- Left Sidebar (Sticky) -->
       <div class="split-sidebar">
-        <span class="section-label">06 // FAQ</span>
+        <span class="section-label">04 // FAQ</span>
         <h2 class="split-sidebar-title">Your questions, answered</h2>
         <p class="split-sidebar-desc">A quick dive into my design philosophy, creative principles, and workflows.</p>
       </div>
@@ -559,7 +499,7 @@
   <section class="section-padding contact-section" id="contact" style="border-top: 1px solid var(--border)">
     <div class="container">
       <div class="contact-card-pastel">
-        <span class="section-label">07 // Contact</span>
+        <span class="section-label">05 // Contact</span>
         <h2 class="contact-card-title">Say hi to me!</h2>
         <p class="contact-card-subtitle">Get in Touch</p>
         

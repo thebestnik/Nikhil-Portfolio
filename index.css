@@ -571,12 +571,43 @@ body::after {
   display: block;
 }
 
-/* Hero Badge Taglines */
+/* Hero Badge Taglines (keeping for backward compat, hidden) */
 .hero-taglines {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 32px;
+}
+
+/* Hero Role Pill Capsules */
+.hero-role-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.hero-role-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-family: var(--font-alt);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.3s var(--transition-bezier);
+}
+
+.hero-role-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-surface-elevated);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(136, 85, 255, 0.12);
 }
 
 .hero-badge {
@@ -703,13 +734,12 @@ body::after {
   color: var(--text-primary);
   border: 1.5px solid var(--accent);
   border-radius: 16px;
-  padding: 8px 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  min-width: 110px;
+  padding: 8px 18px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px) scale(0.85);
@@ -718,24 +748,6 @@ body::after {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 15px var(--accent-glow);
   z-index: 10;
   pointer-events: none;
-}
-
-.speech-bubble .speech-text {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--text-primary);
-  line-height: 1.2;
-}
-
-.speech-bubble .speech-lang {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  color: var(--accent);
-  line-height: 1;
 }
 
 .speech-bubble.bubble-pop {
@@ -1366,6 +1378,75 @@ body::after {
   color: var(--text-secondary);
   line-height: 1.65;
   margin-bottom: 24px;
+}
+
+/* --- About Photo Ghibli Hover Swap --- */
+.about-photo-swap {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.about-photo-swap .photo-normal {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  transition: opacity 0.5s ease;
+}
+
+.about-photo-swap .photo-ghibli {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.about-photo-swap:hover .photo-ghibli {
+  opacity: 1;
+}
+
+.about-photo-swap:hover .photo-normal {
+  opacity: 0;
+}
+
+.photo-hover-hint {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-family: var(--font-alt);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  opacity: 0.8;
+}
+
+/* --- Work Sidebar Header (All Projects label) --- */
+.work-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.work-all-label {
+  font-family: var(--font-alt);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-subtle, rgba(136, 85, 255, 0.08));
+  border: 1px solid var(--accent-border, rgba(136, 85, 255, 0.2));
+  padding: 4px 10px;
+  border-radius: 8px;
 }
 
 /* Experience timeline */
