@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderHide();
   initFaqAccordion();
   initInteractiveCardSpotlights();
+  initLiveTimeWidget();
+  initProjectFilterTabs();
+  initKeyboardShortcuts();
   
   // Clean up any old identity mode attributes
   document.documentElement.removeAttribute("data-mode");
@@ -43,6 +46,7 @@ function initTheme() {
       
       document.documentElement.setAttribute("data-theme", nextTheme);
       localStorage.setItem("theme", nextTheme);
+      showToast(nextTheme === "dark" ? "🌙 Dark theme active (Press T)" : "☀️ Light theme active (Press T)");
     });
   }
 }
@@ -403,11 +407,13 @@ function initEmailClipboard() {
     navigator.clipboard.writeText(emailText).then(() => {
       // Add visual feedback
       copyBtn.classList.add("copied");
+      showToast("✓ Copied bhojwaninikhil12@gmail.com to clipboard!");
       setTimeout(() => {
         copyBtn.classList.remove("copied");
       }, 2000);
     }).catch(err => {
       console.error("Failed to copy text: ", err);
+      showToast("Email: bhojwaninikhil12@gmail.com");
     });
   });
 }
@@ -600,4 +606,119 @@ function initInteractiveCardSpotlights() {
       card.style.setProperty("--mouse-y", `${y}px`);
     });
   });
+}
+
+/* ==========================================================================
+   2026 Product Designer Trends: Interactive Features
+   ========================================================================== */
+
+/* 1. Real-Time IST Time Widget (2026 Trend) */
+function initLiveTimeWidget() {
+  const widget = document.getElementById("liveTimeWidget");
+  if (!widget) return;
+  
+  function updateTime() {
+    try {
+      const options = {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+      };
+      const timeStr = new Intl.DateTimeFormat([], options).format(new Date());
+      widget.textContent = `${timeStr} IST`;
+    } catch (e) {
+      widget.textContent = "UTC +5:30";
+    }
+  }
+  
+  updateTime();
+  setInterval(updateTime, 15000);
+}
+
+/* 2. Interactive Project Filter Tabs (2026 Trend) */
+function initProjectFilterTabs() {
+  const filterTabs = document.querySelectorAll(".filter-tab-btn");
+  const sectionBest = document.getElementById("work-best");
+  const sectionLabs = document.getElementById("work-labs");
+  const sectionDesigns = document.getElementById("work-designs");
+  
+  if (!filterTabs.length) return;
+  
+  filterTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      filterTabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      
+      const filter = tab.getAttribute("data-filter");
+      
+      if (filter === "all") {
+        if (sectionBest) sectionBest.style.display = "block";
+        if (sectionLabs) sectionLabs.style.display = "block";
+        if (sectionDesigns) sectionDesigns.style.display = "block";
+        showToast("Showing all 9 projects");
+      } else if (filter === "best") {
+        if (sectionBest) {
+          sectionBest.style.display = "block";
+          sectionBest.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        if (sectionLabs) sectionLabs.style.display = "none";
+        if (sectionDesigns) sectionDesigns.style.display = "none";
+        showToast("Filtered: Core UX & Healthcare Platforms");
+      } else if (filter === "labs") {
+        if (sectionBest) sectionBest.style.display = "none";
+        if (sectionLabs) {
+          sectionLabs.style.display = "block";
+          sectionLabs.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        if (sectionDesigns) sectionDesigns.style.display = "none";
+        showToast("Filtered: Frontend & Creative Labs");
+      } else if (filter === "action") {
+        if (sectionBest) sectionBest.style.display = "none";
+        if (sectionLabs) sectionLabs.style.display = "none";
+        if (sectionDesigns) {
+          sectionDesigns.style.display = "block";
+          sectionDesigns.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        showToast("Filtered: Visual Concepts & Prototypes");
+      }
+    });
+  });
+}
+
+/* 3. Keyboard Accessibility Shortcuts (T for Theme, Esc for Modal) */
+function initKeyboardShortcuts() {
+  window.addEventListener("keydown", (e) => {
+    // Avoid triggering when user is in input or textarea
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
+    
+    // Press 'T' or 't' to toggle light/dark theme
+    if (e.key === "t" || e.key === "T") {
+      let activeTheme = document.documentElement.getAttribute("data-theme") || "light";
+      let nextTheme = activeTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", nextTheme);
+      localStorage.setItem("theme", nextTheme);
+      showToast(nextTheme === "dark" ? "🌙 Dark theme active" : "☀️ Light theme active");
+    }
+    
+    // Press 'Escape' to close modal
+    if (e.key === "Escape") {
+      closeProjectModal();
+    }
+  });
+}
+
+/* 4. Global Interactive Feedback Toast */
+let toastTimeout;
+function showToast(message) {
+  const toast = document.getElementById("siteToast");
+  if (!toast) return;
+  
+  toast.textContent = message;
+  toast.classList.add("show");
+  
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2400);
 }

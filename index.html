@@ -47,7 +47,8 @@
         <a href="https://medium.com/@bhojwaninikhil12" target="_blank" rel="noopener" class="nav-link">Medium</a>
       </nav>
       
-      <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="kbd-hint" title="Press T to toggle theme"><span class="kbd-badge">T</span></span>
         <button class="theme-toggle-track" id="themeToggle" aria-label="Toggle Light/Dark Theme">
           <div class="theme-toggle-knob">
             <!-- Moon Icon -->
@@ -76,6 +77,13 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content reveal-on-load">
+        <!-- Live Availability Status Beacon (2026 Trend) -->
+        <div class="hero-status-pill">
+          <span class="status-beacon-dot"></span>
+          <span>Available for Product Design Roles • Bangalore & Jaipur</span>
+          <span class="status-pill-time" id="liveTimeWidget">IST</span>
+        </div>
+
         <h1 class="hero-title">
           I am <span class="text-accent-glow">Nikhil Bhojwani</span>, a Product Designer crafting refined minimal interfaces.
         </h1>
@@ -302,9 +310,17 @@
     <div class="container split-container">
       <!-- Left Sidebar (Sticky) -->
       <div class="split-sidebar">
-        <span class="section-label">01 // Best Works</span>
-        <h2 class="split-sidebar-title">Best Works</h2>
-        <p class="split-sidebar-desc">My design journey centers on a human-centered approach to solve real-world problems. Currently, I design digital healthcare platforms at MediSetu, aiming to deliver seamless, intuitive workflows.</p>
+        <span class="section-label">01 // Selected Work</span>
+        <h2 class="split-sidebar-title">Crafted with Purpose</h2>
+        <p class="split-sidebar-desc">Translating complex systems into human-centric interfaces. A curated showcase of production design systems, interactive prototypes, and UX case studies.</p>
+        
+        <!-- Interactive Category Filter Tabs (2026 Trend) -->
+        <div class="work-filter-tabs" id="projectFilterTabs">
+          <button class="filter-tab-btn active" data-filter="all">All Projects <span class="tab-count">9</span></button>
+          <button class="filter-tab-btn" data-filter="best">Core UX & Platforms <span class="tab-count">3</span></button>
+          <button class="filter-tab-btn" data-filter="labs">Creative Labs <span class="tab-count">3</span></button>
+          <button class="filter-tab-btn" data-filter="action">Visual & Concepts <span class="tab-count">3</span></button>
+        </div>
       </div>
       <!-- Right Content (Scrollable Grid) -->
       <div class="split-content" id="bestWorksGrid">
@@ -599,6 +615,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Interactive Feedback Toast -->
+  <div class="site-toast" id="siteToast"></div>
 
   <!-- Javascript Modules -->
   <script src="projects.js"></script>
