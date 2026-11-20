@@ -697,17 +697,19 @@ body::after {
 /* Mascot Speech Bubble */
 .speech-bubble {
   position: absolute;
-  top: -24px;
+  top: -30px;
   left: -20px;
   background: var(--bg-surface-elevated);
   color: var(--text-primary);
   border: 1.5px solid var(--accent);
   border-radius: 16px;
   padding: 8px 16px;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 110px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px) scale(0.85);
@@ -716,6 +718,34 @@ body::after {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 15px var(--accent-glow);
   z-index: 10;
   pointer-events: none;
+}
+
+.speech-bubble .speech-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.speech-bubble .speech-lang {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.speech-bubble.bubble-pop {
+  animation: speechBubblePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes speechBubblePop {
+  0% { transform: translateY(0) scale(0.92); }
+  50% { transform: translateY(-4px) scale(1.08); }
+  100% { transform: translateY(0) scale(1); }
 }
 
 .speech-bubble::after {
@@ -788,6 +818,159 @@ body::after {
   .achievements-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* About Highlights Bento Grid */
+.about-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+  margin-bottom: 24px;
+}
+
+.about-highlights-grid .achievement-card {
+  padding: 22px;
+  border-radius: 20px;
+}
+
+/* --- Interactive Craft & Product Pillars (2026 Trend) --- */
+.craft-header-flex {
+  margin-bottom: 36px;
+}
+
+.section-desc-subtle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.craft-interactive-deck {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .craft-interactive-deck {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .craft-interactive-deck {
+    grid-template-columns: 1fr;
+  }
+}
+
+.craft-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s var(--transition-bezier);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.craft-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.craft-card:hover,
+.craft-card.active {
+  border-color: var(--accent);
+  background: var(--bg-surface-elevated);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(136, 85, 255, 0.12);
+}
+
+.craft-card.active::before {
+  background: var(--accent);
+}
+
+.craft-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.craft-icon {
+  font-size: 1.5rem;
+}
+
+.craft-badge {
+  font-family: var(--font-alt);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-border);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.craft-card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.craft-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.craft-detail-preview {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.craft-metric-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-alt);
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.craft-metric-chip strong {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.craft-insight {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
 }
 
 .achievement-card {

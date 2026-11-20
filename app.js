@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initInteractiveCardSpotlights();
   initProjectFilterTabs();
   initKeyboardShortcuts();
+  initMultilingualMascot();
+  initCraftCards();
   
   // Clean up any old identity mode attributes
   document.documentElement.removeAttribute("data-mode");
@@ -696,4 +698,56 @@ function showToast(message) {
   toastTimeout = setTimeout(() => {
     toast.classList.remove("show");
   }, 2400);
+}
+
+/* 5. Multilingual Mascot Greeting on Hover (Deadpool Avatar) */
+const MASCOT_GREETINGS = [
+  { text: "Namaste! 🙏", lang: "Hindi 🇮🇳" },
+  { text: "Hello! 👋", lang: "English 🇬🇧" },
+  { text: "Namaskara! 🙏", lang: "Kannada 🇮🇳" },
+  { text: "Bonjour! 🥐", lang: "French 🇫🇷" },
+  { text: "¡Hola! ☀️", lang: "Spanish 🇪🇸" },
+  { text: "Konnichiwa! 🌸", lang: "Japanese 🇯🇵" },
+  { text: "Hallo! 🥨", lang: "German 🇩🇪" },
+  { text: "Ciao! 🍕", lang: "Italian 🇮🇹" },
+  { text: "Vanakkam! ✨", lang: "Tamil 🇮🇳" },
+  { text: "Olá! 🌊", lang: "Portuguese 🇵🇹" },
+  { text: "Marhaban! 🌙", lang: "Arabic 🇦🇪" }
+];
+
+let mascotGreetingIdx = 0;
+
+function initMultilingualMascot() {
+  const mascotContainer = document.querySelector(".mascot-container");
+  const speechBubble = document.getElementById("mascotSpeechBubble");
+  if (!mascotContainer || !speechBubble) return;
+
+  mascotContainer.addEventListener("mouseenter", () => {
+    // Cycle to next greeting on hover
+    mascotGreetingIdx = (mascotGreetingIdx + 1) % MASCOT_GREETINGS.length;
+    const item = MASCOT_GREETINGS[mascotGreetingIdx];
+    
+    // Smooth pop & content swap
+    speechBubble.innerHTML = `<span class="speech-text">${item.text}</span><span class="speech-lang">${item.lang}</span>`;
+    speechBubble.classList.remove("bubble-pop");
+    void speechBubble.offsetWidth; // Force CSS animation restart
+    speechBubble.classList.add("bubble-pop");
+  });
+}
+
+/* 6. Interactive Craft & Product Pillars */
+function initCraftCards() {
+  const craftCards = document.querySelectorAll(".craft-card");
+  if (!craftCards.length) return;
+
+  craftCards.forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      craftCards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+    });
+    card.addEventListener("click", () => {
+      craftCards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+    });
+  });
 }
