@@ -49,9 +49,9 @@ const projects = [
     description: "Designed and engineered a highly optimized multi-page clinical platform for a leading dermatologist in Jaipur, featuring online appointment requests and local schema integration.",
     tags: ["HTML", "CSS", "JavaScript", "SEO"],
     link: "https://doctor-pi-seven.vercel.app/",
-    cover: "assets/doctor_sanjay.png",
+    cover: "assets/nikhil_ghibli.jpg",
     hasCaseStudy: true,
-    category: "best",
+    category: "labs",
     metric: "+150% search visibility"
   },
   {
