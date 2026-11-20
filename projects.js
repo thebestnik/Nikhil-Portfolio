@@ -49,10 +49,9 @@ const projects = [
     description: "Designed and engineered a highly optimized multi-page clinical platform for a leading dermatologist in Jaipur, featuring online appointment requests and local schema integration.",
     tags: ["HTML", "CSS", "JavaScript", "SEO"],
     link: "https://doctor-pi-seven.vercel.app/",
-    cover: "assets/nikhil_ghibli.jpg",
+    cover: "assets/doctor_sanjay.png",
     hasCaseStudy: true,
-    category: "labs",
-    metric: "+150% search visibility"
+    category: "labs"
   },
   {
     id: "05",
@@ -64,8 +63,7 @@ const projects = [
     link: "https://l-lixir-milk.vercel.app/",
     cover: "assets/liquid_swirl.mp4",
     hasCaseStudy: true,
-    category: "labs",
-    metric: "Canvas Video-Scrub"
+    category: "labs"
   },
   {
     id: "06",
@@ -77,8 +75,7 @@ const projects = [
     link: "https://wages-buy-44199642.figma.site/",
     cover: "assets/valorant_cover.jpg",
     hasCaseStudy: false,
-    category: "labs",
-    metric: "Interactive Figma prototype"
+    category: "labs"
   },
   {
     id: "07",
@@ -90,8 +87,7 @@ const projects = [
     link: "https://www.figma.com/proto/VQybtVRWy1xPhT2g9FHIZ1/Marvel-Character-Page--Community-?node-id=2004-2&viewport=-530%2C975%2C0.3&t=LFan6MuJOM09clr0-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2007%3A101&page-id=0%3A1",
     cover: "assets/marvel_character.mp4",
     hasCaseStudy: false,
-    category: "labs",
-    metric: "Figma Prototype"
+    category: "labs"
   }
 ];
 
