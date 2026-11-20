@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderHide();
   initFaqAccordion();
   initInteractiveCardSpotlights();
-  initLiveTimeWidget();
   initProjectFilterTabs();
   initKeyboardShortcuts();
   
@@ -612,31 +611,7 @@ function initInteractiveCardSpotlights() {
    2026 Product Designer Trends: Interactive Features
    ========================================================================== */
 
-/* 1. Real-Time IST Time Widget (2026 Trend) */
-function initLiveTimeWidget() {
-  const widget = document.getElementById("liveTimeWidget");
-  if (!widget) return;
-  
-  function updateTime() {
-    try {
-      const options = {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true
-      };
-      const timeStr = new Intl.DateTimeFormat([], options).format(new Date());
-      widget.textContent = `${timeStr} IST`;
-    } catch (e) {
-      widget.textContent = "UTC +5:30";
-    }
-  }
-  
-  updateTime();
-  setInterval(updateTime, 15000);
-}
-
-/* 2. Interactive Project Filter Tabs (2026 Trend) */
+/* 1. Interactive Project Filter Tabs (2026 Trend) */
 function initProjectFilterTabs() {
   const filterTabs = document.querySelectorAll(".filter-tab-btn");
   const sectionBest = document.getElementById("work-best");
